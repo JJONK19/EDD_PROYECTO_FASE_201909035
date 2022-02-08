@@ -1,0 +1,5 @@
+digraph G
+{
+	"40313e2e-062c-43b4-92ba-67b671e942cf"[label=Dos]
+"7ffee83e-9983-4177-8bcd-7e2c6dac7374"[shape = box label=Tres]
+"40313e2e-062c-43b4-92ba-67b671e942cf"->"7ffee83e-9983-4177-8bcd-7e2c6dac7374"}
