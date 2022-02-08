@@ -8,6 +8,6 @@ package com.mycompany.udrawing_paper;
  *
  * @author JJONK19
  */
-public class ListaDobleCircular {
+public class ListaPilas {
     
 }

@@ -49,9 +49,9 @@ public class Cola {
     
     //Unifica el texto que va en el grafo
     public String getcodigo(){
-        String t = "digraph G\n" +"{\n";
+        String t = "digraph structs\n" +"{\n" + "node [shape=record];";
         if (head !=null){
-            t += "\t" + head.declare()+ head.connect();
+            t += "\t"+ "struct1 [label=\"" + head.declare() + "\"];";
         }
         t += "}";
         return t;

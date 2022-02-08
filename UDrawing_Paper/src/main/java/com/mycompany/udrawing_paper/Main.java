@@ -10,6 +10,7 @@ package com.mycompany.udrawing_paper;
  */
 public class Main {
     
+    
     public static void main(String[] args){
         Main.prueba();
     }
@@ -23,5 +24,16 @@ public class Main {
         a.enqueue(3, "Tres");
         a.dequeue();
         a.dibujar("Cola.txt", "Cola.png");
+        
+        //Ejemplo para crear una pila
+        Pila b = new Pila();
+        b.push(1, "Uno");
+        b.push(2, "Dos");
+        b.push(3, "Tres");
+        b.pop();
+        b.dibujar("Pila.txt", "Pila.png");
+        
+        //Ejemplo de una lista simple
+        
     }
 }

@@ -11,25 +11,29 @@ import java.io.PrintWriter;
  *
  * @author JJONK19
  */
-public class ListaSimple {
-    NodoListaSimple head; //Cabecera de la cola
+public class ListaDCircularL {
+    int no; //Maneja el número de nosdos que posee la lista
+    NodoListaDobleCircular head; //Cabecera de la cola
     
-    public ListaSimple(){
+    public ListaDCircularL(){
         this.head = null;
+        this.no = 0;
     }
     
     //Metodos de la lista
     //--------------------------------------------------------------------------
     public void add(Object _content, String _name){
-        NodoListaSimple temp = new NodoListaSimple (_content, _name);
+        NodoListaDobleCircular temp = new NodoListaDobleCircular (_content, _name);
         if(isEmpty()){
             head = temp;
+            no++;
         }else{
-            NodoListaSimple r = head;
+            NodoListaDobleCircular r = head;
             while(r.next != null){
                 r = r.next;
             }
             r.next = temp;
+            no++;
         }
     }
     
@@ -45,6 +49,7 @@ public class ListaSimple {
     
     //Metodos de Graficación
     //--------------------------------------------------------------------------
+    
     
     //Unifica el texto que va en el grafo
     public String getcodigo(){
@@ -93,5 +98,5 @@ public class ListaSimple {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }   
+    }
 }

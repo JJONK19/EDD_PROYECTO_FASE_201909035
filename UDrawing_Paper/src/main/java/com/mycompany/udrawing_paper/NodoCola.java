@@ -26,31 +26,15 @@ public class NodoCola {
     //Sirve para crear la declaracion de los nodos que van a ir en el archivo del grafico
     public String declare(){
         if(this.next == null){
-            String a = ID + "[shape = box label="+ name + "]\n";
+            String a = name;
             return a;
         }else{
             String x = "";
             if(next != null){
-                x = ID + "[shape = box label="+ name + "]\n"+ next.declare();
+                x = name + "|"+ next.declare();
             
             }
             return x;
         }
     }
-    
-    //Crea las conexiones entre los nodos que van a ir en el archivo del grafo
-    public String connect(){
-        if(this.next == null){
-            return ID;
-        }else{
-            String t = "";
-            if(next != null){
-                t = ID + "->"+ next.connect();
-            
-            }
-            return t;
-        }
-    }
-    
-    
 }
