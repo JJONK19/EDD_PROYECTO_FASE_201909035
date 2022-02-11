@@ -11,7 +11,7 @@ import java.io.PrintWriter;
  *
  * @author JJONK19
  */
-public class ListaDCircularL {
+public class ListaDCircularL{
     int no; //Maneja el número de nosdos que posee la lista
     NodoListaDobleCircular head; //Cabecera de la cola
     
@@ -23,20 +23,32 @@ public class ListaDCircularL {
     //Metodos de la lista
     //--------------------------------------------------------------------------
     public void add(Object _content, String _name){
-        NodoListaDobleCircular temp = new NodoListaDobleCircular (_content, _name);
+        NodoListaDobleCircular t = new NodoListaDobleCircular (_content, _name);
         if(isEmpty()){
-            head = temp;
-            no++;
+            head = t;
+            head.next= head;
+            head.prev = head; 
+            no+=1;
         }else{
             NodoListaDobleCircular r = head;
-            while(r.next != null){
+            for(int i = 1; i < this.no; i++){
                 r = r.next;
             }
-            r.next = temp;
-            no++;
+            r.next = t;
+            t.prev = r;
+            t.next = head;
+            head.prev = t;
+            no+=1;
         }
     }
     
+    public void show(){
+        NodoListaDobleCircular r = head;
+        for(int i = 0; i < this.no; i++){
+            System.out.println(r.name);
+            r = r.next;
+        }
+    }
     
     //Vacia la lista
     public void deleteL(){
@@ -50,12 +62,44 @@ public class ListaDCircularL {
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     
+    //Sirve para crear la declaracion de los nodos que van a ir en el archivo del grafico.
+    //Tanto de la lista doble como la lista que contiene.
+    
+    public String declare(){
+        String x = "";
+        NodoListaDobleCircular temp = this.head;
+        for(int i = 0; i < this.no; i++){
+           x += temp.ID + "[shape = box label="+ temp.name + "]\n";
+           
+           ListaSimple t = (ListaSimple)temp.structure;
+           x += t.head.declare();
+           temp = temp.next;
+        }
+        return x;
+    }
+    
+    //Crea las conexiones entre los nodos que van a ir en el archivo del grafo
+    public String connect(){
+        String x = "";
+        NodoListaDobleCircular temp = this.head;
+        for(int i = 0; i < this.no; i++){
+           x += temp.ID + "->" + temp.next.ID + ";\n";
+           x += temp.ID + "->" + temp.prev.ID + ";\n";
+           
+           ListaSimple t = (ListaSimple)temp.structure;
+           String o = temp.ID.replace("\"", "");
+           x += "subgraph cluster_" + o.replace("-", "") + "{" + t.head.connect() + "}";
+           x += temp.ID + "->" + t.head.ID + "[minlen=3]";
+           temp = temp.next;
+        }
+        return x;
+    }
     
     //Unifica el texto que va en el grafo
     public String getcodigo(){
-        String t = "digraph G\n" +"{\n";
+        String t = "digraph G\n" +"{\n" + "rankdir=LR";
         if (head !=null){
-            t += "\t" + head.declare()+ head.connect();
+            t += "\t" + declare()+ connect();
         }
         t += "}";
         return t;
