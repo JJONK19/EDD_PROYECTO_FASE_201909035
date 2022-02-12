@@ -1,4 +1,0 @@
-digraph structs
-{
-	 node [shape=record]; 
- 	 rankdir=LR;	struct1 [label="Dos|Uno"];}

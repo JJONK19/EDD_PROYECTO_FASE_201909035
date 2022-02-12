@@ -1,6 +1,0 @@
-digraph G
-{
-	"9d76c9dc-d1f4-4f4d-a6c8-afe424a7ff43"[shape = box label=Uno]
-"5380f9aa-b202-4767-a166-c985260b99c5"[shape = box label=Dos]
-"2bfcb661-59df-4eec-8a73-52279a715907"[shape = box label=Tres]
-"9d76c9dc-d1f4-4f4d-a6c8-afe424a7ff43"->"5380f9aa-b202-4767-a166-c985260b99c5"->"2bfcb661-59df-4eec-8a73-52279a715907"}
