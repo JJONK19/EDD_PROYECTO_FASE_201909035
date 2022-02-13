@@ -1,0 +1,4 @@
+digraph G
+{
+	"877c2c95-ef02-4ad0-9ca9-53721b3fdf16"[shape = box label=Vacio]
+"877c2c95-ef02-4ad0-9ca9-53721b3fdf16"}

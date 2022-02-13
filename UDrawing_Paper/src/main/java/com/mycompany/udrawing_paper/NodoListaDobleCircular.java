@@ -18,12 +18,14 @@ public class NodoListaDobleCircular {
     String name;        //Nombre que va a aparecer en el grafo
     Object structure;   //Contiene una estructura auxiliar en caso de ser una lista de-
     
-    public NodoListaDobleCircular(Object _content, String _name){
+    public NodoListaDobleCircular(Object _structure, String _name, Object _content){
         this.ID = "\""+UUID.randomUUID().toString() + "\"";
-        this.structure = _content;
+        this.structure = _structure;
         this.next = null;
         this.prev = null;
         this.name = _name;
+        this.content = _content;
+        
     }
     
     //Borra la estructura asociada al nodo 

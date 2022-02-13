@@ -22,8 +22,8 @@ public class ListaDCircularL{
     
     //Metodos de la lista
     //--------------------------------------------------------------------------
-    public void add(Object _content, String _name){
-        NodoListaDobleCircular t = new NodoListaDobleCircular (_content, _name);
+    public void add(Object _structure, String _name, Object _content){
+        NodoListaDobleCircular t = new NodoListaDobleCircular (_structure, _name, _content);
         if(isEmpty()){
             head = t;
             head.next= head;
@@ -53,6 +53,7 @@ public class ListaDCircularL{
     //Vacia la lista
     public void deleteL(){
         this.head = null;
+        this.no = 0;
     }
     
     public boolean isEmpty(){

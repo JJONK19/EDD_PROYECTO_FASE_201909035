@@ -1,0 +1,15 @@
+digraph G
+{
+rankdir=LR	"0326cb4e-7bb2-4deb-bd2b-e5c9a1ef077b"[shape = box label="Juan Perez"]
+"2dc3a98b-1291-4194-8de1-d28aa2d97015"[shape = box label=Vacio]
+"24476688-9019-4b9d-a2af-73c846a549a8"[shape = box label="Luiz Higueros"]
+"c558adf3-abc5-4967-b495-f3201335d546"[shape = box label=Vacio]
+"88240b8e-eb61-4453-ae54-197ffa90ba4e"[shape = box label="Andres Lopez"]
+"96d2c68a-7b95-4cb1-bbc9-ea21eb240461"[shape = box label=Vacio]
+"0326cb4e-7bb2-4deb-bd2b-e5c9a1ef077b"->"24476688-9019-4b9d-a2af-73c846a549a8";
+"0326cb4e-7bb2-4deb-bd2b-e5c9a1ef077b"->"88240b8e-eb61-4453-ae54-197ffa90ba4e";
+subgraph cluster_0326cb4e7bb24debbd2be5c9a1ef077b{"2dc3a98b-1291-4194-8de1-d28aa2d97015"}"0326cb4e-7bb2-4deb-bd2b-e5c9a1ef077b"->"2dc3a98b-1291-4194-8de1-d28aa2d97015"[minlen=3]"24476688-9019-4b9d-a2af-73c846a549a8"->"88240b8e-eb61-4453-ae54-197ffa90ba4e";
+"24476688-9019-4b9d-a2af-73c846a549a8"->"0326cb4e-7bb2-4deb-bd2b-e5c9a1ef077b";
+subgraph cluster_2447668890194b9da2af73c846a549a8{"c558adf3-abc5-4967-b495-f3201335d546"}"24476688-9019-4b9d-a2af-73c846a549a8"->"c558adf3-abc5-4967-b495-f3201335d546"[minlen=3]"88240b8e-eb61-4453-ae54-197ffa90ba4e"->"0326cb4e-7bb2-4deb-bd2b-e5c9a1ef077b";
+"88240b8e-eb61-4453-ae54-197ffa90ba4e"->"24476688-9019-4b9d-a2af-73c846a549a8";
+subgraph cluster_88240b8eeb614453ae54197ffa90ba4e{"96d2c68a-7b95-4cb1-bbc9-ea21eb240461"}"88240b8e-eb61-4453-ae54-197ffa90ba4e"->"96d2c68a-7b95-4cb1-bbc9-ea21eb240461"[minlen=3]}

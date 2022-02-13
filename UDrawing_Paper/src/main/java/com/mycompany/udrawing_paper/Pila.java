@@ -41,6 +41,12 @@ public class Pila {
         return this.head == null;
     }
     
+    
+    //Vacia la lista
+    public void deleteP(){
+        this.head = null;
+    }
+    
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     

@@ -22,6 +22,7 @@ public class NodoListaPilas {
         this.structure = _content;
         this.next = null;
         this.name = _name;
+        this.content = null;
     }
     
     //Borra la estructura asociada al nodo 

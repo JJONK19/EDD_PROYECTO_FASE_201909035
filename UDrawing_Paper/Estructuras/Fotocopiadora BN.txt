@@ -1,0 +1,3 @@
+digraph structs
+{
+node [shape=record];	struct1 [label="Luiz Higueros - 3|Andres Lopez - 4|Andres Lopez - 5"];}

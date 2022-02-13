@@ -63,13 +63,22 @@ public class ListaPilas {
     public String declare(){
         String x = "";
         NodoListaPilas temp = this.head;
-        for(int i = 0; i < this.no; i++){
-           x += temp.ID + "[shape = box label="+ temp.name + "]\n";
-           
-           Pila t = (Pila)temp.structure;
-           String o = temp.ID.replace("\"", "");
-           x += "\t"+ "struct_"+ o.replace("-", "") + "[label=\"" + t.head.declare() + "\"];";
-           temp = temp.next;
+        //Verifica si está vacia
+        if (this.head == null){
+            
+        }else{
+            for(int i = 0; i < this.no; i++){
+                x += temp.ID + "[shape = box label="+ temp.name + "]\n";
+                Pila t = (Pila)temp.structure;
+                //Verifica si el nodo tiene una estructura
+                if (t.head == null){
+                    
+                }else{
+                    String o = temp.ID.replace("\"", "");
+                    x += "\t"+ "struct_"+ o.replace("-", "") + "[label=\"" + t.head.declare() + "\"];";
+                    temp = temp.next;
+                }   
+             }
         }
         return x;
     }
@@ -78,16 +87,23 @@ public class ListaPilas {
     public String connect(){
         String x = "";
         NodoListaPilas temp = this.head;
-        for(int i = 0; i < this.no; i++){
-           if(i != (this.no-1)){
-            x += temp.ID + "->" + temp.next.ID + ";\n";
-           }
-           
-           
-           Pila t = (Pila)temp.structure;
-           String o = temp.ID.replace("\"", "");
-           x += temp.ID + "->" + "struct_"+ o.replace("-", "") + "[minlen=3]";
-           temp = temp.next;
+        //Verifica si está vacia
+        if (this.head == null){
+            
+        }else{
+            for(int i = 0; i < this.no; i++){
+                if(i != (this.no-1)){
+                 x += temp.ID + "->" + temp.next.ID + ";\n";
+                }
+                Pila t = (Pila)temp.structure;
+                if (t.head == null){
+                    
+                }else{
+                    String o = temp.ID.replace("\"", "");
+                    x += temp.ID + "->" + "struct_"+ o.replace("-", "") + "[minlen=3]";
+                    temp = temp.next;
+                }
+            }  
         }
         return x;
     }
@@ -122,7 +138,6 @@ public class ListaPilas {
                 p.close();
             }
         }
-        
     }
     
     //Se encarga de dibujar el grafo. Ruta es el nombre del archivo *.txt y gname es el nombre

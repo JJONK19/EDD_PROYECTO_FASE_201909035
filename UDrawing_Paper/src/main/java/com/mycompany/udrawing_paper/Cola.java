@@ -13,6 +13,7 @@ import java.io.PrintWriter;
  */
 public class Cola {
     NodoCola head; //Cabecera de la cola
+    int no; //Numero de nodos de la cola
     
     public Cola(){
         this.head = null;
@@ -24,12 +25,14 @@ public class Cola {
         NodoCola temp = new NodoCola (_content, _name);
         if(isEmpty()){
             head = temp;
+            no++;
         }else{
             NodoCola r = head;
             while(r.next != null){
                 r = r.next;
             }
             r.next = temp;
+            no++;
         }
     }
     
@@ -37,11 +40,18 @@ public class Cola {
         Object contenido = head.content;
         NodoCola temp = head.next;
         head = temp;
+        no--;
         return contenido;
     }
     
     public boolean isEmpty(){
         return this.head == null;
+    }
+    
+    //Vacia la lista
+    public void deleteL(){
+        this.head = null;
+        this.no =0;
     }
     
     //Metodos de Graficación

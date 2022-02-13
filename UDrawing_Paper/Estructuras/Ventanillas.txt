@@ -1,0 +1,7 @@
+digraph G
+{
+	 node [shape=record]; 
+ 	 rankdir=LR;	"3d92769b-7717-44c1-9812-997339e1c457"[shape = box label=Ventanilla_1]
+	struct_3d92769b771744c19812997339e1c457[label="Gianna Smith - 6"];"dabc81ea-7a5a-45cb-8cdf-44f3df692d6a"[shape = box label=Ventanilla_2]
+	struct_dabc81ea7a5a45cb8cdf44f3df692d6a[label="Luke Perry - 1|Luke Perry - 2"];"3d92769b-7717-44c1-9812-997339e1c457"->"dabc81ea-7a5a-45cb-8cdf-44f3df692d6a";
+"3d92769b-7717-44c1-9812-997339e1c457"->struct_3d92769b771744c19812997339e1c457[minlen=3]"dabc81ea-7a5a-45cb-8cdf-44f3df692d6a"->struct_dabc81ea7a5a45cb8cdf44f3df692d6a[minlen=3]}
