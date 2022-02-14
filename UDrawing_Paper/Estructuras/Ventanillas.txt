@@ -1,7 +1,47 @@
 digraph G
 {
 	 node [shape=record]; 
- 	 rankdir=LR;	"3d92769b-7717-44c1-9812-997339e1c457"[shape = box label=Ventanilla_1]
-	struct_3d92769b771744c19812997339e1c457[label="Gianna Smith - 6"];"dabc81ea-7a5a-45cb-8cdf-44f3df692d6a"[shape = box label=Ventanilla_2]
-	struct_dabc81ea7a5a45cb8cdf44f3df692d6a[label="Luke Perry - 1|Luke Perry - 2"];"3d92769b-7717-44c1-9812-997339e1c457"->"dabc81ea-7a5a-45cb-8cdf-44f3df692d6a";
-"3d92769b-7717-44c1-9812-997339e1c457"->struct_3d92769b771744c19812997339e1c457[minlen=3]"dabc81ea-7a5a-45cb-8cdf-44f3df692d6a"->struct_dabc81ea7a5a45cb8cdf44f3df692d6a[minlen=3]}
+ 	 rankdir=LR;	"6b03ba57-580d-41d1-bfad-0ea92dc33861"[shape = box label=Ventanilla_1]
+	struct_6b03ba57580d41d1bfad0ea92dc33861[label="David Lee - 4"];"a4d081a0-893f-4d23-95db-137938fdb8d4"[shape = box label=Ventanilla_2]
+	struct_a4d081a0893f4d2395db137938fdb8d4[label="Ethan Clark - 3"];"d3563de7-24de-487c-9a44-eec41cb5e118"[shape = box label=Ventanilla_3]
+	struct_d3563de724de487c9a44eec41cb5e118[label="Joseph Ward - 2|Joseph Ward - 3"];"741f8459-ae5d-46c8-8bae-557c79df5b41"[shape = box label=Ventanilla_4]
+	struct_741f8459ae5d46c88bae557c79df5b41[label="Theodore Morris - 2|Theodore Morris - 3|Theodore Morris - 4"];"06f92551-09f6-4ab6-a068-5f06cfab1f4c"[shape = box label=Ventanilla_5]
+	struct_06f9255109f64ab6a0685f06cfab1f4c[label="Benjamin Harris - 6"];"f0f67d16-64e2-4b7b-89b9-f1f01f7c725e"[shape = box label=Ventanilla_6]
+	struct_f0f67d1664e24b7b89b9f1f01f7c725e[label="Asher Harris - 1|Asher Harris - 2|Asher Harris - 3|Asher Harris - 4"];"0f5ffc0b-156a-4bd2-850f-107c6ea9fece"[shape = box label=Ventanilla_7]
+	struct_0f5ffc0b156a4bd2850f107c6ea9fece[label="Madison Anderson - -4|Madison Anderson - -3|Madison Anderson - -2|Madison Anderson - -1|Madison Anderson - 0"];"6429f3e2-023d-4956-96f8-c52e8364e918"[shape = box label=Ventanilla_8]
+	struct_6429f3e2023d495696f8c52e8364e918[label="Grace Ross - 4|Grace Ross - 5|Grace Ross - 6|Grace Ross - 7|Grace Ross - 8"];"2c798a09-61af-4fc6-af78-682268b4396b"[shape = box label=Ventanilla_9]
+	struct_2c798a0961af4fc6af78682268b4396b[label="Libre"];"1d1563a7-4eec-44e2-887d-3ade96379b4d"[shape = box label=Ventanilla_10]
+	struct_1d1563a74eec44e2887d3ade96379b4d[label="Libre"];"7b88d34f-0a89-42da-b465-320b7d1ac242"[shape = box label=Ventanilla_1]
+	struct_7b88d34f0a8942dab465320b7d1ac242[label="Libre"];"3144d87d-b437-48e7-b6d6-2ba5be526cf6"[shape = box label=Ventanilla_2]
+	struct_3144d87db43748e7b6d62ba5be526cf6[label="Libre"];"a4e2c536-0108-4327-9c05-cbf43876c54a"[shape = box label=Ventanilla_1]
+	struct_a4e2c536010843279c05cbf43876c54a[label="Libre"];"f4594e2c-08d1-4978-9eaa-71ed2d1964f9"[shape = box label=Ventanilla_2]
+	struct_f4594e2c08d149789eaa71ed2d1964f9[label="Libre"];"93e03a59-1821-4238-b0c9-62b7eb7ef16a"[shape = box label=Ventanilla_3]
+	struct_93e03a5918214238b0c962b7eb7ef16a[label="Libre"];"30127b43-c699-4323-8c67-087ca0b7d1ca"[shape = box label=Ventanilla_4]
+	struct_30127b43c69943238c67087ca0b7d1ca[label="Libre"];"f0d940f4-583f-41ef-bf14-abee9fb56cb0"[shape = box label=Ventanilla_5]
+	struct_f0d940f4583f41efbf14abee9fb56cb0[label="Libre"];"3c647dce-5178-490e-af06-14ca79265879"[shape = box label=Ventanilla_6]
+	struct_3c647dce5178490eaf0614ca79265879[label="Libre"];"17fc93c7-762e-454a-b84d-aec413571e0c"[shape = box label=Ventanilla_7]
+	struct_17fc93c7762e454ab84daec413571e0c[label="Libre"];"7e412525-a42b-4f56-993f-59a495b3bc53"[shape = box label=Ventanilla_8]
+	struct_7e412525a42b4f56993f59a495b3bc53[label="Libre"];"9409d8aa-776c-455c-a06c-85a7267e80f5"[shape = box label=Ventanilla_9]
+	struct_9409d8aa776c455ca06c85a7267e80f5[label="Libre"];"a0f5bd70-6894-48a7-8979-b188568e0c9d"[shape = box label=Ventanilla_10]
+	struct_a0f5bd70689448a78979b188568e0c9d[label="Libre"];"6b03ba57-580d-41d1-bfad-0ea92dc33861"->"a4d081a0-893f-4d23-95db-137938fdb8d4";
+"6b03ba57-580d-41d1-bfad-0ea92dc33861"->struct_6b03ba57580d41d1bfad0ea92dc33861[minlen=3]"a4d081a0-893f-4d23-95db-137938fdb8d4"->"d3563de7-24de-487c-9a44-eec41cb5e118";
+"a4d081a0-893f-4d23-95db-137938fdb8d4"->struct_a4d081a0893f4d2395db137938fdb8d4[minlen=3]"d3563de7-24de-487c-9a44-eec41cb5e118"->"741f8459-ae5d-46c8-8bae-557c79df5b41";
+"d3563de7-24de-487c-9a44-eec41cb5e118"->struct_d3563de724de487c9a44eec41cb5e118[minlen=3]"741f8459-ae5d-46c8-8bae-557c79df5b41"->"06f92551-09f6-4ab6-a068-5f06cfab1f4c";
+"741f8459-ae5d-46c8-8bae-557c79df5b41"->struct_741f8459ae5d46c88bae557c79df5b41[minlen=3]"06f92551-09f6-4ab6-a068-5f06cfab1f4c"->"f0f67d16-64e2-4b7b-89b9-f1f01f7c725e";
+"06f92551-09f6-4ab6-a068-5f06cfab1f4c"->struct_06f9255109f64ab6a0685f06cfab1f4c[minlen=3]"f0f67d16-64e2-4b7b-89b9-f1f01f7c725e"->"0f5ffc0b-156a-4bd2-850f-107c6ea9fece";
+"f0f67d16-64e2-4b7b-89b9-f1f01f7c725e"->struct_f0f67d1664e24b7b89b9f1f01f7c725e[minlen=3]"0f5ffc0b-156a-4bd2-850f-107c6ea9fece"->"6429f3e2-023d-4956-96f8-c52e8364e918";
+"0f5ffc0b-156a-4bd2-850f-107c6ea9fece"->struct_0f5ffc0b156a4bd2850f107c6ea9fece[minlen=3]"6429f3e2-023d-4956-96f8-c52e8364e918"->"2c798a09-61af-4fc6-af78-682268b4396b";
+"6429f3e2-023d-4956-96f8-c52e8364e918"->struct_6429f3e2023d495696f8c52e8364e918[minlen=3]"2c798a09-61af-4fc6-af78-682268b4396b"->"1d1563a7-4eec-44e2-887d-3ade96379b4d";
+"2c798a09-61af-4fc6-af78-682268b4396b"->struct_2c798a0961af4fc6af78682268b4396b[minlen=3]"1d1563a7-4eec-44e2-887d-3ade96379b4d"->"7b88d34f-0a89-42da-b465-320b7d1ac242";
+"1d1563a7-4eec-44e2-887d-3ade96379b4d"->struct_1d1563a74eec44e2887d3ade96379b4d[minlen=3]"7b88d34f-0a89-42da-b465-320b7d1ac242"->"3144d87d-b437-48e7-b6d6-2ba5be526cf6";
+"7b88d34f-0a89-42da-b465-320b7d1ac242"->struct_7b88d34f0a8942dab465320b7d1ac242[minlen=3]"3144d87d-b437-48e7-b6d6-2ba5be526cf6"->"a4e2c536-0108-4327-9c05-cbf43876c54a";
+"3144d87d-b437-48e7-b6d6-2ba5be526cf6"->struct_3144d87db43748e7b6d62ba5be526cf6[minlen=3]"a4e2c536-0108-4327-9c05-cbf43876c54a"->"f4594e2c-08d1-4978-9eaa-71ed2d1964f9";
+"a4e2c536-0108-4327-9c05-cbf43876c54a"->struct_a4e2c536010843279c05cbf43876c54a[minlen=3]"f4594e2c-08d1-4978-9eaa-71ed2d1964f9"->"93e03a59-1821-4238-b0c9-62b7eb7ef16a";
+"f4594e2c-08d1-4978-9eaa-71ed2d1964f9"->struct_f4594e2c08d149789eaa71ed2d1964f9[minlen=3]"93e03a59-1821-4238-b0c9-62b7eb7ef16a"->"30127b43-c699-4323-8c67-087ca0b7d1ca";
+"93e03a59-1821-4238-b0c9-62b7eb7ef16a"->struct_93e03a5918214238b0c962b7eb7ef16a[minlen=3]"30127b43-c699-4323-8c67-087ca0b7d1ca"->"f0d940f4-583f-41ef-bf14-abee9fb56cb0";
+"30127b43-c699-4323-8c67-087ca0b7d1ca"->struct_30127b43c69943238c67087ca0b7d1ca[minlen=3]"f0d940f4-583f-41ef-bf14-abee9fb56cb0"->"3c647dce-5178-490e-af06-14ca79265879";
+"f0d940f4-583f-41ef-bf14-abee9fb56cb0"->struct_f0d940f4583f41efbf14abee9fb56cb0[minlen=3]"3c647dce-5178-490e-af06-14ca79265879"->"17fc93c7-762e-454a-b84d-aec413571e0c";
+"3c647dce-5178-490e-af06-14ca79265879"->struct_3c647dce5178490eaf0614ca79265879[minlen=3]"17fc93c7-762e-454a-b84d-aec413571e0c"->"7e412525-a42b-4f56-993f-59a495b3bc53";
+"17fc93c7-762e-454a-b84d-aec413571e0c"->struct_17fc93c7762e454ab84daec413571e0c[minlen=3]"7e412525-a42b-4f56-993f-59a495b3bc53"->"9409d8aa-776c-455c-a06c-85a7267e80f5";
+"7e412525-a42b-4f56-993f-59a495b3bc53"->struct_7e412525a42b4f56993f59a495b3bc53[minlen=3]"9409d8aa-776c-455c-a06c-85a7267e80f5"->"a0f5bd70-6894-48a7-8979-b188568e0c9d";
+"9409d8aa-776c-455c-a06c-85a7267e80f5"->struct_9409d8aa776c455ca06c85a7267e80f5[minlen=3]"a0f5bd70-6894-48a7-8979-b188568e0c9d"->struct_a0f5bd70689448a78979b188568e0c9d[minlen=3]}

@@ -32,6 +32,8 @@ public class Main {
     
     public static void main(String[] args){
         String x = "";
+        int conC = 0;  //Indica cuantos pasos llevva la impresión a color 
+        int conB = 0;  //Indica cuantos pasos llevva la impresión a BN 
         //Inicialización de grafos
         Atendidos.add(null, "Vacio");
         BN.enqueue(null, "Libre");
@@ -255,6 +257,12 @@ public class Main {
                     //Añadir Clientes a las ventanillas vacias
                     temp = Ventanilla.head;
                     for(int i = 0; i < Ventanilla.no; i++){
+                        //Verificar si la cola está vacia  
+                        tcc = Clientes.head;
+                        if(tcc == null){
+                            Clientes.enqueue(null, "Vacio");
+                            break;
+                        }
 
                         if(temp.content == null){   //Está vacía
                             //Inicializar Pila de Imagenes borrando nodo libre
@@ -284,11 +292,15 @@ public class Main {
                         }      
                         temp = temp.next;
                     }
-                    
-                    //Verificar si la cola está vacia y sumar un paso a cada cliente que queda
+                    //Verificar si la cola está vacia  
                     tcc = Clientes.head;
                     if(tcc == null){
                         Clientes.enqueue(null, "Vacio");
+                    }
+                    
+                    //Sumar un paso a cada cliente que queda
+                    tcc = Clientes.head;
+                    if(tcc == null){
                     }else{
                         while(tcc.next != null){
                             Cliente ct = (Cliente)tcc.content;
@@ -299,7 +311,117 @@ public class Main {
                  
                     
                 //Manejo de las impresoras------------------------------------------------------------
-                
+                  //Impresora Blanco y Negro
+                    //Sacar Imagen
+                    NodoCola tbn = BN.head;
+                    if(tbn.name.equals("Libre")){
+                        
+                    }else{
+                        if (conB == 1){
+                            if(!(tbn.name.equals("Libre"))){
+                                Imagen it = (Imagen)BN.dequeue();
+                                int index = Espera.find(it.ID);
+                                NodoListaDobleCircular finder = Espera.head;
+                                for(int i = 0; i < index; i++){
+                                    finder = finder.next;
+                                }
+
+                                ListaSimple finlis = (ListaSimple)finder.structure;
+                                if (finlis.head.name.equals("Vacio")){
+                                    finlis.deleteL();
+                                }
+                                finlis.add(it, "\"" + it.Nombre + "\"");
+                                Cliente ct = (Cliente)finder.content;
+                                ct.total--;
+                                System.out.println("Se ha impreso " + it.Nombre + ".");
+                                conB = 0;
+                            }
+                        }else{
+                            conB = conB + 1;
+                        }
+                    }
+                    
+                    
+                    //Reiniciar Impresora
+                    tcc = BN.head;
+                    if(tcc == null){
+                        BN.enqueue(null, "Libre");
+                    }
+                    
+                  //Impresora a color
+                    //Sacar Imagen
+                    tbn = C.head;
+                    if(tbn.name.equals("Libre")){
+                        
+                    }else{
+                        if (conC == 2){
+                            if(!(tbn.name.equals("Libre"))){
+                                Imagen it = (Imagen)C.dequeue();
+                                int index = Espera.find(it.ID);
+                                NodoListaDobleCircular finder = Espera.head;
+                                for(int i = 0; i < index; i++){
+                                    finder = finder.next;
+                                }
+
+                                ListaSimple finlis = (ListaSimple)finder.structure;
+                                if (finlis.head.name.equals("Vacio")){
+                                    finlis.deleteL();
+                                }
+                                finlis.add(it, "\"" + it.Nombre + "\"");
+                                Cliente ct = (Cliente)finder.content;
+                                ct.total--;
+                                System.out.println("Se ha impreso " + it.Nombre + ".");
+                                conC = 0;
+                            }
+                        }else{
+                            conC = conC + 1 ;
+                        }
+                    }
+                    
+                                        
+                    //Reiniciar Impresora
+                    tcc = C.head;
+                    if(tcc == null){
+                        C.enqueue(null, "Libre");
+                    }
+                    
+                //Manejo de Clientes en Espera------------------------------------------------------
+                    //Verificación de Imagenes
+                    NodoListaDobleCircular finder = Espera.head;
+                    int iterador = Espera.no;
+                    if(!finder.name.equals("Vacio")){
+                        
+                        //Inicializar Lista atendidos
+                        NodoListaSimple lf = Atendidos.head;
+                        if(lf == null){
+                            
+                        }else{
+                            if(lf.name.equals("Vacio")){
+                            Atendidos.deleteL();
+                            }
+                        }
+                     
+                        for(int i = 0; i < iterador; i++){
+                            Cliente ct = (Cliente)finder.content;
+                            if (ct.total == 0){
+                                Atendidos.add(ct, "\"" + ct.nombre + "\"" );
+                                System.out.println(ct.nombre + " se ha retirado del establecimiento.");
+                                Espera.remove(i);
+                            }else{
+                                ct.pasos++;
+                            }
+                            finder = finder.next;
+                        }
+                    }
+                    
+                    //Reinicio de Lista
+                    NodoListaDobleCircular tcd = Espera.head;
+                    if(tcd == null){
+                        ListaSimple lt1 = new ListaSimple();
+                        lt1.add(null, "Vacio");
+                        Espera.add(lt, "Vacio", null);
+                    }   
+                    
                 //FIN DEL PROCESO
                     System.out.println("---------------------------------------------------------");
                 }
@@ -354,7 +476,7 @@ public class Main {
         a.enqueue(2, "Dos");
         a.enqueue(3, "Tres");
         a.dequeue();
-        a.dibujar("Cola.txt", "Cola.png");
+        
         
         //Ejemplo para crear una pila
         Pila b = new Pila();
@@ -362,7 +484,7 @@ public class Main {
         b.push(2, "Dos");
         b.push(3, "Tres");
         b.pop();
-        b.dibujar("Pila.txt", "Pila.png");
+        
         
         //Ejemplo para crear una pila
         Pila b1 = new Pila();
@@ -394,21 +516,21 @@ public class Main {
         c.add(1, "Uno");
         c.add(2, "Dos");
         c.add(3, "Tres");
-        c.dibujar("Lista.txt", "Lista.png");
+        
         
         //Ejemplo de una lista simple
         ListaSimple c1 = new ListaSimple();
         c1.add(1, "UNO");
         c1.add(2, "DOS");
         c1.add(3, "TRES");
-        c1.dibujar("Lista1.txt", "Lista1.png");
+        
         
         //Ejemplo de una lista simple
         ListaSimple c2 = new ListaSimple();
         c2.add(1, "UNO");
         c2.add(2, "DOS");
         c2.add(3, "TRES");
-        c2.dibujar("Lista2.txt", "Lista3.png");
+        
         
         ListaSimple c3 = new ListaSimple();
         c3.add(1, "UNO");
@@ -418,9 +540,11 @@ public class Main {
         //Ejemplo de Lista de Listas
         ListaDCircularL d = new ListaDCircularL();
         d.add(c, "Números", null);
-        d.add(c1, "Texto", null);
-        d.add(c2, "Hola", null);
-        d.add(c3, "Pedro", null);
+        String ID = d.head.ID;
+        System.out.println(d.head.name);
+        int busqueda = d.find(ID);
+        System.out.println(busqueda);
+        d.remove(busqueda);
         d.dibujar("DLC.txt", "DLC.png");
         
         //Ejemplo de una lista de pilas
@@ -429,6 +553,6 @@ public class Main {
         e.add(b1, "Pueblos");
         e.add(b3, "Caballos");
         e.add(b2, "Rancho");
-        e.dibujar("PL.txt", "PL.png");
+        
     }
 }

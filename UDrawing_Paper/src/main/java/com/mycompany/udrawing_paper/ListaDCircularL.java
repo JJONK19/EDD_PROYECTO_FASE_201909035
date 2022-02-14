@@ -28,7 +28,7 @@ public class ListaDCircularL{
             head = t;
             head.next= head;
             head.prev = head; 
-            no+=1;
+            
         }else{
             NodoListaDobleCircular r = head;
             for(int i = 1; i < this.no; i++){
@@ -38,8 +38,39 @@ public class ListaDCircularL{
             t.prev = r;
             t.next = head;
             head.prev = t;
-            no+=1;
+            
         }
+        no++;
+    }
+    
+    //Remueve el nodo de la lista y regresa el contenido del nodo.
+    public void remove(int index){
+        NodoListaDobleCircular r = head;
+           for(int i = 0; i < index; i++){
+                r = r.next;
+        }
+         
+        if (this.no ==1 && r ==this.head){
+            this.head = null;
+            this.no = 0;
+        } else{
+            if (r == this.head){
+            NodoListaDobleCircular rprev = r.prev;
+            NodoListaDobleCircular rnext = r.next;
+            rprev.next = rnext;
+            rnext.prev = rprev;
+            this.head = rnext;
+            r = null;
+            }else{
+                NodoListaDobleCircular rprev = r.prev;
+                NodoListaDobleCircular rnext = r.next;
+                rprev.next = rnext;
+                rnext.prev = rprev;
+                r = null;
+            }
+            this.no--;
+        }  
+        
     }
     
     public void show(){
@@ -58,6 +89,21 @@ public class ListaDCircularL{
     
     public boolean isEmpty(){
         return this.head == null;
+    }
+    
+    //Método para buscar. Regresa la posición del nodo.
+    public int find(String ID){
+        int index = 0;
+        NodoListaDobleCircular r = head;
+        for(int i = 0; i < this.no; i++){
+            Cliente ct = (Cliente)r.content;
+            if (ct.ID.equals(ID)){
+                index = i;
+                break;
+            }
+            r = r.next;
+        }
+        return index;
     }
     
     //Metodos de Graficación
@@ -90,7 +136,7 @@ public class ListaDCircularL{
            ListaSimple t = (ListaSimple)temp.structure;
            String o = temp.ID.replace("\"", "");
            x += "subgraph cluster_" + o.replace("-", "") + "{" + t.head.connect() + "}";
-           x += temp.ID + "->" + t.head.ID + "[minlen=3]";
+           x += temp.ID + "->" + t.head.ID + "[minlen=3];";
            temp = temp.next;
         }
         return x;
