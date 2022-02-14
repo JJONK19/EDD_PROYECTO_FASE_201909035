@@ -181,6 +181,7 @@ public class Main {
                 //Manejo de las Ventanillas-----------------------------------------------------
                     //Vaciar espacios
                     NodoListaPilas temp = Ventanilla.head;
+                    System.out.println("");
                     for(int i = 0; i < Ventanilla.no; i++){
 
                         if(temp.content != null){   //Está llena
@@ -255,6 +256,7 @@ public class Main {
                     }
 
                     //Añadir Clientes a las ventanillas vacias
+                    System.out.println("");
                     temp = Ventanilla.head;
                     for(int i = 0; i < Ventanilla.no; i++){
                         //Verificar si la cola está vacia  
@@ -312,12 +314,13 @@ public class Main {
                     
                 //Manejo de las impresoras------------------------------------------------------------
                   //Impresora Blanco y Negro
+                  System.out.println("");
                     //Sacar Imagen
                     NodoCola tbn = BN.head;
                     if(tbn.name.equals("Libre")){
                         
                     }else{
-                        if (conB == 1){
+                        if (conB == 0){
                             if(!(tbn.name.equals("Libre"))){
                                 Imagen it = (Imagen)BN.dequeue();
                                 int index = Espera.find(it.ID);
@@ -337,7 +340,7 @@ public class Main {
                                 conB = 0;
                             }
                         }else{
-                            conB = conB + 1;
+                            
                         }
                     }
                     
@@ -349,12 +352,13 @@ public class Main {
                     }
                     
                   //Impresora a color
+                    System.out.println("");
                     //Sacar Imagen
                     tbn = C.head;
                     if(tbn.name.equals("Libre")){
                         
                     }else{
-                        if (conC == 2){
+                        if (conC == 1){
                             if(!(tbn.name.equals("Libre"))){
                                 Imagen it = (Imagen)C.dequeue();
                                 int index = Espera.find(it.ID);
@@ -386,6 +390,7 @@ public class Main {
                     }
                     
                 //Manejo de Clientes en Espera------------------------------------------------------
+                    System.out.println("");
                     //Verificación de Imagenes
                     NodoListaDobleCircular finder = Espera.head;
                     int iterador = Espera.no;
