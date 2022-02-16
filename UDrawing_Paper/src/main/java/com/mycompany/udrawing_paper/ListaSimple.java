@@ -13,9 +13,11 @@ import java.io.PrintWriter;
  */
 public class ListaSimple {
     NodoListaSimple head; //Cabecera de la cola
+    int no; //Nodos de la lista
     
     public ListaSimple(){
         this.head = null;
+        this.no = 0;
     }
     
     //Metodos de la lista
@@ -24,12 +26,14 @@ public class ListaSimple {
         NodoListaSimple temp = new NodoListaSimple (_content, _name);
         if(isEmpty()){
             head = temp;
+            no++;
         }else{
             NodoListaSimple r = head;
             while(r.next != null){
                 r = r.next;
             }
             r.next = temp;
+            no++;
         }
     }
     
@@ -37,12 +41,40 @@ public class ListaSimple {
     //Vacia la lista
     public void deleteL(){
         this.head = null;
+        no = 0;
     }
     
     public boolean isEmpty(){
         return this.head == null;
     }
     
+    //Las posiciones empiezan desde 0. Restarle uni al idice para no tener errores.
+    public void remove(int pos){
+        NodoListaSimple aux = this.head;
+        for(int i = 0; i < pos; i++){
+            aux = aux.next;
+        }
+        
+        if (this.no ==1 && aux ==this.head){
+            this.head = null;
+            this.no = 0;
+        } else{
+            if (aux == this.head){
+            NodoListaSimple rnext = aux.next;
+            this.head = rnext;
+            this.no--;
+            }else{
+                NodoListaSimple rprev = this.head;
+                NodoListaSimple rnext = aux.next;
+                for(int i = 0; i < pos-1; i++){
+                    rprev = rprev.next;
+                }
+                rprev.next = rnext;
+                aux = null;
+                this.no--;
+            }
+        }
+    }
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     

@@ -1,3 +1,3 @@
 digraph structs
 {
-node [shape=record];	struct1 [label="Grace Robinson - 5|John Harris - 2|John Harris - 3|Camila Morris - 5|Camila Morris - 6"];}
+node [shape=record];	struct1 [label="Charlotte Campbell - 3|Charlotte Campbell - 4|Charlotte Campbell - 5|Gianna Cook - 2|Gianna Cook - 3|Gianna Cook - 4|Ella Garcia - 5|Ella Garcia - 6|Emma Adams - 4|Emma Adams - 5|Lucas Gray - 3|Camila Scott - 4|Ava Rodriguez - 5|Daniel Cook - 4|Andres Lopez - 1|Andres Lopez - 2|Andres Lopez - 3|Andres Lopez - 4|Andres Lopez - 5|Andres Lopez - 6|Andres Lopez - 7|Andres Lopez - 8|Andres Lopez - 9|Andres Lopez - 10|Amelia Clark - 5|Abigail Cook - 3|Abigail Cook - 4|Abigail Cook - 5|Abigail Cook - 6|Penelope Walker - 3"];}

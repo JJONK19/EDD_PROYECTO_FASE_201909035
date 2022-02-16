@@ -1,23 +1,23 @@
 digraph G
 {
 	 node [shape=record]; 
- 	 rankdir=LR;	"8b41edcd-dbb6-4d7d-ad9c-f99b460b37b2"[shape = box label=Ventanilla_1]
-	struct_8b41edcddbb64d7dad9cf99b460b37b2[label="Noah Williams - 7|Noah Williams - 8"];"1f0de482-cad8-4b3c-971b-0a657608c46a"[shape = box label=Ventanilla_2]
-	struct_1f0de482cad84b3c971b0a657608c46a[label="Emma Wilson - 1|Emma Wilson - 2|Emma Wilson - 3|Emma Wilson - 4|Emma Wilson - 5|Emma Wilson - 6"];"2d22317e-211f-4531-b7de-66b07c50705a"[shape = box label=Ventanilla_3]
-	struct_2d22317e211f4531b7de66b07c50705a[label="Sebastian Perez - 4|Sebastian Perez - 5|Sebastian Perez - 6|Sebastian Perez - 7"];"4f7459dc-9077-44a7-9294-ed22b708bf73"[shape = box label=Ventanilla_4]
-	struct_4f7459dc907744a79294ed22b708bf73[label="Grace Young - 2|Grace Young - 3"];"da40bed8-1546-426b-9a26-f7b8ed9d48c2"[shape = box label=Ventanilla_5]
-	struct_da40bed81546426b9a26f7b8ed9d48c2[label="Layla Davis - 4"];"e23297b0-07ee-4087-9ce5-47443a157876"[shape = box label=Ventanilla_6]
-	struct_e23297b007ee40879ce547443a157876[label="Joseph Walker - 4|Joseph Walker - 5"];"29af7476-c27f-451b-b358-41bc30fa81c6"[shape = box label=Ventanilla_7]
-	struct_29af7476c27f451bb35841bc30fa81c6[label="Benjamin Butler - -6|Benjamin Butler - -5|Benjamin Butler - -4|Benjamin Butler - -3|Benjamin Butler - -2|Benjamin Butler - -1|Benjamin Butler - 0"];"9c5ff50a-558f-42e8-ab63-f8ce4fa57a63"[shape = box label=Ventanilla_8]
-	struct_9c5ff50a558f42e8ab63f8ce4fa57a63[label="Aria Williams - 4|Aria Williams - 5|Aria Williams - 6"];"69997f49-7572-45d6-8942-457b67b81135"[shape = box label=Ventanilla_9]
-	struct_69997f49757245d68942457b67b81135[label="Isabella Roberts - 1|Isabella Roberts - 2|Isabella Roberts - 3|Isabella Roberts - 4|Isabella Roberts - 5"];"ae4a4411-2964-4fb4-ad3b-5053de00ad33"[shape = box label=Ventanilla_10]
-	struct_ae4a441129644fb4ad3b5053de00ad33[label="James Rodriguez - 6|James Rodriguez - 7"];"8b41edcd-dbb6-4d7d-ad9c-f99b460b37b2"->"1f0de482-cad8-4b3c-971b-0a657608c46a";
-"8b41edcd-dbb6-4d7d-ad9c-f99b460b37b2"->struct_8b41edcddbb64d7dad9cf99b460b37b2[minlen=3]"1f0de482-cad8-4b3c-971b-0a657608c46a"->"2d22317e-211f-4531-b7de-66b07c50705a";
-"1f0de482-cad8-4b3c-971b-0a657608c46a"->struct_1f0de482cad84b3c971b0a657608c46a[minlen=3]"2d22317e-211f-4531-b7de-66b07c50705a"->"4f7459dc-9077-44a7-9294-ed22b708bf73";
-"2d22317e-211f-4531-b7de-66b07c50705a"->struct_2d22317e211f4531b7de66b07c50705a[minlen=3]"4f7459dc-9077-44a7-9294-ed22b708bf73"->"da40bed8-1546-426b-9a26-f7b8ed9d48c2";
-"4f7459dc-9077-44a7-9294-ed22b708bf73"->struct_4f7459dc907744a79294ed22b708bf73[minlen=3]"da40bed8-1546-426b-9a26-f7b8ed9d48c2"->"e23297b0-07ee-4087-9ce5-47443a157876";
-"da40bed8-1546-426b-9a26-f7b8ed9d48c2"->struct_da40bed81546426b9a26f7b8ed9d48c2[minlen=3]"e23297b0-07ee-4087-9ce5-47443a157876"->"29af7476-c27f-451b-b358-41bc30fa81c6";
-"e23297b0-07ee-4087-9ce5-47443a157876"->struct_e23297b007ee40879ce547443a157876[minlen=3]"29af7476-c27f-451b-b358-41bc30fa81c6"->"9c5ff50a-558f-42e8-ab63-f8ce4fa57a63";
-"29af7476-c27f-451b-b358-41bc30fa81c6"->struct_29af7476c27f451bb35841bc30fa81c6[minlen=3]"9c5ff50a-558f-42e8-ab63-f8ce4fa57a63"->"69997f49-7572-45d6-8942-457b67b81135";
-"9c5ff50a-558f-42e8-ab63-f8ce4fa57a63"->struct_9c5ff50a558f42e8ab63f8ce4fa57a63[minlen=3]"69997f49-7572-45d6-8942-457b67b81135"->"ae4a4411-2964-4fb4-ad3b-5053de00ad33";
-"69997f49-7572-45d6-8942-457b67b81135"->struct_69997f49757245d68942457b67b81135[minlen=3]"ae4a4411-2964-4fb4-ad3b-5053de00ad33"->struct_ae4a441129644fb4ad3b5053de00ad33[minlen=3]}
+ 	 rankdir=LR;	"d0fd511d-6606-42e6-acf5-3f61cfb62d75"[shape = box label=Ventanilla_1]
+	struct_d0fd511d660642e6acf53f61cfb62d75[label="Owen Davis - 2|Owen Davis - 3"];"cb78b989-0a54-4c05-898b-adeed0d5e1a1"[shape = box label=Ventanilla_2]
+	struct_cb78b9890a544c05898badeed0d5e1a1[label="Evelyn Perez - 2|Evelyn Perez - 3|Evelyn Perez - 4|Evelyn Perez - 5"];"15e44ec4-a84f-4a80-98e7-fe93aeffad51"[shape = box label=Ventanilla_3]
+	struct_15e44ec4a84f4a8098e7fe93aeffad51[label="Luiz Higueros - 2|Luiz Higueros - 3|Luiz Higueros - 4|Luiz Higueros - 5|Luiz Higueros - 6|Luiz Higueros - 7|Luiz Higueros - 8|Luiz Higueros - 9|Luiz Higueros - 10|Luiz Higueros - 11|Luiz Higueros - 12|Luiz Higueros - 13"];"2c971764-17fe-4ce1-986a-e226491c8e25"[shape = box label=Ventanilla_4]
+	struct_2c97176417fe4ce1986ae226491c8e25[label="Zoey Roberts - 3|Zoey Roberts - 4|Zoey Roberts - 5"];"ecd6f2d9-c863-4abf-99c9-464756952f86"[shape = box label=Ventanilla_5]
+	struct_ecd6f2d9c8634abf99c9464756952f86[label="Nora Morris - 2|Nora Morris - 3"];"1030ecac-bc73-4aa3-9a8e-a9d789bc2103"[shape = box label=Ventanilla_6]
+	struct_1030ecacbc734aa39a8ea9d789bc2103[label="Joseph Foster - 1|Joseph Foster - 2|Joseph Foster - 3|Joseph Foster - 4"];"013bb414-4032-4e72-ab5c-20995f0f9c9f"[shape = box label=Ventanilla_7]
+	struct_013bb41440324e72ab5c20995f0f9c9f[label="Charlotte Thompson - 5|Charlotte Thompson - 6|Charlotte Thompson - 7"];"74b2b537-f706-49d3-a8d8-f2c9f4aae5cd"[shape = box label=Ventanilla_8]
+	struct_74b2b537f70649d3a8d8f2c9f4aae5cd[label="Harper Lee - 1|Harper Lee - 2"];"8c8ea353-0392-4936-99bd-6384cd77d8c5"[shape = box label=Ventanilla_9]
+	struct_8c8ea3530392493699bd6384cd77d8c5[label="Jacob Taylor - 7|Jacob Taylor - 8"];"38cc4c1c-6ab6-4a9b-8148-b672daf91498"[shape = box label=Ventanilla_10]
+	struct_38cc4c1c6ab64a9b8148b672daf91498[label="Joseph Phillips - 2|Joseph Phillips - 3"];"d0fd511d-6606-42e6-acf5-3f61cfb62d75"->"cb78b989-0a54-4c05-898b-adeed0d5e1a1";
+"d0fd511d-6606-42e6-acf5-3f61cfb62d75"->struct_d0fd511d660642e6acf53f61cfb62d75[minlen=3]"cb78b989-0a54-4c05-898b-adeed0d5e1a1"->"15e44ec4-a84f-4a80-98e7-fe93aeffad51";
+"cb78b989-0a54-4c05-898b-adeed0d5e1a1"->struct_cb78b9890a544c05898badeed0d5e1a1[minlen=3]"15e44ec4-a84f-4a80-98e7-fe93aeffad51"->"2c971764-17fe-4ce1-986a-e226491c8e25";
+"15e44ec4-a84f-4a80-98e7-fe93aeffad51"->struct_15e44ec4a84f4a8098e7fe93aeffad51[minlen=3]"2c971764-17fe-4ce1-986a-e226491c8e25"->"ecd6f2d9-c863-4abf-99c9-464756952f86";
+"2c971764-17fe-4ce1-986a-e226491c8e25"->struct_2c97176417fe4ce1986ae226491c8e25[minlen=3]"ecd6f2d9-c863-4abf-99c9-464756952f86"->"1030ecac-bc73-4aa3-9a8e-a9d789bc2103";
+"ecd6f2d9-c863-4abf-99c9-464756952f86"->struct_ecd6f2d9c8634abf99c9464756952f86[minlen=3]"1030ecac-bc73-4aa3-9a8e-a9d789bc2103"->"013bb414-4032-4e72-ab5c-20995f0f9c9f";
+"1030ecac-bc73-4aa3-9a8e-a9d789bc2103"->struct_1030ecacbc734aa39a8ea9d789bc2103[minlen=3]"013bb414-4032-4e72-ab5c-20995f0f9c9f"->"74b2b537-f706-49d3-a8d8-f2c9f4aae5cd";
+"013bb414-4032-4e72-ab5c-20995f0f9c9f"->struct_013bb41440324e72ab5c20995f0f9c9f[minlen=3]"74b2b537-f706-49d3-a8d8-f2c9f4aae5cd"->"8c8ea353-0392-4936-99bd-6384cd77d8c5";
+"74b2b537-f706-49d3-a8d8-f2c9f4aae5cd"->struct_74b2b537f70649d3a8d8f2c9f4aae5cd[minlen=3]"8c8ea353-0392-4936-99bd-6384cd77d8c5"->"38cc4c1c-6ab6-4a9b-8148-b672daf91498";
+"8c8ea353-0392-4936-99bd-6384cd77d8c5"->struct_8c8ea3530392493699bd6384cd77d8c5[minlen=3]"38cc4c1c-6ab6-4a9b-8148-b672daf91498"->struct_38cc4c1c6ab64a9b8148b672daf91498[minlen=3]}

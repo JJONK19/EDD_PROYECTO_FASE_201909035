@@ -6,6 +6,9 @@ package com.mycompany.udrawing_paper;
 
 import java.io.File;
 import  com.jayway.jsonpath.JsonPath;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -34,6 +37,7 @@ public class Main {
         String x = "";
         int conC = 0;  //Indica cuantos pasos llevva la impresión a color 
         int conB = 0;  //Indica cuantos pasos llevva la impresión a BN 
+        int pasos = 1; //Contador de pasos ejecutados
         //Inicialización de grafos
         Atendidos.add(null, "Vacio");
         BN.enqueue(null, "Libre");
@@ -73,6 +77,7 @@ public class Main {
                     //Carga de datos
                     if ("1".equals(x1)){ 
                         try{
+                            Clientes.deleteL();
                             Scanner a1 = new Scanner(System.in);
                             String ruta;
                             System.out.println("Ingrese la ruta del archivo:");
@@ -153,9 +158,10 @@ public class Main {
                     System.out.println("---------------------------------------------------------");
                 }else{
                     System.out.println("*********************************************************");
-                    System.out.println("                   RESUMEN DEL PASO");
+                    System.out.println("                   RESUMEN DEL PASO " + Integer.toString(pasos));
                     System.out.println("*********************************************************");
-
+                    pasos++;
+                    
                 //Manejo de la Cola------------------------------------------------------------
                     //Inicializar cola
                     NodoCola tcc = Clientes.head;
@@ -411,6 +417,8 @@ public class Main {
                             if (ct.total == 0){
                                 Atendidos.add(ct, "\"" + ct.nombre + "\"" );
                                 System.out.println(ct.nombre + " se ha retirado del establecimiento.");
+                                System.out.println("Pasos de " + ct.nombre + ": " + Integer.toString(ct.pasos));
+                                System.out.println("");
                                 Espera.remove(i);
                             }else{
                                 ct.pasos++;
@@ -458,7 +466,141 @@ public class Main {
             
             //Reportes**************************************************************************
             if ("4".equals(x)){
-                System.out.println("Funciona");
+                if( carga == 0 || ventanas == 0 ){
+                    System.out.println("");
+                    System.out.println("ERROR: Debe cargar la infromación y definir la cantidad de ventanillas antes de proceder.");
+                    System.out.println("");
+                    System.out.println("---------------------------------------------------------");
+                }else{
+                    //Inicializar Lista atendidos
+                    NodoListaSimple lf = Atendidos.head;
+                    if(lf == null){
+                            
+                    }else{
+                        if(lf.name.equals("Vacio")){
+                            System.out.println("");
+                            System.out.println("ERROR: No hay clientes que hayan salido de la organización.");
+                            System.out.println("");
+                            System.out.println("---------------------------------------------------------");
+                        }else{
+                            
+                            String x1 = "";
+                            while(!"0".equals(x1)){
+                                System.out.println("UDrawing Paper");
+                                System.out.println("REPORTES");
+                                System.out.println("1. Cliente con mayor cantidad de Impresiones a color");
+                                System.out.println("2. Cliente con mayor cantidad de Impresiones en Blanco y Negro");
+                                System.out.println("3. Cliente con mayor número de pasos");
+                                System.out.println("4. Buscar Cliente");
+                                System.out.println("0. Regresar");
+                                System.out.println("---------------------------------------------------------");
+                                System.out.println("Ingrese el número de una instrucción:");
+                                x1 = String.valueOf(a.nextLine());  
+                                System.out.println("---------------------------------------------------------");
+
+                                //Cliente con mayor cantidad de imagenes a color
+                                if ("1".equals(x1)){
+                                    System.out.println("*********************************************************");
+                                    System.out.println("                TOP 5 - IMAGENES A COLOR ");
+                                    System.out.println("*********************************************************");
+                                    List<Cliente> orden = new ArrayList<>();
+                                    NodoListaSimple to = Atendidos.head;
+                                    for ( int i = 0; i < Atendidos.no; i++){
+                                        orden.add((Cliente)to.content);
+                                        to = to.next;
+                                    }
+                                    orden.sort(Comparator.comparing(Cliente::getColor).reversed());
+
+                                    int iterador = orden.size();
+                                    if(iterador > 5){
+                                        iterador = 5;
+                                    }
+                                    for(int i = 0; i < iterador; i++){
+                                        Cliente temp = orden.get(i);
+                                        System.out.println(Integer.toString(i + 1) + ". " + temp.nombre + " - Imagenes Impresas a Color: " + temp.tc);
+                                    }
+                                    System.out.println("");
+                                    System.out.println("---------------------------------------------------------");
+                                }
+
+                                //Cliente con mayor cantidad de imagenes en blanco y negro
+                                if ("2".equals(x1)){
+                                    System.out.println("*********************************************************");
+                                    System.out.println("                TOP 5 - IMAGENES EN BN ");
+                                    System.out.println("*********************************************************");
+                                    List<Cliente> orden = new ArrayList<>();
+                                    NodoListaSimple to = Atendidos.head;
+                                    for ( int i = 0; i < Atendidos.no; i++){
+                                        orden.add((Cliente)to.content);
+                                        to = to.next;
+                                    }
+                                    orden.sort(Comparator.comparing(Cliente::getNegro).reversed());
+
+                                    int iterador = orden.size();
+                                    if(iterador > 5){
+                                        iterador = 5;
+                                    }
+                                    for(int i = 0; i < iterador; i++){
+                                        Cliente temp = orden.get(i);
+                                        System.out.println(Integer.toString(i + 1) + ". " + temp.nombre + " - Imagenes Impresas en Blanco y Negro: " + temp.tn);
+                                    }
+                                    System.out.println("");
+                                    System.out.println("---------------------------------------------------------");
+
+                                }
+
+                                //Cliente con mayor número de pasos
+                                if ("3".equals(x1)){
+                                    System.out.println("*********************************************************");
+                                    System.out.println("                CLIENTE CON MÁS PASOS");
+                                    System.out.println("*********************************************************");
+                                    List<Cliente> orden = new ArrayList<>();
+                                    NodoListaSimple to = Atendidos.head;
+                                    for ( int i = 0; i < Atendidos.no; i++){
+                                        orden.add((Cliente)to.content);
+                                        to = to.next;
+                                    }
+                                    orden.sort(Comparator.comparing(Cliente::getPasos).reversed());
+                                    Cliente temp = orden.get(0);
+         
+                                    System.out.println(temp.nombre + " estuvo más tiempo en la empresa con la cantidad de " + Integer.toString(temp.pasos) + " pasos." );
+                                    System.out.println("");
+                                    System.out.println("---------------------------------------------------------");
+                                }
+
+                                //Buscar Cliente
+                                if ("4".equals(x1)){
+                                    Scanner a1 = new Scanner(System.in);
+                                    String cliente;
+                                    System.out.println("Ingrese el nombre del cliente:");
+                                    cliente = a1.nextLine();
+
+                                    NodoListaSimple to = Atendidos.head;
+                                    for ( int i = 0; i < Atendidos.no; i++){
+                                        Cliente ct = (Cliente)to.content;
+                                        if(cliente.equals(ct.nombre)){
+                                            System.out.println("*********************************************************");
+                                            System.out.println("                 RESULTADOS DE BUSQUEDA ");
+                                            System.out.println("*********************************************************");
+                                            System.out.println("ID                    : " + ct.ID);
+                                            System.out.println("NOMBRE                : " + ct.nombre);
+                                            System.out.println("VENTANA QUE LO ATENDIÓ: " + ct.ventana);
+                                            System.out.println("IMAGENES A COLOR      : " + Integer.toString(ct.tc));
+                                            System.out.println("IMAGENES EN BN        : " + Integer.toString(ct.tn));
+                                            System.out.println("PASOS EN EL SISTEMA   : " + Integer.toString(ct.pasos));
+                                            System.out.println("");
+                                            System.out.println("---------------------------------------------------------");
+                                            break;
+                                        }
+                                        to = to.next;
+                                    } 
+                                }
+
+                            }
+                            
+                        }
+                    }
+                }
             }
             
             
@@ -521,6 +663,8 @@ public class Main {
         c.add(1, "Uno");
         c.add(2, "Dos");
         c.add(3, "Tres");
+        c.remove(0);
+        c.dibujar("Prueba.txt", "Prueba.png");
         
         
         //Ejemplo de una lista simple
@@ -545,12 +689,7 @@ public class Main {
         //Ejemplo de Lista de Listas
         ListaDCircularL d = new ListaDCircularL();
         d.add(c, "Números", null);
-        String ID = d.head.ID;
-        System.out.println(d.head.name);
-        int busqueda = d.find(ID);
-        System.out.println(busqueda);
-        d.remove(busqueda);
-        d.dibujar("DLC.txt", "DLC.png");
+        
         
         //Ejemplo de una lista de pilas
         ListaPilas e = new ListaPilas();
