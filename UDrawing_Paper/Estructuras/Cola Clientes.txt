@@ -1,3 +1,3 @@
 digraph structs
 {
-node [shape=record];	struct1 [label="Benjamin Moore|William Taylor|Charlotte Carter|Penelope Martibnez|Lucas Thomas|Mia Flores|Mason Brown|Charlotte Hernandez|Charlotte Miller|Owen Murphy|Ava Campbell|David Ward|Harper Gray"];}
+node [shape=record];	struct1 [label="Evelyn Fitzgerald|Hudson Lancaster|Ellison Hood|Whitney Clayton|Moore Horton|Maggie Levine|Andrews Vance|Dixie Howard|Heidi Lowery|Bennett Malone|Witt Forbes|Erma Barron|Mabel Nicholson|Maddox Frazier|Brigitte Wheeler|Christa Mendoza|Etta Blake|Macdonald Murray|Garza York|Hatfield Sykes|Washington Dickerson|Ethel Cortez|Vicky Jimenez|Romero Sanders|Shana Burke|Oliver Scott|Aria Anderson|Eleanor Butler|Lucas Ross|Ella Wright|Elijah Thomas|Owen Green|Ellie Smith|Harper Parker|Charlotte Mitchell|Scarlett Harris|Elijah Johnson|Nora Clark|Charlotte Lopez|Alexander Gray|Amelia Cook|Penelope Clark|Lucas Allen|Henry Thompson|Luna Martibnez|Ellie Cook|Elijah Carter|Aiden Green"];}

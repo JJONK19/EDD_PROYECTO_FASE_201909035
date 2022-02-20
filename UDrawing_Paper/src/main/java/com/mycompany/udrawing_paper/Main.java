@@ -503,21 +503,35 @@ public class Main {
                                     System.out.println("*********************************************************");
                                     System.out.println("                TOP 5 - IMAGENES A COLOR ");
                                     System.out.println("*********************************************************");
-                                    List<Cliente> orden = new ArrayList<>();
-                                    NodoListaSimple to = Atendidos.head;
-                                    for ( int i = 0; i < Atendidos.no; i++){
-                                        orden.add((Cliente)to.content);
-                                        to = to.next;
+                                    for (int i = 0; i < Atendidos.no-1; i++){
+                                        NodoListaSimple o1 = Atendidos.head;
+                                        NodoListaSimple o2 = o1.next;
+                                        for (int j = 0; j < Atendidos.no-1; j++){
+                                            Cliente to1 = (Cliente)o1.content;
+                                            Cliente to2 = (Cliente)o2.content;
+                                            int con1 = (int)to1.tc;
+                                            int con2 = (int)to2.tc;
+                                            if (con1 < con2)
+                                            {
+                                                Cliente tp = to1;
+                                                o1.content = o2.content;
+                                                o2.content = tp;
+                                            }
+                                            o1 = o1.next;
+                                            o2 = o2.next;
+                                        }
                                     }
-                                    orden.sort(Comparator.comparing(Cliente::getColor).reversed());
 
-                                    int iterador = orden.size();
+                                    int iterador = Atendidos.no;
                                     if(iterador > 5){
                                         iterador = 5;
                                     }
+                                    
+                                    NodoListaSimple o1 = Atendidos.head;
                                     for(int i = 0; i < iterador; i++){
-                                        Cliente temp = orden.get(i);
+                                        Cliente temp = (Cliente)o1.content;
                                         System.out.println(Integer.toString(i + 1) + ". " + temp.nombre + " - Imagenes Impresas a Color: " + temp.tc);
+                                        o1 = o1.next;
                                     }
                                     System.out.println("");
                                     System.out.println("---------------------------------------------------------");
@@ -528,21 +542,35 @@ public class Main {
                                     System.out.println("*********************************************************");
                                     System.out.println("                TOP 5 - IMAGENES EN BN ");
                                     System.out.println("*********************************************************");
-                                    List<Cliente> orden = new ArrayList<>();
-                                    NodoListaSimple to = Atendidos.head;
-                                    for ( int i = 0; i < Atendidos.no; i++){
-                                        orden.add((Cliente)to.content);
-                                        to = to.next;
+                                    for (int i = 0; i < Atendidos.no-1; i++){
+                                        NodoListaSimple o1 = Atendidos.head;
+                                        NodoListaSimple o2 = o1.next;
+                                        for (int j = 0; j < Atendidos.no-1; j++){
+                                            Cliente to1 = (Cliente)o1.content;
+                                            Cliente to2 = (Cliente)o2.content;
+                                            int con1 = (int)to1.tn;
+                                            int con2 = (int)to2.tn;
+                                            if (con1 < con2)
+                                            {
+                                                Cliente tp = to1;
+                                                o1.content = o2.content;
+                                                o2.content = tp;
+                                            }
+                                            o1 = o1.next;
+                                            o2 = o2.next;
+                                        }
                                     }
-                                    orden.sort(Comparator.comparing(Cliente::getNegro).reversed());
 
-                                    int iterador = orden.size();
+                                    int iterador = Atendidos.no;
                                     if(iterador > 5){
                                         iterador = 5;
                                     }
+                                    
+                                    NodoListaSimple o1 = Atendidos.head;
                                     for(int i = 0; i < iterador; i++){
-                                        Cliente temp = orden.get(i);
+                                        Cliente temp = (Cliente)o1.content;
                                         System.out.println(Integer.toString(i + 1) + ". " + temp.nombre + " - Imagenes Impresas en Blanco y Negro: " + temp.tn);
+                                        o1 = o1.next;
                                     }
                                     System.out.println("");
                                     System.out.println("---------------------------------------------------------");
@@ -554,14 +582,25 @@ public class Main {
                                     System.out.println("*********************************************************");
                                     System.out.println("                CLIENTE CON MÁS PASOS");
                                     System.out.println("*********************************************************");
-                                    List<Cliente> orden = new ArrayList<>();
-                                    NodoListaSimple to = Atendidos.head;
-                                    for ( int i = 0; i < Atendidos.no; i++){
-                                        orden.add((Cliente)to.content);
-                                        to = to.next;
+                                    for (int i = 0; i < Atendidos.no-1; i++){
+                                        NodoListaSimple o1 = Atendidos.head;
+                                        NodoListaSimple o2 = o1.next;
+                                        for (int j = 0; j < Atendidos.no-1; j++){
+                                            Cliente to1 = (Cliente)o1.content;
+                                            Cliente to2 = (Cliente)o2.content;
+                                            int con1 = (int)to1.tn;
+                                            int con2 = (int)to2.tn;
+                                            if (con1 < con2)
+                                            {
+                                                Cliente tp = to1;
+                                                o1.content = o2.content;
+                                                o2.content = tp;
+                                            }
+                                            o1 = o1.next;
+                                            o2 = o2.next;
+                                        }
                                     }
-                                    orden.sort(Comparator.comparing(Cliente::getPasos).reversed());
-                                    Cliente temp = orden.get(0);
+                                    Cliente temp = (Cliente)Atendidos.head.content;
          
                                     System.out.println(temp.nombre + " estuvo más tiempo en la empresa con la cantidad de " + Integer.toString(temp.pasos) + " pasos." );
                                     System.out.println("");
