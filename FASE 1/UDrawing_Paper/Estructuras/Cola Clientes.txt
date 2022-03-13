@@ -1,0 +1,3 @@
+digraph structs
+{
+node [shape=record];	struct1 [label="Elinor Ford|Noelle Morse|Gutierrez Casey|Long Meyer|Ultimo cliente|Layla Gonzalez|Evelyn Johnson|Oliver Wilson|Owen Rodriguez|Henry Hernandez|Aiden Allen|Emma Martin|Harper Ward|Sophia Williams|Sebastian Morris|Mateo Lewis|Luke Parker|Chloe Moore|Zoey Hall|Layla Mitchell|Mia Perez|Benjamin Adams|Lucas Thompson|Evelyn Walker|Elizabeth Scott|Daniel Moore|Grace Robinson|Harper Young|Michael Gonzalez|Emma Clark|Ava Foster|Daniel Thomas|Charlotte Walker|Ava Butler"];}

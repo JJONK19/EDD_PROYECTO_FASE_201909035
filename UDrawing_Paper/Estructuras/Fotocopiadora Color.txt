@@ -1,3 +1,0 @@
-digraph structs
-{
-node [shape=record];	struct1 [label="Polly Rodriguez - 2|Polly Rodriguez - 3|Yang Wiggins - 1|Sandy Mason - 1|Tabatha Pickett - 1|Tabatha Pickett - 2|Tabatha Pickett - 3|Alyce Alford - 1|Alyce Alford - 2|Alyce Alford - 3|Leigh Bright - 1|Leach Ross - 1|Leach Ross - 2|Leach Ross - 3|Long Meyer - 1|Long Meyer - 2|Long Meyer - 3"];}

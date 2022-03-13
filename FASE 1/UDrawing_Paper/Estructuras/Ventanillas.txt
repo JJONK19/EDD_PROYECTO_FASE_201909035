@@ -1,0 +1,9 @@
+digraph G
+{
+	 node [shape=record]; 
+ 	 rankdir=LR;	"20c6183b-5458-46a8-8284-70c8a6b447f8"[shape = box label=Ventanilla_1]
+	struct_20c6183b545846a8828470c8a6b447f8[label="Haley Rosario - 3|Haley Rosario - 4"];"04178b3f-ffc4-4bb6-942c-fd8a97cfa073"[shape = box label=Ventanilla_2]
+	struct_04178b3fffc44bb6942cfd8a97cfa073[label="Durham Logan - 5"];"94adc823-ee69-439d-a0f2-7ec38e446af6"[shape = box label=Ventanilla_3]
+	struct_94adc823ee69439da0f27ec38e446af6[label="Alyce Alford - 1|Alyce Alford - 2|Alyce Alford - 3"];"20c6183b-5458-46a8-8284-70c8a6b447f8"->"04178b3f-ffc4-4bb6-942c-fd8a97cfa073";
+"20c6183b-5458-46a8-8284-70c8a6b447f8"->struct_20c6183b545846a8828470c8a6b447f8[minlen=3]"04178b3f-ffc4-4bb6-942c-fd8a97cfa073"->"94adc823-ee69-439d-a0f2-7ec38e446af6";
+"04178b3f-ffc4-4bb6-942c-fd8a97cfa073"->struct_04178b3fffc44bb6942cfd8a97cfa073[minlen=3]"94adc823-ee69-439d-a0f2-7ec38e446af6"->struct_94adc823ee69439da0f27ec38e446af6[minlen=3]}

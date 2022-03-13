@@ -1,0 +1,3 @@
+digraph structs
+{
+node [shape=record];	struct1 [label="Edgar Par - 1|Edgar Par - 2|Fernando Ambrosio - 1|Paula Monterrosa - 1|Aaron Juarez - 1|Benajmin Beltran - 1|Santiago Rivadenaira - 1|Madelyn Gomez - 1|Madelyn Gomez - 2|Lidia Poroj - 1"];}
