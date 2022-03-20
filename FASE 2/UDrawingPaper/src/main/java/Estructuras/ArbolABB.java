@@ -14,111 +14,89 @@ import java.util.UUID;
  * @author JJONK19
  */
 public class ArbolABB {
-    public String ID; //Nombre del arbol
     NodoABB raiz; //Raiz del arbol
-    int no; //Nodos del arbol
-    public ArrayList<NodoABB> Nodos;  //Lista de Nodos del arbol. Se usa para graficar.
     
-    public ArbolABB(String _ID, NodoABB _cabecera){
-        this.ID = _ID;
-        this.Nodos = new ArrayList<>();
-        this.raiz = _cabecera;
-        this.no = 0;
+    public ArbolABB(){
+        this.raiz = null;
+    }
+    
+    //Metodo Añadir
+    public void add(int agregar, NodoABB revisar){  //Siempre que se vaya a usar, se envia la raiz para que empiece a analizar desde ahí
+        if(raiz == null){
+            NodoABB nuevo = new NodoABB(agregar);
+            raiz = nuevo;
+        }else{
+            if(revisar.content != agregar){
+                if(revisar.content > agregar){
+                    if(revisar.hijo1 == null){
+                        NodoABB nuevo = new NodoABB(agregar);
+                        revisar.hijo1 = nuevo;
+                    }else{
+                        add(agregar, revisar.hijo1);
+                    }
+                }else{
+                    if(revisar.hijo2 == null){
+                        NodoABB nuevo = new NodoABB(agregar);
+                        revisar.hijo2 = nuevo;
+                    }else{
+                        add(agregar, revisar.hijo2);
+                    }
+                }
+            }
+        }
+    }
+    
+    //Metodo para buscar
+    public void search(){
+    }
+    
+    //Metodo para borrar
+    public void delete(){
+    }
+    
+    //Metodo para preorden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
+    public void preorder(NodoABB inicio){
+        if(raiz != null){
+            System.out.print(" " + inicio.content + " ");
+            if(inicio.hijo1 != null){
+                preorder(inicio.hijo1);
+            }
+            if(inicio.hijo2 != null){
+                preorder(inicio.hijo2);
+            }
+        }
+    }
+    
+    //Metodo para post-orden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
+    public void postorder(NodoABB inicio){
+        if(raiz != null){
+           if(inicio.hijo1 != null){
+               postorder(inicio.hijo1);
+           }
+           if(inicio.hijo2 != null){
+               postorder(inicio.hijo2);
+           }
+           System.out.print(" " + inicio.content + " ");   
+        }
+    }
+    
+    //Metodo para inorder. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
+    public void inorder(NodoABB inicio){
+        if(raiz != null){
+            if(inicio.hijo1 != null){
+                inorder(inicio.hijo1);
+            }
+
+            System.out.print(" " + inicio.content + " ");
+
+            if(inicio.hijo2 != null){
+                inorder(inicio.hijo2);
+            }
+        }
     }
     
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     
-    //Unifica el texto que va en el grafo
-    public String getcodigo(){
-        String t = "digraph G\n" +"{\n" + "node [ shape=circle ];\n";
-        //Asignación de nombres, ID, y nodo
-        for(int i = 0; i < this.Nodos.size(); i++){
-            NodoABB temp = Nodos.get(i);
-            temp.ID = "\""+UUID.randomUUID().toString() + "\"";
-            
-            String last = "(" + temp.last.get(0);
-            for (int j = 1; j < temp.last.size(); j++) {
-		last += "," + temp.last.get(j) ;
-            }
-            last += ")";
-             
-            String anulable;
-            if(temp.anulable){
-                anulable = "V";
-            }else{
-                anulable = "F";
-            }
-            
-            String nombre = "";
-            if(temp.nombre == null){
-                nombre = "-";
-            }else{
-                nombre = temp.nombre;
-            }
-            
-            t += temp.ID + "[ label=\""+ first + "| {" + anulable + "|" + temp.simbolo + "|"+ nombre + "} |" + last + "\"];\n";
-            
-             /*
-             t += temp.ID + "[ label=\""+ first + "| {" + anulable + temp.valor + temp.nombre + "} |" + last + "\"];\n";
-             */
-        }
-
-        
-        //Conexión de Nodos
-        for(int i = 0; i < this.Nodos.size(); i++){
-            NodoA temp = Nodos.get(i);
-            //Conexion a Hijo1
-            if(temp.hijo1 != null){
-                t += temp.ID + "->" + temp.hijo1.ID + "[minlen=2 ];\n";
-            }
-            //Conexion a Hijo 2
-            if(temp.hijo2 != null){
-                t += temp.ID + "->" + temp.hijo2.ID + "[minlen=2 ];\n";
-            }
-        }
-        t += "}";
-        return t;
-    }
-    
-    //Crea y escribe el archivo que lleva el codifo del grafo generado
-    public void escribir(String ruta, String contenido){
-        FileWriter fichero = null;
-        PrintWriter p = null;
-        
-        try{
-            fichero  = new FileWriter(ruta);
-            p = new PrintWriter(fichero);
-            p.write(contenido);
-            p.close();
-            fichero.close();
-        
-        }catch(Exception e){
-            System.out.print(e.getMessage());
-            
-        }finally{
-            if (p!= null){
-                p.close();
-            }
-        }
-        
-    }
-    
-    //Se encarga de dibujar el grafo. Ruta es el nombre del archivo *.txt y gname es el nombre
-    //del grafo en formato *.png
-    
-    public void dibujar(){
-        try{
-            String ruta = "Reportes/ARBOLES_201909035/"+this.ID+".txt";
-            String gname = "Reportes/ARBOLES_201909035/"+this.ID+".png";
-            escribir(ruta, getcodigo());
-            ProcessBuilder a;
-            a = new ProcessBuilder("dot", "-Tpng", "-o", gname, ruta);
-            a.redirectErrorStream(true);
-            a.start();
-            
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
+   
 }
