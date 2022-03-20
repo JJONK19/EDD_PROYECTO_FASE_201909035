@@ -98,5 +98,99 @@ public class ArbolABB {
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     
-   
+    //Metodo para declarar los nodos
+    //String t es la cadena con el codigo que se esta trabajando
+    //inicio debe de ser la raiz al declararse para que recorra completo
+    public String declarar(NodoABB inicio){
+        String t = "";
+        if(raiz != null){
+            inicio.ID = "\""+UUID.randomUUID().toString() + "\"";
+            t += inicio.ID + "[shape = circle label="+ inicio.content + "]\n";
+            
+            if(inicio.hijo1 != null){
+                t += declarar(inicio.hijo1);
+            }
+            
+            if(inicio.hijo2 != null){
+                t += declarar(inicio.hijo2);
+            }
+        }
+        return t;
+    }
+    
+    public String conectar(NodoABB inicio){
+        String t = "";
+        if(raiz != null){
+            if(inicio.hijo1 != null){
+                t += inicio.ID + "->"+ inicio.hijo1.ID + "[label = \"I\"]\n";
+            }
+            
+            if(inicio.hijo2 != null){
+                t += inicio.ID + "->"+ inicio.hijo2.ID + "[label = \"D\"]\n";
+            }
+            
+            if(inicio.hijo1 != null){
+               t += conectar(inicio.hijo1);
+            }
+            
+            if(inicio.hijo2 != null){
+                t += conectar(inicio.hijo2);
+            }
+        }
+        return t;
+    }
+
+    
+    //Unifica el texto que va en el grafo
+    public String getcodigo(){
+        String t = "digraph G\n" +"{\n" + "node [ shape=circle ];\n";
+        
+        //Declarar nodos
+        t += declarar(raiz);
+        
+        //Hacer conexiones
+        t += conectar(raiz);
+        t += "label= \"Carnet : 201909035 \" \n";
+        t += "}";
+        return t;
+    }
+    
+    //Crea y escribe el archivo que lleva el codifo del grafo generado
+    public void escribir(String ruta, String contenido){
+        FileWriter fichero = null;
+        PrintWriter p = null;
+        
+        try{
+            fichero  = new FileWriter(ruta);
+            p = new PrintWriter(fichero);
+            p.write(contenido);
+            p.close();
+            fichero.close();
+        
+        }catch(Exception e){
+            System.out.print(e.getMessage());
+            
+        }finally{
+            if (p!= null){
+                p.close();
+            }
+        }
+        
+    }
+    
+    //Se encarga de dibujar el grafo. Ruta es el nombre del archivo *.txt y gname es el nombre
+    //del grafo en formato *.png
+    
+    public void dibujar(String ruta, String gname){
+        try{
+            escribir(ruta, getcodigo());
+            ProcessBuilder a;
+            a = new ProcessBuilder("dot", "-Tpng", "-o", gname, ruta);
+            a.redirectErrorStream(true);
+            a.start();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
