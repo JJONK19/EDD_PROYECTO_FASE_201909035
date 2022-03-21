@@ -150,7 +150,6 @@ public class ArbolABB {
         
         //Hacer conexiones
         t += conectar(raiz);
-        t += "label= \"Carnet : 201909035 \" \n";
         t += "}";
         return t;
     }
