@@ -6,56 +6,121 @@ package Estructuras;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.UUID;
 
 /**
  *
  * @author JJONK19
  */
-public class ArbolABB {
-    NodoABB raiz; //Raiz del arbol
+public class ArbolAVL {
+    NodoAVL raiz;
     
-    public ArbolABB(){
+    public ArbolAVL(){
         this.raiz = null;
     }
     
-    //Metodo Añadir
-    public void add(int agregar, NodoABB revisar){  //Siempre que se vaya a usar, se envia la raiz para que empiece a analizar desde ahí
-            if(raiz == null){
-                NodoABB nuevo = new NodoABB(agregar);
-                raiz = nuevo;
-            }else{
-            if(revisar.content != agregar){
-                if(revisar.content > agregar){
-                    if(revisar.hijo1 == null){
-                        NodoABB nuevo = new NodoABB(agregar);
-                        revisar.hijo1 = nuevo;
-                    }else{
-                        add(agregar, revisar.hijo1);
-                    }
-                }else{
-                    if(revisar.hijo2 == null){
-                        NodoABB nuevo = new NodoABB(agregar);
-                        revisar.hijo2 = nuevo;
-                    }else{
-                        add(agregar, revisar.hijo2);
-                    }
-                }
-            }
+    //Altura del nodo. Regresa la altura del nodo
+    public int altura(NodoAVL nodo){
+        if(nodo != null){
+            return nodo.altura;
+        }else{
+            return -1;
         }
     }
     
-    //Metodo para buscar
-    public void search(){
+    //Profundidad del nodo. Realiza una compración simple entre dos valores y regresa el más grande.
+    public int mayor(int a1, int a2){
+        if(a1 >= a2){ 
+            return a1;
+        }else{
+            return a2;
+        }
     }
     
-    //Metodo para borrar
-    public void delete(){
+    //Rotación simple por la izquerda
+    public NodoAVL rotacionl(NodoAVL nodo){
+        NodoAVL aux = nodo.hijo1;
+        nodo.hijo1 = aux.hijo2;
+        aux.hijo2 = nodo;
+        //Calculo de las nuevas alturas
+        nodo.altura = mayor(altura(nodo.hijo2), altura(nodo.hijo1)) + 1;
+        
+        aux.altura = mayor(nodo.altura , altura(nodo.hijo1)) + 1;
+        return aux;
+    }
+    //Rotación simple por la derecha
+    public NodoAVL rotacionr(NodoAVL nodo){
+        NodoAVL aux = nodo.hijo2;
+        nodo.hijo2= aux.hijo1;
+        aux.hijo1 = nodo;
+        //Calculo de las nuevas alturas
+        nodo.altura = mayor(altura(nodo.hijo1), altura(nodo.hijo2)) + 1;
+        aux.altura = mayor(nodo.altura , altura(nodo.hijo2)) + 1;
+        return aux;
+    }
+
+    //Rotación Izquierda - Derecha. COmbinar rotaciones nada más.
+    public NodoAVL rotacionlr(NodoAVL nodo){
+        nodo.hijo1 = rotacionr(nodo.hijo1);
+        NodoAVL aux = rotacionl(nodo);
+        return aux;
+    }
+
+    //Rotación Derecha - Izquierda. Combinar rotaciones nada más 
+    public NodoAVL rotacionrl(NodoAVL nodo){
+        nodo.hijo2 = rotacionl(nodo.hijo2);
+        NodoAVL aux = rotacionr(nodo);
+        return aux;
+    }
+    
+    //Inserción de Nodos
+    public NodoAVL insertar(NodoAVL revisar , NodoAVL nuevo){
+        if(revisar != null){
+            if(nuevo.content != revisar.content){
+                if(nuevo.content < revisar.content){
+                    revisar.hijo1 = insertar(revisar.hijo1 , nuevo);   //Insercion en el hijo izquierdo
+                    //Calculo de la nueva altura
+                    revisar.altura = mayor(altura(revisar.hijo1), altura(revisar.hijo2)) + 1;
+                    //Revision de equilibrio
+                    if(altura(revisar.hijo2) - altura(revisar.hijo1) == -2){
+                        if(nuevo.content < revisar.hijo1.content){             
+                            revisar = rotacionl(revisar);     //Mismo signo con el hijo
+                        }else{ 
+                            revisar = rotacionlr(revisar);    //Diferente signo con el hijo
+                        }
+                    }
+                }else{
+                    revisar.hijo2 = insertar(revisar.hijo2 , nuevo);  //Insercion en el hijo derecho
+                    //Calculo de la nueva altura
+                    revisar.altura = mayor(altura(revisar.hijo1), altura(revisar.hijo2)) + 1;
+                    if(altura(revisar.hijo2) - altura(revisar.hijo1) == 2){
+                        if(nuevo.content > revisar.hijo2.content){ 
+                            revisar = rotacionr(revisar);    //Mismo signo con el hijo
+                        }else{
+                            revisar = rotacionrl(revisar);    //Diferente signo con el hijo
+                        }
+                    }
+                }
+            }
+            return revisar;
+        }else{
+            revisar = nuevo;
+            return revisar;
+        }
+    }
+    
+    //Añadir Nodo
+    public void add(int agregar){ //Siempre que se vaya a usar, se envia la raiz para que empiece a analizar desde ahí
+        NodoAVL nuevo = new NodoAVL(agregar);
+        if(raiz == null){
+            raiz = nuevo;
+        }else{
+            raiz = insertar(raiz, nuevo);
+        }
     }
     
     //Metodo para preorden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void preorder(NodoABB inicio){
+    public void preorder(NodoAVL inicio){
         if(raiz != null){
             System.out.print(" " + inicio.content + " ");
             if(inicio.hijo1 != null){
@@ -68,7 +133,7 @@ public class ArbolABB {
     }
     
     //Metodo para post-orden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void postorder(NodoABB inicio){
+    public void postorder(NodoAVL inicio){
         if(raiz != null){
            if(inicio.hijo1 != null){
                postorder(inicio.hijo1);
@@ -81,7 +146,7 @@ public class ArbolABB {
     }
     
     //Metodo para inorder. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void inorder(NodoABB inicio){
+    public void inorder(NodoAVL inicio){
         if(raiz != null){
             if(inicio.hijo1 != null){
                 inorder(inicio.hijo1);
@@ -101,11 +166,11 @@ public class ArbolABB {
     //Metodo para declarar los nodos
     //String t es la cadena con el codigo que se esta trabajando
     //inicio debe de ser la raiz al declararse para que recorra completo
-    public String declarar(NodoABB inicio){
+    public String declarar(NodoAVL inicio){
         String t = "";
         if(raiz != null){
             inicio.ID = "\""+UUID.randomUUID().toString() + "\"";
-            t += inicio.ID + "[shape = circle label="+ inicio.content + "]\n";
+            t += inicio.ID + "[shape = circle label="+ inicio.content  + "]\n";
             
             if(inicio.hijo1 != null){
                 t += declarar(inicio.hijo1);
@@ -118,7 +183,7 @@ public class ArbolABB {
         return t;
     }
     
-    public String conectar(NodoABB inicio){
+    public String conectar(NodoAVL inicio){
         String t = "";
         if(raiz != null){
             if(inicio.hijo1 != null){
