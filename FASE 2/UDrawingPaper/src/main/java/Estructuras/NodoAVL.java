@@ -13,7 +13,7 @@ public class NodoAVL {
     int content; //contenido del nodo
     NodoAVL hijo1; //Hijo izquierdo del arbol
     NodoAVL hijo2; //Hijo derecho del arbol 
-    NodoABB padre; //Padre del noco en cuestion. Si no tiene es la raiz.
+    NodoAVL padre; //Padre del noco en cuestion. Si no tiene es la raiz.
     Boolean hoja; //Determina si el arbol es una hoja o no
     int altura;
     

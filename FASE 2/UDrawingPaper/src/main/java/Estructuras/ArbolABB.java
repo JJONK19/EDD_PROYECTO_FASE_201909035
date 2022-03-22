@@ -47,7 +47,30 @@ public class ArbolABB {
     }
     
     //Metodo para buscar
-    public void search(){
+    public NodoABB search(int valor){
+        NodoABB aux = raiz;
+        int ban = 0;     //Estado Inicial
+        while(ban == 0){
+            if(aux == null){
+                ban = 1; //Fin del arbol
+            }else{
+                if(aux.content == valor){
+                    ban = 2;    //Valor encontrado
+                }else{
+                    if(aux.content > valor){
+                        aux = aux.hijo1;
+                    }else{
+                        aux = aux.hijo2;
+                    }
+                }
+            }
+        }
+        
+        if(ban == 2){
+            return aux;
+        }else{
+            return null;
+        }
     }
     
     //Metodo para borrar

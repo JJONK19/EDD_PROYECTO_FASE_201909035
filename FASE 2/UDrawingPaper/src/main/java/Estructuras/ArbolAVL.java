@@ -119,6 +119,212 @@ public class ArbolAVL {
         }
     }
     
+    //Eliminar Nodo
+    public void borrar(NodoAVL nodo){
+        if(nodo != null){
+            if(nodo.hijo1 == null && nodo.hijo2 == null){   //Es una hoja
+                if(nodo.padre.hijo1 != null){
+                    if(nodo.padre.hijo1.equals(nodo)){
+                        nodo.padre.hijo1 = null;
+                        actualizar(this.raiz);
+                        balance(this.raiz, null);
+                    }else{
+                        nodo.padre.hijo2 = null;
+                        actualizar(this.raiz);
+                        balance(this.raiz, null);
+                    }
+                }else{
+                    nodo.padre.hijo2 = null;
+                    actualizar(this.raiz);
+                    balance(this.raiz, null);
+                }
+                
+                nodo = null;
+                
+            }else{
+                if(nodo.hijo1 == null){         //Solo tiene un hijo
+                    nodo.content = nodo.hijo2.content;
+                    nodo.hijo2 = null;
+                    actualizar(this.raiz);
+                    balance(this.raiz, null);
+                }else{
+                    if(nodo.hijo2 == null){     //Solo tiene un hijo
+                        nodo.content= nodo.hijo1.content;
+                        nodo.hijo1 = null;
+                        actualizar(this.raiz);
+                        balance(this.raiz, null);
+                    }else{                      //Los dos hijos existen
+                        nodo.content = (int) grande(nodo.hijo1, nodo);
+                        actualizar(this.raiz);
+                        balance(this.raiz, null);
+                    }
+                }
+            }
+        }
+    }
+    
+    //Conseguir la posicion del más grande de los pequeños
+    public Object grande(NodoAVL nodo, NodoAVL pa){
+        NodoAVL aux = nodo;
+        NodoAVL padre= pa;
+        int pos = 1; //1 para hijo izquierdo y 2 para hijo derecho
+        int ban = 0;     //Estado Inicial
+        Object content = null;
+        if(nodo.hijo1 == null && nodo.hijo2 == null){
+            content = nodo.content;
+            pa.hijo1 = null;
+        }else{
+            while(ban == 0){
+                if(aux.hijo2 != null){
+                    padre = aux;
+                    pos = 2;
+                    aux = aux.hijo2;
+                }else{
+                    content = aux.content;
+                    if(pos == 1){
+                       padre.hijo1 = aux.hijo1;
+                    }else{
+                       padre.hijo2 = aux.hijo2;
+                        }
+                    ban = 1;
+                }
+            }
+        }
+        
+        return content;
+    }
+    //Metodo para buscar
+    public NodoAVL search(int valor){
+        NodoAVL aux = raiz;
+        NodoAVL pa = raiz;
+        int ban = 0;     //Estado Inicial
+        while(ban == 0){
+            if(aux == null){
+                ban = 1; //Fin del arbol
+            }else{
+                if(aux.content == valor){
+                    aux.padre = pa;
+                    ban = 2;    //Valor encontrado
+                }else{
+                    if(aux.content > valor){
+                        pa = aux;
+                        aux = aux.hijo1;
+                    }else{
+                        pa = aux;
+                        aux = aux.hijo2;
+                    }
+                }
+            }
+        }
+        
+        if(ban == 2){
+            return aux;
+        }else{
+            return null;
+        }
+    }
+    
+    public void delete(int valor){
+        NodoAVL aux = search(valor);
+        borrar(aux);
+    }
+    //Actualiza los pesos y vuleve a modificar en caso sea necesario. Revisa desde la raiz. 
+    public int actualizar(NodoAVL nodo){
+        if(nodo.hijo1 == null && nodo.hijo2 == null){
+            nodo.altura = 0;
+        }else{
+            if(nodo.hijo1 == null){
+                nodo.altura = actualizar(nodo.hijo2) + 1;
+            }else{
+                if(nodo.hijo2 == null){
+                    nodo.altura = actualizar(nodo.hijo1) + 1;
+                }else{
+                    nodo.altura = mayor(actualizar(nodo.hijo1), actualizar(nodo.hijo2)) + 1;
+                }
+            }
+        }       
+        return nodo.altura;
+    }
+    
+    //Reacomoda los nodos si el arbol se desbalanceo. Revisa desde la raiz.
+    public void balance(NodoAVL nodo, NodoAVL padre){
+        int a1 = altura(nodo.hijo1);
+        int a2 = altura(nodo.hijo2);
+        
+        if(nodo.hijo1 != null){
+            balance(nodo.hijo1, nodo);
+        }
+        if(nodo.hijo2 != null){
+            balance(nodo.hijo2, nodo);
+        }
+        
+        //Revision de equilibrio
+        if(a1 == -1){
+            a1 = 0;
+        }else{
+            a1 +=1;
+        }
+        if(a2 == -1){
+            a2 = 0;
+        }else{
+            a2 +=1;
+        }
+        int dif = a2 - a1;
+        
+        if(dif == 0 || dif == 1 || dif == -1){
+            
+        }else{
+            if(nodo.hijo1 == null && nodo.hijo2 == null){
+                
+            }else{
+                if(dif < 0){
+                    int ah1 = altura(nodo.hijo1.hijo1);
+                    int ah2 = altura(nodo.hijo1.hijo2);
+                    int difh = ah2 - ah1;
+                    
+                    if(difh <= 0){
+                        
+                        nodo = rotacionl(nodo);     //Mismo signo con el hijo
+                        if(padre == null){
+                            raiz = nodo;
+                        }else{
+                            padre.hijo1 = nodo;
+                        }
+                    }else{
+                        
+                        nodo = rotacionlr(nodo);    //Diferente signo con el hijo
+                        if(padre == null){
+                            raiz = nodo;
+                        }else{
+                            padre.hijo1 = nodo;
+                        }
+                    }
+                }else{
+                    int ah1 = altura(nodo.hijo2.hijo1);
+                    int ah2 = altura(nodo.hijo2.hijo2);
+                    int difh = ah2 - ah1;
+                    if(difh < 0){
+                        
+                        nodo = rotacionrl(nodo);     //diferente signo con el hijo
+                        if(padre == null){
+                            raiz = nodo;
+                        }else{
+                            padre.hijo2 = nodo;
+                        }
+                    }else{
+                        
+                        nodo = rotacionr(nodo);    //mismo signo con el hijo
+                        if(padre == null){
+                            raiz = nodo;
+                        }else{
+                            padre.hijo2 = nodo;
+                        }
+                    }
+                }   
+            }
+        }
+        
+    }
     //Metodo para preorden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
     public void preorder(NodoAVL inicio){
         if(raiz != null){
@@ -170,7 +376,7 @@ public class ArbolAVL {
         String t = "";
         if(raiz != null){
             inicio.ID = "\""+UUID.randomUUID().toString() + "\"";
-            t += inicio.ID + "[shape = circle label="+ inicio.content  + "]\n";
+            t += inicio.ID + "[shape = circle label=\""+ inicio.content + "\"]\n";
             
             if(inicio.hijo1 != null){
                 t += declarar(inicio.hijo1);
