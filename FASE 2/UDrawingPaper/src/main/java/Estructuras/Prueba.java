@@ -22,6 +22,7 @@ public class Prueba {
         a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.png");
         */
         
+        /*
         //Prueba de AVL 
         ArbolAVL a = new ArbolAVL();
         a.add(1);
@@ -46,12 +47,29 @@ public class Prueba {
         a.delete(10);
         a.delete(12);
         a.delete(11);
-        
-        
-       
-        
-   
         a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AVL.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AVL.png");
+        */
+        
+        ArbolB a = new ArbolB();
+        a.addN(1);
+        a.addN(2);
+        a.addN(3);
+        a.addN(4);
+        a.addN(5);
+        a.addN(6);
+        a.addN(7);
+        a.addN(8);
+        a.addN(9);
+        a.addN(10);
+        a.addN(11);
+        a.addN(12);
+        a.addN(13);
+        a.addN(14);
+        a.addN(15);
+        a.addN(16);
+        a.addN(17);
+        
+        a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AB.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AB.png");
 }
     
 }
