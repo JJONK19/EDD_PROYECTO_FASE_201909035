@@ -4,6 +4,8 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JJONK19
@@ -11,7 +13,7 @@ package Estructuras;
  */
 
 //Contenedor base del arbol
-public class NodoB {
+public class NodoB implements Serializable {
     int contenido;  //Contenido del nodo
     NodoB siguiente; //Sirve para la lista
     NodoB anterior; //Sirve para la lista

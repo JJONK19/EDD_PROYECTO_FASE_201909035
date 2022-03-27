@@ -50,6 +50,7 @@ public class Prueba {
         a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AVL.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AVL.png");
         */
         
+        /*
         ArbolB a = new ArbolB();
         a.addN(1);
         a.addN(2);
@@ -69,7 +70,28 @@ public class Prueba {
         a.addN(16);
         a.addN(17);
         
+        a.search(25, a.raiz);
+       
         a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AB.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AB.png");
+        */
+        
+        //Comparacion de Clientes
+        /*
+        Cliente a1 = new Cliente("3005409730100", "Pedro", "hola");
+        Cliente a2 = new Cliente("3005409730101", "Pedro", "hola");
+        
+        if(a1.comparar(a2.dpi) == 1){
+            System.out.println("Es mayor");
+        }else{
+            if(a1.comparar(a2.dpi) == -1){
+                System.out.println("Es menor");
+            }else{
+                System.out.println("Es igual");
+            }
+            
+        }
+        */
+        
 }
     
 }

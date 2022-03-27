@@ -4,12 +4,20 @@
  */
 package Aplicacion;
 
+import Estructuras.ArbolB;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +29,21 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
+        //Montsr base de datos
+        File temp = new File("src/main/java/data.txt");
+        //Deserializar
+        if(temp.exists()){
+            try{    
+            //Cargar info
+                ObjectInputStream in=new ObjectInputStream(new FileInputStream("src/main/java/data.txt"));    
+                data=(ArbolB)in.readObject();    
+                in.close();    
+            }catch(Exception e){    
+            }    
+        }else{
+            //Crear arbol
+            data = new ArbolB(); 
+        }
         initComponents();
     }
 
@@ -49,6 +72,11 @@ public class Login extends javax.swing.JFrame {
         setTitle("UDrawingPaper");
         setLocation(new java.awt.Point(100, 100));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(253, 251, 251));
 
@@ -64,6 +92,11 @@ public class Login extends javax.swing.JFrame {
         Iniciar.setText("Iniciar Sesión");
         Iniciar.setBorder(null);
         Iniciar.setBorderPainted(false);
+        Iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarActionPerformed(evt);
+            }
+        });
 
         Registro.setBackground(new java.awt.Color(211, 56, 96));
         Registro.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
@@ -71,6 +104,11 @@ public class Login extends javax.swing.JFrame {
         Registro.setText("Registrar");
         Registro.setBorder(null);
         Registro.setBorderPainted(false);
+        Registro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistroActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -98,17 +136,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(Iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(76, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -162,6 +196,16 @@ public class Login extends javax.swing.JFrame {
         }catch(Exception e){
 
         }
+        Usuario.setText("");
+
+        //Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield
+        Usuario.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (Usuario.getText().length() >= 13 ) // limit textfield to 3 characters
+                e.consume();
+            }
+        });
+        Contraseña.setText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,11 +215,58 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroActionPerformed
+        // TODO add your handling code here:
+        Registro n = new Registro();
+        n.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_RegistroActionPerformed
+
+    private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
+        // TODO add your handling code here:
+        String user = Usuario.getText();
+        String pass = String.valueOf(Contraseña.getPassword());
+        
+        if(user.length() == 0 || pass.length() == 0){
+            JOptionPane.showMessageDialog(this, "Llene ambos campos para continuar.");
+        }else{
+             //Iniciar en modo admin
+            if(user.equals("admin") && pass.equals("EDD2022")){
+                Administrador n = new Administrador();
+                n.setVisible(true);
+                this.dispose();
+            }else{
+                System.out.println("Usuario No reconocido");
+                System.out.println(pass);
+                System.out.println(user);
+                JOptionPane.showMessageDialog(this, "El usuario  no existe.");
+            }
+        }
+       
+        
+    }//GEN-LAST:event_IniciarActionPerformed
+    
+    //Al final de la ejecución, se reinicia el arbol y la info
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.txt");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            data = new ArbolB();
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }    
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -211,7 +302,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    ArbolB data = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JButton Iniciar;

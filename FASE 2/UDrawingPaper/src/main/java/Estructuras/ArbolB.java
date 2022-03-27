@@ -6,6 +6,7 @@ package Estructuras;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
@@ -13,7 +14,7 @@ import java.util.UUID;
  * @author JJONK19
  * Basado en: https://github.com/AlexRose97/EDD_1S_2022/blob/main/ArbolB/src/arbolb/ArbolB.java
  */
-public class ArbolB {
+public class ArbolB implements Serializable {
     PaginaB raiz;
     boolean recorrer;       //Indica si hay que recorrer o no el arbol
     
@@ -133,6 +134,89 @@ public class ArbolB {
             }
         }
         
+    }
+    
+    //Método de busqueda
+    public NodoB search(int val, PaginaB origen){
+        NodoB salida = buscar(val,origen);
+        if(salida == null){
+            System.out.println("El nodo no existe");
+        }else{
+            System.out.println(salida.contenido);
+        }
+        return salida;
+    }
+    
+    //Metodo recursivo para insertar el nodo
+    public NodoB buscar(int val, PaginaB origen){
+        //Bandera que determina si es hoja.
+        int ban = 0;
+        //Revisa que el primer nodo tenga conexiones
+        if(origen.lista.first.izquierda == null){
+            ban = 1;
+        }
+        
+        NodoB salida = null;
+        
+        //Caso base
+        if(ban == 1){
+            NodoB aux = origen.lista.first;
+            int bn = 0;
+            while(bn == 0){
+                if(val == aux.contenido){
+                    salida = aux;
+                    bn = 1;
+                }else{
+                    if(aux.siguiente == null){
+                        salida = null;
+                        bn = 1;
+                    }else{
+                        if(val > aux.contenido){
+                            aux = aux.siguiente;
+                        }else{
+                            salida = null;
+                            bn = 1;
+                        }
+                    }
+                }
+            }
+            
+        }else{
+            //Menor a la raiz. Se mueve a la lista izquierda.
+            if(origen.lista.first.contenido  ==  val){
+                salida = origen.lista.first;     ;
+                
+            }else{
+                //Mayor a la raiz. Mover al lado derecho
+                if(origen.lista.last.contenido ==  val){
+                   salida  = origen.lista.last;
+                    
+                }else{
+                    //Moverse en la lista
+                    NodoB aux = origen.lista.first;
+                    int bn = 0;
+                    while(bn == 0){
+                        if(val == aux.contenido){
+                            salida = aux;
+                            bn = 1;
+                        }else{
+                            if(val < aux.contenido){
+                                salida = buscar(val, aux.izquierda);
+                                bn = 1;
+                            }else{
+                                if(aux.siguiente == null){
+                                    salida = buscar(val, aux.derecha);
+                                    bn = 1;
+                                }else{
+                                    aux = aux.siguiente;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+        return salida;
     }
     
     //Metodos de Graficación

@@ -4,6 +4,8 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JJONK19
@@ -11,7 +13,7 @@ package Estructuras;
  */
 
 //Las paginas funcionan como nodos del arbol
-public class PaginaB {
+public class PaginaB implements Serializable{
     ListaB lista;   //Lista de claves
     int tamaño;
     

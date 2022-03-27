@@ -4,13 +4,15 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JJONK19
  * Basado en https://github.com/AlexRose97/EDD_1S_2022/blob/main/ArbolB/src/arbolb/RamaB.java
  */
 //Contenedores de los nodos del arbol
-public class ListaB {
+public class ListaB implements Serializable {
     NodoB first;
     NodoB last;
     int size;

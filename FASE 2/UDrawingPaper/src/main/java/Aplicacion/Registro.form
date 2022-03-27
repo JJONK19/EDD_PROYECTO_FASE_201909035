@@ -168,6 +168,9 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -203,6 +206,9 @@
               <Color blue="fb" green="fb" red="fd" type="rgb"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield&#xa;DPI.addKeyListener(new KeyAdapter() {&#xa;    public void keyTyped(KeyEvent e) { &#xa;        if (DPI.getText().length() &gt;= 13 ) // limit textfield to 3 characters&#xa;            e.consume(); &#xa;    }  &#xa;});"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

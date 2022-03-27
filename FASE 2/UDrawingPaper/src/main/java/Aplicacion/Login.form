@@ -13,6 +13,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -33,7 +36,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="1" pref="475" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,20 +55,13 @@
                   <Component id="jLabel2" min="-2" pref="619" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                                  <Component id="Iniciar" min="-2" pref="260" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="Contraseña" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <Component id="Usuario" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <Component id="jLabel6" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="Iniciar" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="Contraseña" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="Usuario" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="jLabel6" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="76" max="32767" attributes="0"/>
                       </Group>
@@ -139,6 +135,9 @@
               <Color blue="fb" green="fb" red="fd" type="rgb"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Usuario.setText(&quot;&quot;);&#xa;&#xa;//Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield&#xa;Usuario.addKeyListener(new KeyAdapter() {&#xa;    public void keyTyped(KeyEvent e) { &#xa;        if (Usuario.getText().length() &gt;= 13 ) // limit textfield to 3 characters&#xa;            e.consume(); &#xa;    }  &#xa;});"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JPasswordField" name="Contrase&#xf1;a">
           <Properties>
@@ -146,6 +145,9 @@
               <Color blue="fb" green="fb" red="fd" type="rgb"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Contrase&#xf1;a.setText(&quot;&quot;);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="Iniciar">
           <Properties>
@@ -164,6 +166,9 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IniciarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Registro">
           <Properties>
@@ -182,6 +187,9 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>

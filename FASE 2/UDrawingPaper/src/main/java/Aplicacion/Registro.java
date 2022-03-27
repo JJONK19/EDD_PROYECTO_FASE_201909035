@@ -4,6 +4,8 @@
  */
 package Aplicacion;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -68,6 +70,11 @@ public class Registro extends javax.swing.JFrame {
         Registro.setText("Registrar");
         Registro.setBorder(null);
         Registro.setBorderPainted(false);
+        Registro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistroActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -148,6 +155,13 @@ public class Registro extends javax.swing.JFrame {
         }catch(Exception e){
 
         }
+        //Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield
+        DPI.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (DPI.getText().length() >= 13 ) // limit textfield to 3 characters
+                e.consume();
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,6 +176,14 @@ public class Registro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroActionPerformed
+        // TODO add your handling code here:
+        String dpi = DPI.getText();
+        String nombre = Nombre.getText();
+        String pass = String.valueOf(Contraseña.getPassword());
+        
+    }//GEN-LAST:event_RegistroActionPerformed
 
     /**
      * @param args the command line arguments
