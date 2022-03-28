@@ -37,7 +37,7 @@ public class ListaB implements Serializable {
             //Un elemento en existencia
             if(first == last){
                 //Insertar al inicio
-                if(first.contenido > a.contenido){
+                if(first.contenido.comparar(a.contenido.dpi) == 1){
                     //Posiciones de lista
                     a.siguiente = first;
                     first.anterior = a;
@@ -48,7 +48,7 @@ public class ListaB implements Serializable {
                     ban = true;
                 }else{
                     //Insertar al final
-                    if(last.contenido < a.contenido){
+                    if(last.contenido.comparar(a.contenido.dpi) == -1 ){
                         //Posiciones de lista
                         a.anterior = last;
                         last.siguiente = a;
@@ -61,7 +61,7 @@ public class ListaB implements Serializable {
                 }
             }else{
                 //Insertar al inicio
-                if(first.contenido > a.contenido){
+                if(first.contenido.comparar(a.contenido.dpi) == 1 ){
                     //Posiciones de lista
                     a.siguiente = first;
                     first.anterior = a;
@@ -72,7 +72,7 @@ public class ListaB implements Serializable {
                     ban = true;
                 }else{
                     //Insertar al final
-                    if(last.contenido < a.contenido){
+                    if(last.contenido.comparar(a.contenido.dpi) == -1 ){
                         //Posiciones de lista
                         a.anterior = last;
                         last.siguiente = a;
@@ -85,7 +85,7 @@ public class ListaB implements Serializable {
                         //Recorrer para insertar en medio
                         NodoB aux = first;
                         while(aux != null){
-                            if(a.contenido < aux.contenido){
+                            if(a.contenido.comparar(aux.contenido.dpi) == -1 ){
                                 //Punteros
                                 a.siguiente = aux;
                                 a.anterior = aux.anterior;

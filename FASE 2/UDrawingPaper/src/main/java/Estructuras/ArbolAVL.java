@@ -6,13 +6,14 @@ package Estructuras;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  *
  * @author JJONK19
  */
-public class ArbolAVL {
+public class ArbolAVL implements Serializable{
     NodoAVL raiz;
     
     public ArbolAVL(){

@@ -52,25 +52,25 @@ public class Prueba {
         
         /*
         ArbolB a = new ArbolB();
-        a.addN(1);
-        a.addN(2);
-        a.addN(3);
-        a.addN(4);
-        a.addN(5);
-        a.addN(6);
-        a.addN(7);
-        a.addN(8);
-        a.addN(9);
-        a.addN(10);
-        a.addN(11);
-        a.addN(12);
-        a.addN(13);
-        a.addN(14);
-        a.addN(15);
-        a.addN(16);
-        a.addN(17);
+        a.addN(new Cliente("1111111111101", "", ""));
+        a.addN(new Cliente("1111111111102", "", ""));
+        a.addN(new Cliente("1111111111103", "", ""));
+        a.addN(new Cliente("1111111111104", "", ""));
+        a.addN(new Cliente("1111111111105", "", ""));
+        a.addN(new Cliente("1111111111106", "", ""));
+        a.addN(new Cliente("1111111111107", "", ""));
+        a.addN(new Cliente("1111111111108", "", ""));
+        a.addN(new Cliente("1111111111109", "", ""));
+        a.addN(new Cliente("1111111111110", "", ""));
+        a.addN(new Cliente("1111111111111", "", ""));
+        a.addN(new Cliente("1111111111112", "", ""));
+        a.addN(new Cliente("1111111111113", "", ""));
+        a.addN(new Cliente("1111111111114", "", ""));
+        a.addN(new Cliente("1111111111115", "", ""));
+        a.addN(new Cliente("1111111111116", "", ""));
+        a.addN(new Cliente("1111111111117", "", ""));
         
-        a.search(25, a.raiz);
+        a.search("1111111111117", a.raiz);
        
         a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AB.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\AB.png");
         */

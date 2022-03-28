@@ -4,11 +4,13 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JJONK19
  */
-public class NodoABB {
+public class NodoABB implements Serializable{
     String ID; //ID del nodo - Se usa al graficar
     int content; //contenido del nodo
     NodoABB hijo1; //Hijo izquierdo del arbol

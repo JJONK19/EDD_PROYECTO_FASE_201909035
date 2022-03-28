@@ -4,12 +4,15 @@
  */
 package Aplicacion;
 
+import static Aplicacion.Registro.data;
 import Estructuras.ArbolB;
+import Estructuras.NodoB;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
@@ -29,21 +32,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        //Montsr base de datos
-        File temp = new File("src/main/java/data.txt");
-        //Deserializar
-        if(temp.exists()){
-            try{    
-            //Cargar info
-                ObjectInputStream in=new ObjectInputStream(new FileInputStream("src/main/java/data.txt"));    
-                data=(ArbolB)in.readObject();    
-                in.close();    
-            }catch(Exception e){    
-            }    
-        }else{
-            //Crear arbol
-            data = new ArbolB(); 
-        }
+        
         initComponents();
     }
 
@@ -75,6 +64,9 @@ public class Login extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -242,10 +234,27 @@ public class Login extends javax.swing.JFrame {
                 n.setVisible(true);
                 this.dispose();
             }else{
-                System.out.println("Usuario No reconocido");
-                System.out.println(pass);
-                System.out.println(user);
-                JOptionPane.showMessageDialog(this, "El usuario  no existe.");
+                if(user.length() <13){
+                    JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    if(data.raiz == null){
+                        JOptionPane.showMessageDialog(this, "Usuario o contraseña equivocada.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        NodoB bus = data.buscar(user, data.raiz);
+                        if(bus == null){
+                            JOptionPane.showMessageDialog(this, "El usuario no existe.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                        }else{
+                            String contra = bus.contenido.getPass();
+                            if(contra.equals(pass)){
+                                Usuario n = new Usuario();
+                                n.setVisible(true);
+                                this.dispose();
+                            }else{
+                                JOptionPane.showMessageDialog(this, "Contraseña equivocada.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    }
+                }
             }
         }
        
@@ -255,23 +264,41 @@ public class Login extends javax.swing.JFrame {
     //Al final de la ejecución, se reinicia el arbol y la info
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        //Serealizar
         try{    
             //Crear data    
-            FileOutputStream f=new FileOutputStream("src/main/java/data.txt");    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
             ObjectOutputStream out=new ObjectOutputStream(f); 
             data = new ArbolB();
             out.writeObject(data);    
             out.flush();        
             out.close();    
         }catch(Exception e){
-                    
+                
         }    
     }//GEN-LAST:event_formWindowClosing
+    //Deserializar
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try {
+            FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
+            ObjectInputStream escribir = new ObjectInputStream(abrir);
+            data =  (ArbolB) escribir.readObject();
+            escribir.close();
+            abrir.close();
+        } catch (IOException i) {
+           data = new ArbolB();
+            
+        } catch (ClassNotFoundException c) {
+            data = new ArbolB();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -303,7 +330,7 @@ public class Login extends javax.swing.JFrame {
         });
     }
     
-    ArbolB data = null;
+    public static ArbolB data = new ArbolB();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JButton Iniciar;

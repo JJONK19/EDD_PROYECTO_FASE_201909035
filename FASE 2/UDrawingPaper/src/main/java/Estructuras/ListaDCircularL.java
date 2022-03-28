@@ -6,12 +6,13 @@ package Estructuras;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.Serializable;
 
 /**
  *
  * @author JJONK19
  */
-public class ListaDCircularL{
+public class ListaDCircularL implements Serializable{
     int no; //Maneja el número de nosdos que posee la lista
     NodoListaDobleCircular head; //Cabecera de la cola
     

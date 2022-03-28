@@ -6,13 +6,14 @@ package Estructuras;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  *
  * @author JJONK19
  */
-public class Matriz {
+public class Matriz implements Serializable {
     NodoMatriz raiz;
     
     public Matriz(){

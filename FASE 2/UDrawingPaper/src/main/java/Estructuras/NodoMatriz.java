@@ -4,11 +4,13 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JJONK19
  */
-public class NodoMatriz {
+public class NodoMatriz implements Serializable {
     NodoMatriz arriba;
     NodoMatriz abajo;
     NodoMatriz izquierda;

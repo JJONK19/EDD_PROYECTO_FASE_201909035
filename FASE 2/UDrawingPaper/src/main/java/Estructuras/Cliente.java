@@ -4,13 +4,14 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
 /**
  *
  * @author JJONK19
  */
-public class Cliente {
+public class Cliente implements Serializable {
     String dpi;
     String nombre;
     String password;
@@ -22,6 +23,9 @@ public class Cliente {
     }
     
     //Compara si el dpi es mayor 
+    // 1 = mayor
+    // 0 = igual
+    // -1 = menor
     public int comparar(String dpi2){
         int salida = -1;
         for(int i = 0; i < dpi.length(); i++){
@@ -57,4 +61,37 @@ public class Cliente {
         }
         return salida;
     }
+    
+    public String getName(){
+        return nombre;
+    }
+    
+    public String getDPI(){
+        return dpi;
+    }
+    
+    public String getPass(){
+        return password;
+    }
+    
+    public String getAlbum(){
+        return "";
+    }
+    
+    public String getImagen(){
+        return "";
+    }
+    
+    public String getCapas(){
+        return "";
+    }
+    
+    public void setName(String a){
+        nombre = a;
+    }
+    
+    public void setPass(String a){
+        password = a;
+    }
+    
 }

@@ -15,7 +15,7 @@ import java.util.UUID;
  * Basado en: https://github.com/AlexRose97/EDD_1S_2022/blob/main/ArbolB/src/arbolb/ArbolB.java
  */
 public class ArbolB implements Serializable {
-    PaginaB raiz;
+    public PaginaB raiz;
     boolean recorrer;       //Indica si hay que recorrer o no el arbol
     
     public ArbolB(){
@@ -38,7 +38,7 @@ public class ArbolB implements Serializable {
             return origen.addP(a);
         }else{
             //Menor a la raiz. Se mueve a la lista izquierda.
-            if(origen.lista.first.contenido > a.contenido){
+            if(origen.lista.first.contenido.comparar(a.contenido.dpi) == 1){
                 Object r = recorrido(a, origen.lista.first.izquierda);
                 //Determinar si hay que actualizar la hoja o no
                 if(r instanceof NodoB){
@@ -53,7 +53,7 @@ public class ArbolB implements Serializable {
                 }
             }else{
                 //Mayor a la raiz. Mover al lado derecho
-                if(origen.lista.last.contenido < a.contenido){
+                if(origen.lista.last.contenido.comparar(a.contenido.dpi) == -1 ){
                     Object r = recorrido(a, origen.lista.last.derecha);
                     //Determinar si hay que actualizar la hoja o no
                     if(r instanceof NodoB){
@@ -70,7 +70,7 @@ public class ArbolB implements Serializable {
                     //Moverse en la lista
                     NodoB mov = origen.lista.first;
                     while(mov != null){
-                        if(a.contenido < mov.contenido){
+                        if(a.contenido.comparar(mov.contenido.dpi) == -1 ){
                             Object r = recorrido(a, mov.izquierda);
                             if(r instanceof NodoB){ 
                                 NodoB salida = (NodoB) r;
@@ -95,7 +95,7 @@ public class ArbolB implements Serializable {
         return this;
     }
     //Añade un nodo 
-    public void addN(int data){
+    public void addN(Cliente data){
         NodoB nuevo = new NodoB(data);
         //Raiz vacia o insertar en lo existencte
         if(raiz == null){
@@ -137,18 +137,18 @@ public class ArbolB implements Serializable {
     }
     
     //Método de busqueda
-    public NodoB search(int val, PaginaB origen){
+    public NodoB search(String val, PaginaB origen){
         NodoB salida = buscar(val,origen);
         if(salida == null){
             System.out.println("El nodo no existe");
         }else{
-            System.out.println(salida.contenido);
+            System.out.println(salida.contenido.dpi);
         }
         return salida;
     }
     
     //Metodo recursivo para insertar el nodo
-    public NodoB buscar(int val, PaginaB origen){
+    public NodoB buscar(String val, PaginaB origen){
         //Bandera que determina si es hoja.
         int ban = 0;
         //Revisa que el primer nodo tenga conexiones
@@ -163,7 +163,7 @@ public class ArbolB implements Serializable {
             NodoB aux = origen.lista.first;
             int bn = 0;
             while(bn == 0){
-                if(val == aux.contenido){
+                if(aux.contenido.comparar(val) == 0){
                     salida = aux;
                     bn = 1;
                 }else{
@@ -171,7 +171,7 @@ public class ArbolB implements Serializable {
                         salida = null;
                         bn = 1;
                     }else{
-                        if(val > aux.contenido){
+                        if(aux.contenido.comparar(val) == -1){
                             aux = aux.siguiente;
                         }else{
                             salida = null;
@@ -183,12 +183,12 @@ public class ArbolB implements Serializable {
             
         }else{
             //Menor a la raiz. Se mueve a la lista izquierda.
-            if(origen.lista.first.contenido  ==  val){
+            if(origen.lista.first.contenido.comparar(val)  ==  0){
                 salida = origen.lista.first;     ;
                 
             }else{
                 //Mayor a la raiz. Mover al lado derecho
-                if(origen.lista.last.contenido ==  val){
+                if(origen.lista.last.contenido.comparar(val) ==  0){
                    salida  = origen.lista.last;
                     
                 }else{
@@ -196,11 +196,11 @@ public class ArbolB implements Serializable {
                     NodoB aux = origen.lista.first;
                     int bn = 0;
                     while(bn == 0){
-                        if(val == aux.contenido){
+                        if(aux.contenido.comparar(val) == 0){
                             salida = aux;
                             bn = 1;
                         }else{
-                            if(val < aux.contenido){
+                            if(aux.contenido.comparar(val) == 1){
                                 salida = buscar(val, aux.izquierda);
                                 bn = 1;
                             }else{
@@ -241,10 +241,10 @@ public class ArbolB implements Serializable {
             NodoB aux = origen.lista.first;
             while(aux != null){
                 c++;
-                t +="|"+aux.contenido+"|<p"+c+"> ";
+                t +="|"+aux.contenido.dpi+"|<p"+c+"> ";
                 aux= aux.siguiente;
             }
-            t +="\"]"+ origen.lista.first.contenido + ";\n";
+            t +="\"]"+ origen.lista.first.contenido.dpi + ";\n";
         }else{
             //Declara la lista inicial
             t += "node[shape=record label= \"<p0>";
@@ -252,10 +252,10 @@ public class ArbolB implements Serializable {
             NodoB aux = origen.lista.first;
             while(aux!=null){
                 c++;
-                t +="|{"+aux.contenido +"}|<p"+ c +"> ";
+                t +="|{"+aux.contenido.dpi +"}|<p"+ c +"> ";
                 aux= aux.siguiente;
             }
-            t += "\"]"+ origen.lista.first.contenido + ";\n";
+            t += "\"]"+ origen.lista.first.contenido.dpi + ";\n";
 
             //De forma recursiva, recorre cada una de las listas hijos
             //Por la recursividad, baja hasta las hojas del arbol
@@ -278,16 +278,16 @@ public class ArbolB implements Serializable {
         }
         String t = "";
         if(ban == 1){
-            t += origen.lista.first.contenido+";\n";
+            t += origen.lista.first.contenido.dpi+";\n";
         }else{
             NodoB aux = origen.lista.first;
             int c =0;
             while(aux != null){
-                t += origen.lista.first.contenido + ":p"+c+"->"+ conectar(aux.izquierda);
+                t += origen.lista.first.contenido.dpi + ":p"+c+"->"+ conectar(aux.izquierda);
                 c++;
                 aux = aux.siguiente;
             }
-            t += origen.lista.first.contenido + "->" + conectar(origen.lista.last.derecha);
+            t += origen.lista.first.contenido.dpi + "->" + conectar(origen.lista.last.derecha);
         }
         return t;
     }
@@ -295,7 +295,7 @@ public class ArbolB implements Serializable {
     
     //Unifica el texto que va en el grafo
     public String getcodigo(){
-        String t = "digraph G\n" +"{\n" + "rankr=TB; node [ shape=circle ];\n";
+        String t = "digraph G\n" +"{\n" + "rankr=TB;\n";
         
         //Declarar nodos
         t += declarar(raiz);

@@ -4,10 +4,20 @@
  */
 package Aplicacion;
 
+import static Aplicacion.Registro.data;
+import Estructuras.ArbolB;
 import java.awt.Cursor;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,12 +56,20 @@ public class Administrador extends javax.swing.JFrame {
         actualizar = new javax.swing.JButton();
         icono = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        add4 = new javax.swing.JButton();
+        regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("UDrawing Paper");
         setLocation(new java.awt.Point(100, 0));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(253, 251, 251));
 
@@ -61,6 +79,11 @@ public class Administrador extends javax.swing.JFrame {
         modificar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         modificar.setForeground(new java.awt.Color(255, 255, 255));
         modificar.setText("Modificar Cliente");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
 
         Label1.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label1.setForeground(new java.awt.Color(211, 56, 96));
@@ -74,16 +97,31 @@ public class Administrador extends javax.swing.JFrame {
         generar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         generar.setForeground(new java.awt.Color(255, 255, 255));
         generar.setText("Generar Arbol de Clientes");
+        generar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarActionPerformed(evt);
+            }
+        });
 
         add.setBackground(new java.awt.Color(211, 56, 96));
         add.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setText("Añadir Cliente");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
 
         buscar.setBackground(new java.awt.Color(211, 56, 96));
         buscar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar un  Cliente");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
 
         Label3.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label3.setForeground(new java.awt.Color(211, 56, 96));
@@ -116,10 +154,15 @@ public class Administrador extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Administrador");
 
-        add4.setBackground(new java.awt.Color(211, 56, 96));
-        add4.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        add4.setForeground(new java.awt.Color(255, 255, 255));
-        add4.setText("Salir");
+        regresar.setBackground(new java.awt.Color(211, 56, 96));
+        regresar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        regresar.setForeground(new java.awt.Color(255, 255, 255));
+        regresar.setText("Salir");
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -129,7 +172,7 @@ public class Administrador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(add4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +230,7 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(add4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -207,11 +250,150 @@ public class Administrador extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try {
+            FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
+            ObjectInputStream escribir = new ObjectInputStream(abrir);
+            data =  (ArbolB) escribir.readObject();
+            escribir.close();
+            abrir.close();
+        } catch (IOException i) {
+           data = new ArbolB();
+            
+        } catch (ClassNotFoundException c) {
+            data = new ArbolB();
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        //Serealizar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        
+        Login n = new Login();
+        n.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
+
+    //Regresar
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        // TODO add your handling code here:
+        //Serealizar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        
+        Login n = new Login();
+        n.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
+    
+    //Graficar el arbol
+    private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
+        // TODO add your handling code here:
+        int ban = 0;
+        if(data.raiz != null){
+            data.dibujar("src/main/java/Imagenes/AB.txt", "src/main/java/Imagenes/AB.png");
+            ban = 1;
+        }else{
+            JOptionPane.showMessageDialog(this, "El arbol está vacío.");   
+        }
+        
+        if(ban == 1){
+            File a = new File ("src/main/java/Imagenes/AB.png");
+            if(a.exists()){
+                try {
+                    BufferedImage img = ImageIO.read(a.getAbsoluteFile());
+                    arbol.setSize(img.getWidth(), img.getHeight());
+                    arbol.setIcon(new ImageIcon(img)); 
+                }catch (IOException ex) {
+                        
+                }
+            }else{
+                arbol.setIcon(null);
+                 
+            }
+        }
+        
+        
+    }//GEN-LAST:event_generarActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // TODO add your handling code here:
+        //Serealizar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        AddCliente n = new AddCliente(this, true);
+        n.setVisible(true);
+        data = n.getArbol();
+        
+    }//GEN-LAST:event_addActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        //Serealizar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        BusCliente n = new BusCliente(this, true);
+        n.setVisible(true);
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        // TODO add your handling code here:
+        //Serealizar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        ModCliente n = new ModCliente(this, true);
+        n.setVisible(true);
+        data = n.getArbol();
+    }//GEN-LAST:event_modificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,7 +429,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
     }
-
+    static ArbolB data = new ArbolB();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
@@ -255,7 +437,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane Lista;
     private javax.swing.JButton actualizar;
     private javax.swing.JButton add;
-    private javax.swing.JButton add4;
     private javax.swing.JLabel arbol;
     private javax.swing.JButton buscar;
     private javax.swing.JButton carga;
@@ -265,5 +446,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificar;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

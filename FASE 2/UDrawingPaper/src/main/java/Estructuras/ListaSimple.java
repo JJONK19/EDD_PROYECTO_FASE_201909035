@@ -6,12 +6,13 @@ package Estructuras;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.Serializable;
 
 /**
  *
  * @author JJONK19
  */
-public class ListaSimple {
+public class ListaSimple implements Serializable {
     NodoListaSimple head; //Cabecera de la cola
     int no; //Nodos de la lista
     

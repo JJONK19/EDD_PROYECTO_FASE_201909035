@@ -14,13 +14,13 @@ import java.io.Serializable;
 
 //Contenedor base del arbol
 public class NodoB implements Serializable {
-    int contenido;  //Contenido del nodo
+    public Cliente contenido;  //Contenido del nodo
     NodoB siguiente; //Sirve para la lista
     NodoB anterior; //Sirve para la lista
     PaginaB izquierda; //Nodo del arbol
     PaginaB derecha; //Nodo del arbol
     
-    public NodoB(int contenido){
+    public NodoB(Cliente contenido){
         this.contenido = contenido;
         siguiente = null;
         anterior = null;
