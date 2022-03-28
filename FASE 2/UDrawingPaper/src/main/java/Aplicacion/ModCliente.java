@@ -106,8 +106,10 @@ public class ModCliente extends javax.swing.JDialog {
         jLabel9.setText("Confirmar Contraseña");
 
         pass.setBackground(new java.awt.Color(253, 251, 251));
+        pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         cpass.setBackground(new java.awt.Color(253, 251, 251));
+        cpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -230,24 +232,47 @@ public class ModCliente extends javax.swing.JDialog {
         String contrac = String.valueOf(cpass.getPassword());
 
         if(user.length() == 0 || name.length() == 0 || contra.length() == 0 || contrac.length() == 0){
+            usuario.setText("");
+            nombre.setText("");
+            pass.setText("");
+            cpass.setText("");
             JOptionPane.showMessageDialog(this, "Llene todos los campos para continuar.");
         }else{
             if(user.length() <13){
+                usuario.setText("");
+                nombre.setText("");
+                pass.setText("");
+                cpass.setText("");
                 JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }else{
                 if(data.raiz == null){
+                    usuario.setText("");
+                    nombre.setText("");
+                    pass.setText("");
+                    cpass.setText("");
                     JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                 }else{
                     bus = data.buscar(user, data.raiz);
                     if(bus == null){
+                        usuario.setText("");
+                        nombre.setText("");
+                        pass.setText("");
+                        cpass.setText("");
                         JOptionPane.showMessageDialog(this, "El usuario no existe.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                     }else{
                         if(contra.equals(contrac)){
                             bus.contenido.setPass(contra);
                             bus.contenido.setName(name);
-                            
+                            usuario.setText("");
+                            nombre.setText("");
+                            pass.setText("");
+                            cpass.setText("");
                             JOptionPane.showMessageDialog(this, "Campos actualizados correctamente.");
                         }else{
+                            usuario.setText("");
+                            nombre.setText("");
+                            pass.setText("");
+                            cpass.setText("");
                             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                             
                         }

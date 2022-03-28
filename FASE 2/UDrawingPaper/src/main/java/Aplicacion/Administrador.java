@@ -6,6 +6,8 @@ package Aplicacion;
 
 import static Aplicacion.Registro.data;
 import Estructuras.ArbolB;
+import Estructuras.Cliente;
+import com.jayway.jsonpath.JsonPath;
 import java.awt.Cursor;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,9 +17,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -53,6 +61,8 @@ public class Administrador extends javax.swing.JFrame {
         carga = new javax.swing.JButton();
         Label2 = new javax.swing.JLabel("<HTML><U>Reportes</U></HTML>");
         Lista = new javax.swing.JScrollPane();
+        Jpanel = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
         actualizar = new javax.swing.JButton();
         icono = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -135,6 +145,11 @@ public class Administrador extends javax.swing.JFrame {
         carga.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         carga.setForeground(new java.awt.Color(255, 255, 255));
         carga.setText("Carga Masiva");
+        carga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargaActionPerformed(evt);
+            }
+        });
 
         Label2.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label2.setForeground(new java.awt.Color(211, 56, 96));
@@ -144,10 +159,42 @@ public class Administrador extends javax.swing.JFrame {
         */
         Label2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Total Imagenes"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Jpanel.setViewportView(tabla);
+
+        Lista.setViewportView(Jpanel);
+
         actualizar.setBackground(new java.awt.Color(211, 56, 96));
         actualizar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         actualizar.setForeground(new java.awt.Color(255, 255, 255));
         actualizar.setText("Actualizar Lista de Clientes");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Candara Light", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -395,6 +442,59 @@ public class Administrador extends javax.swing.JFrame {
         data = n.getArbol();
     }//GEN-LAST:event_modificarActionPerformed
 
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        // TODO add your handling code here:
+        //Vasado en https://stackoverflow.com/questions/22371720/how-to-add-row-dynamically-in-jtable
+        DefaultTableModel model = new DefaultTableModel(new String[] { "ID", "Nombre", "Total Imagenes"},0);
+        tabla.setModel(model);
+        
+        //Recorrido de Niveles
+        if(data.raiz == null){
+            JOptionPane.showMessageDialog(this, "No hay clientes en existencia.");   
+        }else{
+            data.niveles(model);
+        }
+        
+    }//GEN-LAST:event_actualizarActionPerformed
+
+    private void cargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaActionPerformed
+        // TODO add your handling code here:
+        JFileChooser filechooser = new JFileChooser();
+        FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
+        filechooser.addChoosableFileFilter(exp);
+        filechooser.setFileFilter(exp);
+        if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            try{
+                File json = filechooser.getSelectedFile().getAbsoluteFile();
+                List<Map> clientes = JsonPath.parse(json).read("$.*"); //Al leer, guarda las coincnidencias como un diccionario y esos los guarda en la lista
+                
+                for (int i =0; i<clientes.size();i++){
+                    
+                    
+                    //Lectura de los diccionarios
+                    Map temp = clientes.get(i);
+                    String dpi = (String)temp.get("dpi");
+                    String nombre = (String) temp.get("nombre_cliente");
+                    String pass = (String) temp.get("password");
+                                
+                    //Creacion del objeto cliente
+                    if(data.raiz == null){
+                        Cliente nuevo = new Cliente(dpi, nombre, pass);
+                        data.addN(nuevo);
+                    }else{
+                        if(data.buscar(dpi, data.raiz) == null){
+                            Cliente nuevo = new Cliente(dpi, nombre, pass);
+                            data.addN(nuevo);
+                            
+                        }                    }
+                }
+                JOptionPane.showMessageDialog(this, "Registro Exitoso.");
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+            }
+        }
+    }//GEN-LAST:event_cargaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,6 +531,7 @@ public class Administrador extends javax.swing.JFrame {
     }
     static ArbolB data = new ArbolB();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane Jpanel;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
@@ -447,5 +548,6 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificar;
     private javax.swing.JButton regresar;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

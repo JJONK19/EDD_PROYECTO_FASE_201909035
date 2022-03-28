@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.UUID;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -219,6 +220,30 @@ public class ArbolB implements Serializable {
         return salida;
     }
     
+    //Recorrido por niveles
+    public DefaultTableModel niveles(DefaultTableModel model){
+        //model.addRow(new Object[]{ "ID", "Nombre", "Total Imagenes" });
+        Cola recorrer = new Cola();
+        recorrer.enqueue(this.raiz);
+        while(recorrer.no != 0){
+            PaginaB aux = (PaginaB) recorrer.dequeue();
+            if(aux != null){
+                NodoB temp = aux.lista.first;
+                while(temp != null){
+                model.addRow(new Object[]{ temp.contenido.getDPI(), temp.contenido.getName() , temp.contenido.getImagen() });
+                    if(temp.izquierda != null){
+                        recorrer.enqueue(temp.izquierda);
+                    }
+                    if(temp.siguiente == null){
+                        recorrer.enqueue(temp.derecha);
+                    }
+                    temp = temp.siguiente;
+                }
+            }
+        }
+        
+        return model;
+    }
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     
