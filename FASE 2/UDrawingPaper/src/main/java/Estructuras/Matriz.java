@@ -55,6 +55,7 @@ public class Matriz implements Serializable {
         String nombre = Integer.toString(y);
         NodoMatriz temp = new NodoMatriz(-1, y, nombre);
         NodoMatriz aux = raiz;
+        int inicio = 0;
         while(aux != null){
             if(y > aux.y){
                 //Añadir al final
@@ -76,6 +77,24 @@ public class Matriz implements Serializable {
                 break;
             }
         }
+        
+        //Actualizar posiciones
+        aux = raiz.derecha;
+        while(aux != null){
+            if(aux.y == inicio){
+                aux = aux.derecha;
+                inicio++;
+            }else{
+                nombre = Integer.toString(inicio);
+                temp = new NodoMatriz(-1, inicio, nombre);
+                NodoMatriz ant = aux.izquierda;
+                ant.derecha = temp;
+                temp.izquierda = ant;
+                temp.derecha = aux;
+                aux.izquierda = temp;
+                inicio++;
+            }
+        }
     }
     
     //Añadir una nueva fila
@@ -83,6 +102,7 @@ public class Matriz implements Serializable {
         String nombre = Integer.toString(x);
         NodoMatriz temp = new NodoMatriz(x, -1, nombre);
         NodoMatriz aux = raiz;
+        int inicio = 0;
         while(aux != null){
             if(x > aux.x){
                 //Añadir al final
@@ -104,6 +124,25 @@ public class Matriz implements Serializable {
                 break;
             }
         }
+        
+        //Actualizar posiciones
+        aux = raiz.abajo;
+        while(aux != null){
+            if(aux.x == inicio){
+                aux = aux.abajo;
+                inicio++;
+            }else{
+                nombre = Integer.toString(inicio);
+                temp = new NodoMatriz(inicio, -1, nombre);
+                NodoMatriz ant = aux.arriba;
+                ant.abajo = temp;
+                temp.arriba = ant;
+                temp.abajo = aux;
+                aux.arriba = temp;
+                inicio++;
+            }
+        }
+        
     }
     //Añadir una posicion a la matriz
     public void add(int x, int y, Object contenido){
@@ -280,7 +319,7 @@ public class Matriz implements Serializable {
             //Declarar contenido de filas
             NodoMatriz temp = aux.derecha;
             while(temp != null){
-                t += "F"+Integer.toString(temp.x)+"C"+Integer.toString(temp.y)+"[width = 1 height=1, group =" + Integer.toString(temp.y) + "];\n";
+                t += "F"+Integer.toString(temp.x)+"C"+Integer.toString(temp.y)+"[style = filled, label = \"\", color=\"" + (String)temp.contenido + "\"  width = 1 height=1, group =" + Integer.toString(temp.y) + "];\n";
                 temp = temp.derecha;
             }
             aux = aux.abajo;

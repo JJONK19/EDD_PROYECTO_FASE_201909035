@@ -15,11 +15,19 @@ public class Cliente implements Serializable {
     String dpi;
     String nombre;
     String password;
+    public ArbolAVL imagenes;
+    public ArbolABB capas;
+    public ListaDCircularL album;
+    
  
     public Cliente(String Dpi, String Nombre, String Pass){
         dpi = Dpi;
         nombre = Nombre;
         password = Pass;
+        imagenes = new ArbolAVL();
+        capas = new ArbolABB();
+        album = new ListaDCircularL();
+        
     }
     
     //Compara si el dpi es mayor 
@@ -83,7 +91,7 @@ public class Cliente implements Serializable {
     }
     
     public String getCapas(){
-        return "";
+        return Integer.toString(capas.getSize());
     }
     
     public void setName(String a){

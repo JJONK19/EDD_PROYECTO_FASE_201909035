@@ -12,12 +12,12 @@ import java.io.Serializable;
  */
 public class NodoABB implements Serializable{
     String ID; //ID del nodo - Se usa al graficar
-    int content; //contenido del nodo
-    NodoABB hijo1; //Hijo izquierdo del arbol
-    NodoABB hijo2; //Hijo derecho del arbol
+    public Capa content; //contenido del nodo
+    public NodoABB hijo1; //Hijo izquierdo del arbol
+    public NodoABB hijo2; //Hijo derecho del arbol
     Boolean hoja; //Determina si el arbol es una hoja o no
     
-    public NodoABB(int contenido){
+    public NodoABB(Capa contenido){
         this.ID = "";
         this.content = contenido;
         this.hijo1 = null;

@@ -247,6 +247,8 @@ public class Login extends javax.swing.JFrame {
                             String contra = bus.contenido.getPass();
                             if(contra.equals(pass)){
                                 Usuario n = new Usuario();
+                                n.usuario.setText(user);
+                                n.user = user;
                                 n.setVisible(true);
                                 this.dispose();
                             }else{

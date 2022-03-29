@@ -12,15 +12,17 @@ public class Prueba {
     
     public static void main(String[]args){
         //Prueba de Matriz dispersa
-        /*
+        
         Matriz a = new Matriz();
-        a.add(0, 0, "Adios");
-        a.add(1, 1, "Hola");
-        a.add(2, 2, "Hola");
-        a.add(3, 3, "Hola");
-        a.add(3, 0, "Hola");
-        a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.png");
+       /*
+        a.add(1, 1, "#0B1FCB");
+        a.add(2, 2, "#0B1FCB");
+        a.add(3, 3, "#0B1FCB");
+        a.add(3, 0, "#0B1FCB");
         */
+       a.add(3, 3, "#0B1FCB");
+        a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.png");
+        
         
         /*
         //Prueba de AVL 

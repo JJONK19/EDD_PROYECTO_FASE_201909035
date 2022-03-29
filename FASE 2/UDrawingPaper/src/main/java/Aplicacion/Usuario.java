@@ -4,9 +4,30 @@
  */
 package Aplicacion;
 
+
+import static Aplicacion.Administrador.data;
+import Estructuras.ArbolABB;
+import Estructuras.ArbolB;
+import Estructuras.Capa;
+import Estructuras.Cliente;
+import Estructuras.NodoB;
+import com.jayway.jsonpath.JsonPath;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 
 /**
  *
@@ -19,8 +40,11 @@ public class Usuario extends javax.swing.JFrame {
      */
     public Usuario() {
         initComponents();
+        
     }
-
+    
+    public void myInitComponents() {
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,23 +57,23 @@ public class Usuario extends javax.swing.JFrame {
         Label3 = new javax.swing.JLabel("<HTML><U>Manejo de Capas</U></HTML>");
         add2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        add4 = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         modificar = new javax.swing.JButton();
         Label4 = new javax.swing.JLabel("<HTML><U>Imagenes</U></HTML>");
         Label1 = new javax.swing.JLabel("<HTML><U>Carga de Archivos</U></HTML>");
         add3 = new javax.swing.JButton();
-        add1 = new javax.swing.JButton();
+        capa = new javax.swing.JButton();
         Label2 = new javax.swing.JLabel("<HTML><U>Capas</U></HTML>");
         carga = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Label5 = new javax.swing.JLabel("<HTML><U>Álbumes</U></HTML>");
-        add = new javax.swing.JButton();
+        ccap = new javax.swing.JButton();
         icono = new javax.swing.JLabel();
         Label6 = new javax.swing.JLabel("<HTML><U>Reportes</U></HTML>");
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         add5 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         Label7 = new javax.swing.JLabel("<HTML><U>Carga de Archivos</U></HTML>");
         Label9 = new javax.swing.JLabel("<HTML><U>Usuario</U></HTML>");
 
@@ -68,13 +92,26 @@ public class Usuario extends javax.swing.JFrame {
         setTitle("UDrawing Paper");
         setLocation(new java.awt.Point(100, 0));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(253, 251, 251));
 
-        add4.setBackground(new java.awt.Color(53, 108, 114));
-        add4.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        add4.setForeground(new java.awt.Color(255, 255, 255));
-        add4.setText("Salir");
+        salir.setBackground(new java.awt.Color(53, 108, 114));
+        salir.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         modificar.setBackground(new java.awt.Color(53, 108, 114));
         modificar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
@@ -102,10 +139,15 @@ public class Usuario extends javax.swing.JFrame {
         add3.setForeground(new java.awt.Color(255, 255, 255));
         add3.setText("Ver Imagenes");
 
-        add1.setBackground(new java.awt.Color(53, 108, 114));
-        add1.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        add1.setForeground(new java.awt.Color(255, 255, 255));
-        add1.setText("Ver Capas");
+        capa.setBackground(new java.awt.Color(53, 108, 114));
+        capa.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        capa.setForeground(new java.awt.Color(255, 255, 255));
+        capa.setText("Ver Capas");
+        capa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capaActionPerformed(evt);
+            }
+        });
 
         Label2.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label2.setForeground(new java.awt.Color(238, 58, 95));
@@ -133,10 +175,15 @@ public class Usuario extends javax.swing.JFrame {
         */
         Label5.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        add.setBackground(new java.awt.Color(53, 108, 114));
-        add.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        add.setForeground(new java.awt.Color(255, 255, 255));
-        add.setText("Capas");
+        ccap.setBackground(new java.awt.Color(53, 108, 114));
+        ccap.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        ccap.setForeground(new java.awt.Color(255, 255, 255));
+        ccap.setText("Capas");
+        ccap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ccapActionPerformed(evt);
+            }
+        });
 
         Label6.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label6.setForeground(new java.awt.Color(238, 58, 95));
@@ -157,10 +204,12 @@ public class Usuario extends javax.swing.JFrame {
         add5.setForeground(new java.awt.Color(255, 255, 255));
         add5.setText("Ver Álbumes");
 
-        jLabel3.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("\"DPI\"");
+        usuario.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        usuario.setForeground(new java.awt.Color(0, 0, 0));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        /*
+        usuario.setText("\"DPI\"");
+        */
 
         Label7.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label7.setForeground(new java.awt.Color(238, 58, 95));
@@ -185,13 +234,13 @@ public class Usuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(add4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(carga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ccap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -199,7 +248,7 @@ public class Usuario extends javax.swing.JFrame {
                                     .addComponent(Label9, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                             .addComponent(Label6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(112, 112, 112)
@@ -207,7 +256,7 @@ public class Usuario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(add1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
+                                    .addComponent(capa, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(add3, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
@@ -235,16 +284,16 @@ public class Usuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Label9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)))
+                                .addComponent(usuario)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ccap, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Label2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(capa, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Label4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -266,7 +315,7 @@ public class Usuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(add4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -296,6 +345,123 @@ public class Usuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        //Serealizar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            data = new ArbolB();
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                
+        }
+        
+        Login n = new Login();
+        n.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        try {
+            FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
+            ObjectInputStream escribir = new ObjectInputStream(abrir);
+            data =  (ArbolB) escribir.readObject();
+            escribir.close();
+            abrir.close();
+            
+            aux = data.buscar(user, data.raiz);
+        } catch (IOException i) {
+           data = new ArbolB();
+            
+        } catch (ClassNotFoundException c) {
+            data = new ArbolB();
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+        //Serealizar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        
+        Login n = new Login();
+        n.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_salirActionPerformed
+
+    //Cargar Capas
+    private void ccapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccapActionPerformed
+        // TODO add your handling code here:
+        aux.contenido.capas = new ArbolABB();   //Reiniciar Arbol
+        JFileChooser filechooser = new JFileChooser();
+        FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
+        filechooser.addChoosableFileFilter(exp);
+        filechooser.setFileFilter(exp);
+        if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            try{
+                File json = filechooser.getSelectedFile().getAbsoluteFile();
+                //Separar Nombres
+                List<Integer> nombre = JsonPath.parse(json).read("$.*.id_capa");
+                
+                //Separar Lista de pixeles
+                List<Map> pix = JsonPath.parse(json).read("$.*.pixeles");
+                
+                //Crear capas
+                for (int i =0; i < nombre.size();i++){
+                    //Lectura de los diccionarios
+                    int tempm = nombre.get(i);
+                                
+                    //Creacion de lista de pixeles
+                    JSONArray temp = (JSONArray) pix.get(i);
+                    List<Map> pixa = JsonPath.parse(temp).read("$.*");
+                    
+                    //Creacion de capa
+                    Capa Nuevo = new Capa(tempm, pixa);
+                    
+                    aux.contenido.capas.add(Nuevo, aux.contenido.capas.raiz);
+                }
+                aux.contenido.capas.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\capas.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\capas.png");
+                JOptionPane.showMessageDialog(this, "Registro Exitoso.");
+                
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+               e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_ccapActionPerformed
+
+    private void capaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capaActionPerformed
+        // TODO add your handling code here:
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        VCapas n = new VCapas(this, true);
+        n.setVisible(true);
+        n.user = user;
+        data = n.getArbol();
+    }//GEN-LAST:event_capaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,10 +494,14 @@ public class Usuario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Usuario().setVisible(true);
+                
             }
         });
+        
     }
-
+    static String user = "";
+    ArbolB data = new ArbolB();
+    NodoB aux = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
@@ -341,19 +511,19 @@ public class Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel Label6;
     private javax.swing.JLabel Label7;
     private javax.swing.JLabel Label9;
-    private javax.swing.JButton add;
-    private javax.swing.JButton add1;
     private javax.swing.JButton add2;
     private javax.swing.JButton add3;
-    private javax.swing.JButton add4;
     private javax.swing.JButton add5;
+    private javax.swing.JButton capa;
     private javax.swing.JButton carga;
+    private javax.swing.JButton ccap;
     private javax.swing.JLabel icono;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificar;
+    private javax.swing.JButton salir;
+    public javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

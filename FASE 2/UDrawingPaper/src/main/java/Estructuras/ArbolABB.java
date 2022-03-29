@@ -15,23 +15,26 @@ import java.util.UUID;
  * @author JJONK19
  */
 public class ArbolABB implements Serializable {
-    NodoABB raiz; //Raiz del arbol
-    
+    public NodoABB raiz; //Raiz del arbol
+    int tamaño;
     public ArbolABB(){
         this.raiz = null;
+        tamaño = 0;
     }
     
     //Metodo Añadir
-    public void add(int agregar, NodoABB revisar){  //Siempre que se vaya a usar, se envia la raiz para que empiece a analizar desde ahí
+    public void add(Capa agregar, NodoABB revisar){  //Siempre que se vaya a usar, se envia la raiz para que empiece a analizar desde ahí
             if(raiz == null){
                 NodoABB nuevo = new NodoABB(agregar);
                 raiz = nuevo;
+                tamaño++;
             }else{
-            if(revisar.content != agregar){
-                if(revisar.content > agregar){
+            if(revisar.content.id != agregar.id){
+                if(revisar.content.id > agregar.id){
                     if(revisar.hijo1 == null){
                         NodoABB nuevo = new NodoABB(agregar);
                         revisar.hijo1 = nuevo;
+                        tamaño++;
                     }else{
                         add(agregar, revisar.hijo1);
                     }
@@ -39,6 +42,7 @@ public class ArbolABB implements Serializable {
                     if(revisar.hijo2 == null){
                         NodoABB nuevo = new NodoABB(agregar);
                         revisar.hijo2 = nuevo;
+                        tamaño++;
                     }else{
                         add(agregar, revisar.hijo2);
                     }
@@ -55,10 +59,10 @@ public class ArbolABB implements Serializable {
             if(aux == null){
                 ban = 1; //Fin del arbol
             }else{
-                if(aux.content == valor){
+                if(aux.content.id == valor){
                     ban = 2;    //Valor encontrado
                 }else{
-                    if(aux.content > valor){
+                    if(aux.content.id > valor){
                         aux = aux.hijo1;
                     }else{
                         aux = aux.hijo2;
@@ -78,10 +82,13 @@ public class ArbolABB implements Serializable {
     public void delete(){
     }
     
+    public int getSize(){
+        return tamaño;
+    }
     //Metodo para preorden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
     public void preorder(NodoABB inicio){
         if(raiz != null){
-            System.out.print(" " + inicio.content + " ");
+            System.out.print(" " + inicio.content.id + " ");
             if(inicio.hijo1 != null){
                 preorder(inicio.hijo1);
             }
@@ -100,7 +107,7 @@ public class ArbolABB implements Serializable {
            if(inicio.hijo2 != null){
                postorder(inicio.hijo2);
            }
-           System.out.print(" " + inicio.content + " ");   
+           System.out.print(" " + inicio.content.id + " ");   
         }
     }
     
@@ -111,7 +118,7 @@ public class ArbolABB implements Serializable {
                 inorder(inicio.hijo1);
             }
 
-            System.out.print(" " + inicio.content + " ");
+            System.out.print(" " + inicio.content.id + " ");
 
             if(inicio.hijo2 != null){
                 inorder(inicio.hijo2);
@@ -129,7 +136,7 @@ public class ArbolABB implements Serializable {
         String t = "";
         if(raiz != null){
             inicio.ID = "\""+UUID.randomUUID().toString() + "\"";
-            t += inicio.ID + "[shape = circle label="+ inicio.content + "]\n";
+            t += inicio.ID + "[shape = circle label="+ inicio.content.id + "]\n";
             
             if(inicio.hijo1 != null){
                 t += declarar(inicio.hijo1);

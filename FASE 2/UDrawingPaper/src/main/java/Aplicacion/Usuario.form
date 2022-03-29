@@ -51,6 +51,10 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -91,14 +95,14 @@
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="add4" min="-2" pref="167" max="-2" attributes="0"/>
+                          <Component id="salir" min="-2" pref="167" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="carga" alignment="0" max="32767" attributes="0"/>
                               <Component id="modificar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="add" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ccap" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="icono" min="-2" pref="78" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -106,7 +110,7 @@
                                       <Component id="Label9" min="-2" pref="216" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel1" max="32767" attributes="0"/>
-                                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="usuario" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -118,7 +122,7 @@
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="Label2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="add1" alignment="0" pref="356" max="32767" attributes="0"/>
+                                      <Component id="capa" alignment="0" pref="356" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="Label4" alignment="0" max="32767" attributes="0"/>
@@ -156,19 +160,19 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="Label9" min="-2" pref="33" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="usuario" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Label1" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="add" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="ccap" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="Label2" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="add1" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="capa" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="Label4" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -196,7 +200,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="208" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="add4" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="salir" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -210,7 +214,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="add4">
+        <Component class="javax.swing.JButton" name="salir">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="72" green="6c" red="35" type="rgb"/>
@@ -223,6 +227,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="modificar">
           <Properties>
@@ -296,7 +303,7 @@
             <Property name="text" type="java.lang.String" value="Ver Imagenes"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="add1">
+        <Component class="javax.swing.JButton" name="capa">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="72" green="6c" red="35" type="rgb"/>
@@ -309,6 +316,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Ver Capas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="capaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Label2">
           <Properties>
@@ -380,7 +390,7 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;&#xc1;lbumes&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="add">
+        <Component class="javax.swing.JButton" name="ccap">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="72" green="6c" red="35" type="rgb"/>
@@ -393,6 +403,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Capas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ccapActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="icono">
           <AuxValues>
@@ -467,7 +480,7 @@
             <Property name="text" type="java.lang.String" value="Ver &#xc1;lbumes"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="usuario">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri Light" size="14" style="0"/>
@@ -475,9 +488,13 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalAlignment" type="int" value="2" postCode="/*"/>
             <Property name="text" type="java.lang.String" value="&quot;DPI&quot;"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="*/"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="Label7">
           <Properties>
