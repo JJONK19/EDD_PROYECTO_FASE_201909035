@@ -227,9 +227,7 @@ public class Matriz implements Serializable {
                     int bany = 0;
                     while(aux != null){
                         if(x == aux.x){
-                            temp.arriba = aux.arriba;
-                            temp.abajo = aux.abajo;
-                            aux = temp;
+                            aux.contenido = contenido ;
                             bany = 1;
                             break;
                         }else{
@@ -266,9 +264,7 @@ public class Matriz implements Serializable {
                     int banx = 0;
                     while(aux != null){
                         if(y == aux.y){
-                            temp.izquierda = aux.izquierda;
-                            temp.derecha = aux.derecha;
-                            aux = temp;
+                            aux.contenido = contenido;
                             banx = 1;
                             break;
                         }else{

@@ -16,6 +16,7 @@ public class NodoABB implements Serializable{
     public NodoABB hijo1; //Hijo izquierdo del arbol
     public NodoABB hijo2; //Hijo derecho del arbol
     Boolean hoja; //Determina si el arbol es una hoja o no
+    int altura;
     
     public NodoABB(Capa contenido){
         this.ID = "";

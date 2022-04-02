@@ -14,13 +14,13 @@ public class Prueba {
         //Prueba de Matriz dispersa
         
         Matriz a = new Matriz();
-       /*
+       
         a.add(1, 1, "#0B1FCB");
         a.add(2, 2, "#0B1FCB");
         a.add(3, 3, "#0B1FCB");
         a.add(3, 0, "#0B1FCB");
-        */
-       a.add(3, 3, "#0B1FCB");
+        
+       a.add(3, 3, "#000000");
         a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\matriz.png");
         
         

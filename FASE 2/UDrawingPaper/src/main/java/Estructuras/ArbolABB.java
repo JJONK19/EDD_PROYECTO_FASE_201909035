@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -86,44 +87,168 @@ public class ArbolABB implements Serializable {
         return tamaño;
     }
     //Metodo para preorden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void preorder(NodoABB inicio){
+    public String preorder(NodoABB inicio){
+        String t = "";
         if(raiz != null){
-            System.out.print(" " + inicio.content.id + " ");
+            t += inicio.content.id + " " ;
             if(inicio.hijo1 != null){
-                preorder(inicio.hijo1);
+                 t += preorder(inicio.hijo1);
             }
             if(inicio.hijo2 != null){
-                preorder(inicio.hijo2);
+                 t += preorder(inicio.hijo2);
             }
         }
+        return t;
+    }
+    public String preorderI(NodoABB inicio){
+        String t = "";
+        if(raiz != null){
+            t += inicio.content.id + "," ;
+            if(inicio.hijo1 != null){
+                 t += preorderI(inicio.hijo1);
+            }
+            if(inicio.hijo2 != null){
+                 t += preorderI(inicio.hijo2);
+            }
+        }
+        return t;
     }
     
     //Metodo para post-orden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void postorder(NodoABB inicio){
+    public String postorder(NodoABB inicio){
+        String t = "";
         if(raiz != null){
            if(inicio.hijo1 != null){
-               postorder(inicio.hijo1);
+               t += postorder(inicio.hijo1);
            }
            if(inicio.hijo2 != null){
-               postorder(inicio.hijo2);
+               t += postorder(inicio.hijo2);
            }
-           System.out.print(" " + inicio.content.id + " ");   
+           t += inicio.content.id + " ";
         }
+        return t;
+    }
+    
+    //Mismo post orser usasdo para los recorridos de imagenes
+    public String postorderI(NodoABB inicio){
+        String t = "";
+        if(raiz != null){
+           if(inicio.hijo1 != null){
+               t += postorderI(inicio.hijo1);
+           }
+           if(inicio.hijo2 != null){
+               t += postorderI(inicio.hijo2);
+           }
+           t += inicio.content.id + ",";
+        }
+        return t;
     }
     
     //Metodo para inorder. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void inorder(NodoABB inicio){
+    public String inorder(NodoABB inicio){
+        String t = "";
         if(raiz != null){
             if(inicio.hijo1 != null){
-                inorder(inicio.hijo1);
+                t += inorder(inicio.hijo1);
             }
 
-            System.out.print(" " + inicio.content.id + " ");
+            t += inicio.content.id + " ";
 
             if(inicio.hijo2 != null){
-                inorder(inicio.hijo2);
+                t += inorder(inicio.hijo2);
             }
         }
+        return t;
+    }
+    
+    public String inorderI(NodoABB inicio){
+        String t = "";
+        if(raiz != null){
+            if(inicio.hijo1 != null){
+                t += inorderI(inicio.hijo1);
+            }
+
+            t += inicio.content.id + ",";
+
+            if(inicio.hijo2 != null){
+                t += inorderI(inicio.hijo2);
+            }
+        }
+        return t;
+    }
+    
+    //Recibe el modelo de la tabla y añade la información
+    public void esHoja(DefaultTableModel model){
+        Cola recorrer = new Cola();
+        recorrer.enqueue(this.raiz);
+        while(recorrer.no != 0){
+            NodoABB aux = (NodoABB) recorrer.dequeue();
+            if(aux.hijo1 == null && aux.hijo2 == null){
+                model.addRow(new Object[]{ ("Capa " + aux.content.id) });
+            }else{
+                //Añadir los hijos a la cola de análisis
+                if(aux.hijo1 != null){
+                    recorrer.enqueue(aux.hijo1);
+                }
+                
+                if(aux.hijo2 != null){
+                    recorrer.enqueue(aux.hijo2);
+                }
+                
+            }
+        }  
+    }
+    
+    //Copiado para actualizar los pesos del AVL
+    public int altura(NodoABB nodo){
+        if(nodo.hijo1 == null && nodo.hijo2 == null){
+            nodo.altura = 0;
+        }else{
+            if(nodo.hijo1 == null){
+                nodo.altura = altura(nodo.hijo2) + 1;
+            }else{
+                if(nodo.hijo2 == null){
+                    nodo.altura = altura(nodo.hijo1) + 1;
+                }else{
+                    nodo.altura = mayor(altura(nodo.hijo1), altura(nodo.hijo2)) + 1;
+                }
+            }
+        }       
+        return nodo.altura;
+    }
+    
+    //Regresa la profundidadl del arbol
+    public int profundidad(){
+        altura(raiz);
+        return raiz.altura;
+    }
+    
+    //Profundidad del nodo. Realiza una compración simple entre dos valores y regresa el más grande.
+    public int mayor(int a1, int a2){
+        if(a1 >= a2){ 
+            return a1;
+        }else{
+            return a2;
+        }
+    }
+    
+    public String amplitud(){
+        String t = "";
+        Cola recorrer = new Cola();
+        recorrer.enqueue(this.raiz);
+        while(recorrer.no != 0){
+            NodoABB aux = (NodoABB) recorrer.dequeue();
+            t += aux.content.id + ",";
+            if(aux.hijo1 != null){
+                recorrer.enqueue(aux.hijo1);
+            }
+            
+            if(aux.hijo2 != null){
+                recorrer.enqueue(aux.hijo2);
+            }
+        }
+        
+        return t;
     }
     
     //Metodos de Graficación

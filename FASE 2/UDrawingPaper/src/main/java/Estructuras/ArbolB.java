@@ -95,6 +95,7 @@ public class ArbolB implements Serializable {
         } 
         return this;
     }
+    
     //Añade un nodo 
     public void addN(Cliente data){
         NodoB nuevo = new NodoB(data);

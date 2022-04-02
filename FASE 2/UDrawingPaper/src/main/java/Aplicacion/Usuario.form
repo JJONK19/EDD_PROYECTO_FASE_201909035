@@ -101,7 +101,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="carga" alignment="0" max="32767" attributes="0"/>
-                              <Component id="modificar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CImagenes" alignment="0" max="32767" attributes="0"/>
                               <Component id="ccap" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="icono" min="-2" pref="78" max="-2" attributes="0"/>
@@ -126,16 +126,16 @@
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="Label4" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="add3" alignment="0" pref="356" max="32767" attributes="0"/>
+                                      <Component id="imagen" alignment="0" pref="356" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="Label5" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBox1" alignment="0" pref="356" max="32767" attributes="0"/>
+                              <Component id="reportes" alignment="0" pref="356" max="32767" attributes="0"/>
                               <Component id="add5" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -176,13 +176,13 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="Label4" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="add3" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="imagen" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="modificar" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="CImagenes" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="carga" min="-2" pref="46" max="-2" attributes="0"/>
                       </Group>
@@ -195,7 +195,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="Label6" max="32767" attributes="0"/>
-                      <Component id="jComboBox1" pref="39" max="32767" attributes="0"/>
+                      <Component id="reportes" pref="39" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="208" max="-2" attributes="0"/>
@@ -231,7 +231,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="modificar">
+        <Component class="javax.swing.JButton" name="CImagenes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="72" green="6c" red="35" type="rgb"/>
@@ -244,6 +244,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Im&#xe1;genes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CImagenesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Label4">
           <Properties>
@@ -289,7 +292,7 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Carga de Archivos&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="add3">
+        <Component class="javax.swing.JButton" name="imagen">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="72" green="6c" red="35" type="rgb"/>
@@ -302,6 +305,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Ver Imagenes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imagenActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="capa">
           <Properties>
@@ -434,7 +440,7 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Reportes&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="reportes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="72" green="6c" red="35" type="rgb"/>
@@ -451,13 +457,16 @@
                 <StringItem index="1" value="Im&#xe1;genes con m&#xe1;s capas"/>
                 <StringItem index="2" value="Capas que son hojas"/>
                 <StringItem index="3" value="Profundidad del arbol de capas"/>
-                <StringItem index="4" value="Recorridos del arbol"/>
+                <StringItem index="4" value="Recorridos del arbol de capas"/>
               </StringArray>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reportesActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -465,6 +474,29 @@
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="tabla">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="1" rowCount="1">
+                    <Column editable="false" title="Reportes" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                  <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                  </TableColumnModel>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
         <Component class="javax.swing.JButton" name="add5">
           <Properties>

@@ -62,6 +62,7 @@ public class VCapas extends javax.swing.JDialog {
         gencap = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("UDrawing Paper");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -264,7 +265,6 @@ public class VCapas extends javax.swing.JDialog {
             DefaultComboBoxModel nuevo = new DefaultComboBoxModel();
             nuevo.addElement("Seleccionar");
             for(int i = 0; i < x.size(); i++){
-                System.out.println(x.get(i));
                 nuevo.addElement(x.get(i));
             }
             lista.setModel(nuevo);

@@ -7,9 +7,13 @@ package Aplicacion;
 
 import static Aplicacion.Administrador.data;
 import Estructuras.ArbolABB;
+import Estructuras.ArbolAVL;
 import Estructuras.ArbolB;
 import Estructuras.Capa;
 import Estructuras.Cliente;
+import Estructuras.Imagen;
+import Estructuras.Matriz;
+import Estructuras.NodoABB;
 import Estructuras.NodoB;
 import com.jayway.jsonpath.JsonPath;
 import java.io.File;
@@ -26,6 +30,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 
@@ -58,10 +63,10 @@ public class Usuario extends javax.swing.JFrame {
         add2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         salir = new javax.swing.JButton();
-        modificar = new javax.swing.JButton();
+        CImagenes = new javax.swing.JButton();
         Label4 = new javax.swing.JLabel("<HTML><U>Imagenes</U></HTML>");
         Label1 = new javax.swing.JLabel("<HTML><U>Carga de Archivos</U></HTML>");
-        add3 = new javax.swing.JButton();
+        imagen = new javax.swing.JButton();
         capa = new javax.swing.JButton();
         Label2 = new javax.swing.JLabel("<HTML><U>Capas</U></HTML>");
         carga = new javax.swing.JButton();
@@ -70,8 +75,9 @@ public class Usuario extends javax.swing.JFrame {
         ccap = new javax.swing.JButton();
         icono = new javax.swing.JLabel();
         Label6 = new javax.swing.JLabel("<HTML><U>Reportes</U></HTML>");
-        jComboBox1 = new javax.swing.JComboBox<>();
+        reportes = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
         add5 = new javax.swing.JButton();
         usuario = new javax.swing.JLabel();
         Label7 = new javax.swing.JLabel("<HTML><U>Carga de Archivos</U></HTML>");
@@ -113,10 +119,15 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
-        modificar.setBackground(new java.awt.Color(53, 108, 114));
-        modificar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        modificar.setForeground(new java.awt.Color(255, 255, 255));
-        modificar.setText("Imágenes");
+        CImagenes.setBackground(new java.awt.Color(53, 108, 114));
+        CImagenes.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        CImagenes.setForeground(new java.awt.Color(255, 255, 255));
+        CImagenes.setText("Imágenes");
+        CImagenes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CImagenesActionPerformed(evt);
+            }
+        });
 
         Label4.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label4.setForeground(new java.awt.Color(238, 58, 95));
@@ -134,10 +145,15 @@ public class Usuario extends javax.swing.JFrame {
         */
         Label1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        add3.setBackground(new java.awt.Color(53, 108, 114));
-        add3.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        add3.setForeground(new java.awt.Color(255, 255, 255));
-        add3.setText("Ver Imagenes");
+        imagen.setBackground(new java.awt.Color(53, 108, 114));
+        imagen.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        imagen.setForeground(new java.awt.Color(255, 255, 255));
+        imagen.setText("Ver Imagenes");
+        imagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imagenActionPerformed(evt);
+            }
+        });
 
         capa.setBackground(new java.awt.Color(53, 108, 114));
         capa.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
@@ -193,11 +209,34 @@ public class Usuario extends javax.swing.JFrame {
         */
         Label6.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        jComboBox1.setBackground(new java.awt.Color(53, 108, 114));
-        jComboBox1.setFont(new java.awt.Font("Candara Light", 0, 16)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Imágenes con más capas", "Capas que son hojas", "Profundidad del arbol de capas", "Recorridos del arbol" }));
-        jComboBox1.setBorder(null);
+        reportes.setBackground(new java.awt.Color(53, 108, 114));
+        reportes.setFont(new java.awt.Font("Candara Light", 0, 16)); // NOI18N
+        reportes.setForeground(new java.awt.Color(0, 0, 0));
+        reportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Imágenes con más capas", "Capas que son hojas", "Profundidad del arbol de capas", "Recorridos del arbol de capas" }));
+        reportes.setBorder(null);
+        reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportesActionPerformed(evt);
+            }
+        });
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null}
+            },
+            new String [] {
+                "Reportes"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabla);
 
         add5.setBackground(new java.awt.Color(53, 108, 114));
         add5.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
@@ -239,7 +278,7 @@ public class Usuario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(carga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CImagenes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ccap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,11 +298,11 @@ public class Usuario extends javax.swing.JFrame {
                                     .addComponent(capa, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(add3, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
+                                    .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
                             .addComponent(Label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, 356, Short.MAX_VALUE)
+                            .addComponent(reportes, 0, 356, Short.MAX_VALUE)
                             .addComponent(add5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(25, 25, 25)
@@ -297,11 +336,11 @@ public class Usuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Label4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -311,7 +350,7 @@ public class Usuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                    .addComponent(reportes, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -435,7 +474,6 @@ public class Usuario extends javax.swing.JFrame {
                     
                     aux.contenido.capas.add(Nuevo, aux.contenido.capas.raiz);
                 }
-                aux.contenido.capas.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\capas.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\capas.png");
                 JOptionPane.showMessageDialog(this, "Registro Exitoso.");
                 
             }catch(Exception e){
@@ -462,6 +500,140 @@ public class Usuario extends javax.swing.JFrame {
         n.user = user;
         data = n.getArbol();
     }//GEN-LAST:event_capaActionPerformed
+
+    private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
+        // TODO add your handling code here:
+        if(aux.contenido.capas.raiz != null){
+            String na =  (String) reportes.getSelectedItem();
+            switch (na){
+                case "Imágenes con más capas":
+                    DefaultTableModel model = new DefaultTableModel(new String[] { "Imagenes con más capas" },0);
+                    tabla.setModel(model);
+                    break;
+                    
+                case "Capas que son hojas":
+                    //Basado en https://stackoverflow.com/questions/22371720/how-to-add-row-dynamically-in-jtable
+                    model = new DefaultTableModel(new String[] { "Capas que son hojas"},0);
+                    tabla.setModel(model);
+
+                    //Recorrido de arbol de capas
+                    aux.contenido.capas.esHoja(model);
+                    break;
+                    
+                case "Profundidad del arbol de capas":
+                    model = new DefaultTableModel(new String[] { "Profundidad del arbol de capas" },0);
+                    tabla.setModel(model);
+                    model.addRow(new Object[]{ (aux.contenido.capas.profundidad()) });
+                    
+                    break;
+                    
+                case "Recorridos del arbol de capas":
+                    model = new DefaultTableModel(new String[] { "Recorrido" },0);
+                    tabla.setModel(model);
+                    
+                    //Preordem
+                    String pre = "";
+                    pre = aux.contenido.capas.preorder(aux.contenido.capas.raiz);
+                    
+                    
+                    //Postorden
+                    String post = "";
+                    post = aux.contenido.capas.postorder(aux.contenido.capas.raiz);
+                    
+                    //Inorden
+                    String in = "";
+                    in = aux.contenido.capas.inorder(aux.contenido.capas.raiz);
+                    
+                    model.addRow(new Object[]{ "Preorden - " + pre});
+                    model.addRow(new Object[]{ "Postorden - " + post });
+                    model.addRow(new Object[]{ "Inorden - " + in });
+                    break;
+                    
+                    
+                default:
+                    model = new DefaultTableModel(new String[] { "Reportes" },0);
+                    tabla.setModel(model);
+                    break;
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "El arbol está vacío.");
+        }
+    }//GEN-LAST:event_reportesActionPerformed
+    
+    //Carga de Imagenes
+    private void CImagenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CImagenesActionPerformed
+        // TODO add your handling code here:
+        if(aux.contenido.capas.raiz != null){
+            aux.contenido.imagenes = new ArbolAVL();   //Reiniciar Arbol
+            JFileChooser filechooser = new JFileChooser();
+            FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
+            filechooser.addChoosableFileFilter(exp);
+            filechooser.setFileFilter(exp);
+            if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+                try{
+                    File json = filechooser.getSelectedFile().getAbsoluteFile();
+                    //Separar Nombres
+                    List<Integer> nombre = JsonPath.parse(json).read("$.*.id");
+
+                    //Separar Capas
+                    List<Map> pix = JsonPath.parse(json).read("$.*.capas");  
+                    
+                    //Crear Imagenes
+                    for (int i =0; i < nombre.size();i++){
+                        //Lectura de los diccionarios
+                        int tempm = nombre.get(i);
+
+                        //Creacion de Arbol de Capas
+                        JSONArray temp = (JSONArray) pix.get(i);
+                        Object [] pixa = temp.toArray();
+                        ArbolABB t = new ArbolABB();
+                        for(int j = 0; j < pixa.length; j++ ){
+                            NodoABB nodo  = aux.contenido.capas.search((int) pixa[j]);
+                            
+                            if(nodo != null){
+                                t.add(nodo.content, t.raiz);
+                            }else{
+                                System.out.println("Nodo Vacio");
+                            }
+                        }
+
+                        //Creacion de Imagen
+                        Imagen Nuevo = new Imagen(tempm, t);
+                        aux.contenido.imagenes.add(Nuevo);
+                    }
+                    
+                    
+                    JOptionPane.showMessageDialog(this, "Registro Exitoso.");
+                    
+                }catch(Exception e){
+                   JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+                   e.printStackTrace();
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay Capas cargadas en memoria.");
+        }
+        
+    }//GEN-LAST:event_CImagenesActionPerformed
+
+    private void imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imagenActionPerformed
+        // TODO add your handling code here:
+        //Serializar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        VImagenes n = new VImagenes(this, true);
+        n.setVisible(true);
+        n.user = user;
+        data = n.getArbol();
+    }//GEN-LAST:event_imagenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,6 +675,7 @@ public class Usuario extends javax.swing.JFrame {
     ArbolB data = new ArbolB();
     NodoB aux = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CImagenes;
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
@@ -512,18 +685,18 @@ public class Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel Label7;
     private javax.swing.JLabel Label9;
     private javax.swing.JButton add2;
-    private javax.swing.JButton add3;
     private javax.swing.JButton add5;
     private javax.swing.JButton capa;
     private javax.swing.JButton carga;
     private javax.swing.JButton ccap;
     private javax.swing.JLabel icono;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton modificar;
+    private javax.swing.JComboBox<String> reportes;
     private javax.swing.JButton salir;
+    private javax.swing.JTable tabla;
     public javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

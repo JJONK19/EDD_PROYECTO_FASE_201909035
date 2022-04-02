@@ -12,14 +12,14 @@ import java.io.Serializable;
  */
 public class NodoAVL implements Serializable{
     String ID; //ID del nodo - Se usa al graficar
-    int content; //contenido del nodo
-    NodoAVL hijo1; //Hijo izquierdo del arbol
-    NodoAVL hijo2; //Hijo derecho del arbol 
-    NodoAVL padre; //Padre del noco en cuestion. Si no tiene es la raiz.
+    public Imagen content; //contenido del nodo
+    public NodoAVL hijo1; //Hijo izquierdo del arbol
+    public NodoAVL hijo2; //Hijo derecho del arbol 
+    public NodoAVL padre; //Padre del noco en cuestion. Si no tiene es la raiz.
     Boolean hoja; //Determina si el arbol es una hoja o no
     int altura;
     
-    public NodoAVL(int contenido){
+    public NodoAVL(Imagen contenido){
         this.ID = "";
         this.content = contenido;
         this.hijo1 = null;

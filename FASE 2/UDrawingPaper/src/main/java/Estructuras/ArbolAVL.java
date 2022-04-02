@@ -14,7 +14,7 @@ import java.util.UUID;
  * @author JJONK19
  */
 public class ArbolAVL implements Serializable{
-    NodoAVL raiz;
+    public NodoAVL raiz;
     
     public ArbolAVL(){
         this.raiz = null;
@@ -78,13 +78,13 @@ public class ArbolAVL implements Serializable{
     public NodoAVL insertar(NodoAVL revisar , NodoAVL nuevo){
         if(revisar != null){
             if(nuevo.content != revisar.content){
-                if(nuevo.content < revisar.content){
+                if(nuevo.content.id < revisar.content.id){
                     revisar.hijo1 = insertar(revisar.hijo1 , nuevo);   //Insercion en el hijo izquierdo
                     //Calculo de la nueva altura
                     revisar.altura = mayor(altura(revisar.hijo1), altura(revisar.hijo2)) + 1;
                     //Revision de equilibrio
                     if(altura(revisar.hijo2) - altura(revisar.hijo1) == -2){
-                        if(nuevo.content < revisar.hijo1.content){             
+                        if(nuevo.content.id < revisar.hijo1.content.id){             
                             revisar = rotacionl(revisar);     //Mismo signo con el hijo
                         }else{ 
                             revisar = rotacionlr(revisar);    //Diferente signo con el hijo
@@ -95,7 +95,7 @@ public class ArbolAVL implements Serializable{
                     //Calculo de la nueva altura
                     revisar.altura = mayor(altura(revisar.hijo1), altura(revisar.hijo2)) + 1;
                     if(altura(revisar.hijo2) - altura(revisar.hijo1) == 2){
-                        if(nuevo.content > revisar.hijo2.content){ 
+                        if(nuevo.content.id > revisar.hijo2.content.id){ 
                             revisar = rotacionr(revisar);    //Mismo signo con el hijo
                         }else{
                             revisar = rotacionrl(revisar);    //Diferente signo con el hijo
@@ -111,7 +111,7 @@ public class ArbolAVL implements Serializable{
     }
     
     //Añadir Nodo
-    public void add(int agregar){ //Siempre que se vaya a usar, se envia la raiz para que empiece a analizar desde ahí
+    public void add(Imagen agregar){ //Siempre que se vaya a usar, se envia la raiz para que empiece a analizar desde ahí
         NodoAVL nuevo = new NodoAVL(agregar);
         if(raiz == null){
             raiz = nuevo;
@@ -155,7 +155,7 @@ public class ArbolAVL implements Serializable{
                         actualizar(this.raiz);
                         balance(this.raiz, null);
                     }else{                      //Los dos hijos existen
-                        nodo.content = (int) grande(nodo.hijo1, nodo);
+                        nodo.content = (Imagen) grande(nodo.hijo1, nodo);
                         actualizar(this.raiz);
                         balance(this.raiz, null);
                     }
@@ -194,6 +194,7 @@ public class ArbolAVL implements Serializable{
         
         return content;
     }
+    
     //Metodo para buscar
     public NodoAVL search(int valor){
         NodoAVL aux = raiz;
@@ -203,11 +204,11 @@ public class ArbolAVL implements Serializable{
             if(aux == null){
                 ban = 1; //Fin del arbol
             }else{
-                if(aux.content == valor){
+                if(aux.content.id == valor){
                     aux.padre = pa;
                     ban = 2;    //Valor encontrado
                 }else{
-                    if(aux.content > valor){
+                    if(aux.content.id > valor){
                         pa = aux;
                         aux = aux.hijo1;
                     }else{
@@ -327,44 +328,50 @@ public class ArbolAVL implements Serializable{
         
     }
     //Metodo para preorden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void preorder(NodoAVL inicio){
+    public String preorder(NodoAVL inicio){
+        String t = "";
         if(raiz != null){
-            System.out.print(" " + inicio.content + " ");
+            t += inicio.content.id + "," ;
             if(inicio.hijo1 != null){
-                preorder(inicio.hijo1);
+                 t += preorder(inicio.hijo1);
             }
             if(inicio.hijo2 != null){
-                preorder(inicio.hijo2);
+                 t += preorder(inicio.hijo2);
             }
         }
+        return t;
     }
     
     //Metodo para post-orden. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void postorder(NodoAVL inicio){
+    public String postorder(NodoAVL inicio){
+        String t = "";
         if(raiz != null){
            if(inicio.hijo1 != null){
-               postorder(inicio.hijo1);
+               t += postorder(inicio.hijo1);
            }
            if(inicio.hijo2 != null){
-               postorder(inicio.hijo2);
+               t += postorder(inicio.hijo2);
            }
-           System.out.print(" " + inicio.content + " ");   
+           t += inicio.content.id + ",";
         }
+        return t;
     }
     
     //Metodo para inorder. Siempre que se vaya a declarar, se tiene que mandar raiz como atributo inicial.
-    public void inorder(NodoAVL inicio){
+    public String inorder(NodoAVL inicio){
+        String t = "";
         if(raiz != null){
             if(inicio.hijo1 != null){
-                inorder(inicio.hijo1);
+                t += inorder(inicio.hijo1);
             }
 
-            System.out.print(" " + inicio.content + " ");
+            t += inicio.content.id + ",";
 
             if(inicio.hijo2 != null){
-                inorder(inicio.hijo2);
+                t += inorder(inicio.hijo2);
             }
         }
+        return t;
     }
     
     //Metodos de Graficación
@@ -377,7 +384,7 @@ public class ArbolAVL implements Serializable{
         String t = "";
         if(raiz != null){
             inicio.ID = "\""+UUID.randomUUID().toString() + "\"";
-            t += inicio.ID + "[shape = circle label=\""+ inicio.content + "\"]\n";
+            t += inicio.ID + "[shape = circle label=\""+ inicio.content.id + "\"]\n";
             
             if(inicio.hijo1 != null){
                 t += declarar(inicio.hijo1);
