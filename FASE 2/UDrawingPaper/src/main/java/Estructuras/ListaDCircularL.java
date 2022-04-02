@@ -13,8 +13,8 @@ import java.io.Serializable;
  * @author JJONK19
  */
 public class ListaDCircularL implements Serializable{
-    int no; //Maneja el número de nosdos que posee la lista
-    NodoListaDobleCircular head; //Cabecera de la cola
+    public int no; //Maneja el número de nosdos que posee la lista
+    public NodoListaDobleCircular head; //Cabecera de la cola
     
     public ListaDCircularL(){
         this.head = null;
@@ -92,7 +92,19 @@ public class ListaDCircularL implements Serializable{
         return this.head == null;
     }
     
-    
+    //Regresar Analisis de Lista
+    public String album(){
+        String t = "";
+        if(this.head != null){
+            NodoListaDobleCircular aux = this.head;
+            for(int i = 0; i < no; i++){
+                ListaSimple a = (ListaSimple) aux.structure;
+                t += "{"+aux.name + " - " + a.no + "} ";
+                aux = aux.next;
+            }
+        }
+        return t;
+    }
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     
@@ -103,7 +115,7 @@ public class ListaDCircularL implements Serializable{
         String x = "";
         NodoListaDobleCircular temp = this.head;
         for(int i = 0; i < this.no; i++){
-           x += temp.ID + "[shape = box label="+ temp.name + "]\n";
+           x += temp.ID + "[shape = box label=\""+ temp.name + "\"]\n";
            
            ListaSimple t = (ListaSimple)temp.structure;
            x += t.head.declare();
@@ -116,16 +128,18 @@ public class ListaDCircularL implements Serializable{
     public String connect(){
         String x = "";
         NodoListaDobleCircular temp = this.head;
+        String R = "rank = same;";
         for(int i = 0; i < this.no; i++){
            x += temp.ID + "->" + temp.next.ID + ";\n";
            x += temp.ID + "->" + temp.prev.ID + ";\n";
-           
+           R += temp.ID + ";";
            ListaSimple t = (ListaSimple)temp.structure;
            String o = temp.ID.replace("\"", "");
            x += "subgraph cluster_" + o.replace("-", "") + "{" + t.head.connect() + "}";
            x += temp.ID + "->" + t.head.ID + "[minlen=3];";
            temp = temp.next;
         }
+        x += " {" + R + " }\n";
         return x;
     }
     

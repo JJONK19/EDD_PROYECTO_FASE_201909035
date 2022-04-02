@@ -15,9 +15,11 @@ import java.util.UUID;
  */
 public class ArbolAVL implements Serializable{
     public NodoAVL raiz;
+    int tamaño;
     
     public ArbolAVL(){
         this.raiz = null;
+        tamaño = 0;
     }
     
     //Altura del nodo. Regresa la altura del nodo
@@ -374,6 +376,50 @@ public class ArbolAVL implements Serializable{
         return t;
     }
     
+    public void tamaño(){
+        tamaño = 0;
+        if(raiz != null){
+            Cola recorrer = new Cola();
+            recorrer.enqueue(this.raiz);
+            tamaño++;
+            while(recorrer.no != 0){
+                NodoAVL aux = (NodoAVL) recorrer.dequeue();
+                if(aux.hijo1 != null){
+                    recorrer.enqueue(aux.hijo1);
+                    tamaño++;
+                }
+
+                if(aux.hijo2 != null){
+                    recorrer.enqueue(aux.hijo2);
+                    tamaño++;
+                }
+            }   
+        }
+    }
+    
+    public int getTamaño(){
+        tamaño();
+        return tamaño;
+    }
+    
+    public String amplitud(){
+        String t = "";
+        Cola recorrer = new Cola();
+        recorrer.enqueue(this.raiz);
+        while(recorrer.no != 0){
+            NodoAVL aux = (NodoAVL) recorrer.dequeue();
+            t += aux.content.id + ",";
+            if(aux.hijo1 != null){
+                recorrer.enqueue(aux.hijo1);
+            }
+            
+            if(aux.hijo2 != null){
+                recorrer.enqueue(aux.hijo2);
+            }
+        }
+        
+        return t;
+    }
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     

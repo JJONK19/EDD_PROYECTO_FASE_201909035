@@ -317,16 +317,21 @@ public class VImagenes extends javax.swing.JDialog {
 
     private void capaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capaActionPerformed
         // TODO add your handling code here:
-        try{
-            //Crear data
-            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");
-            ObjectOutputStream out=new ObjectOutputStream(f);
-            out.writeObject(data);
-            out.flush();
-            out.close();
+        //Serializar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
         }catch(Exception e){
-
+                    
         }
+        CRecorrido n = new CRecorrido(new javax.swing.JFrame(), true);
+        n.setVisible(true);
+        n.user = user;
+        data = n.getArbol();
         
     }//GEN-LAST:event_capaActionPerformed
 

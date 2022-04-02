@@ -12,8 +12,11 @@ import Estructuras.ArbolB;
 import Estructuras.Capa;
 import Estructuras.Cliente;
 import Estructuras.Imagen;
+import Estructuras.ListaDCircularL;
+import Estructuras.ListaSimple;
 import Estructuras.Matriz;
 import Estructuras.NodoABB;
+import Estructuras.NodoAVL;
 import Estructuras.NodoB;
 import com.jayway.jsonpath.JsonPath;
 import java.io.File;
@@ -23,6 +26,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,10 +84,12 @@ public class Usuario extends javax.swing.JFrame {
         reportes = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
-        add5 = new javax.swing.JButton();
+        valbum = new javax.swing.JButton();
         usuario = new javax.swing.JLabel();
         Label7 = new javax.swing.JLabel("<HTML><U>Carga de Archivos</U></HTML>");
         Label9 = new javax.swing.JLabel("<HTML><U>Usuario</U></HTML>");
+        Label8 = new javax.swing.JLabel("<HTML><U>Imagen - Arbol de Capas</U></HTML>");
+        add6 = new javax.swing.JButton();
 
         Label3.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label3.setForeground(new java.awt.Color(238, 58, 95));
@@ -148,7 +156,7 @@ public class Usuario extends javax.swing.JFrame {
         imagen.setBackground(new java.awt.Color(53, 108, 114));
         imagen.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         imagen.setForeground(new java.awt.Color(255, 255, 255));
-        imagen.setText("Ver Imagenes");
+        imagen.setText("Ver Imágenes");
         imagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imagenActionPerformed(evt);
@@ -177,6 +185,11 @@ public class Usuario extends javax.swing.JFrame {
         carga.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         carga.setForeground(new java.awt.Color(255, 255, 255));
         carga.setText("Álbumes");
+        carga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Candara Light", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -238,10 +251,15 @@ public class Usuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla);
 
-        add5.setBackground(new java.awt.Color(53, 108, 114));
-        add5.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        add5.setForeground(new java.awt.Color(255, 255, 255));
-        add5.setText("Ver Álbumes");
+        valbum.setBackground(new java.awt.Color(53, 108, 114));
+        valbum.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        valbum.setForeground(new java.awt.Color(255, 255, 255));
+        valbum.setText("Ver Álbumes");
+        valbum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valbumActionPerformed(evt);
+            }
+        });
 
         usuario.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
         usuario.setForeground(new java.awt.Color(0, 0, 0));
@@ -264,18 +282,32 @@ public class Usuario extends javax.swing.JFrame {
         */
         Label9.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
+        Label8.setFont(new java.awt.Font("Candara Light", 2, 18));
+        Label8.setForeground(new java.awt.Color(238, 58, 95));
+        Label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        /*
+        Label8.setText(null);
+        */
+        Label8.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+
+        add6.setBackground(new java.awt.Color(53, 108, 114));
+        add6.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
+        add6.setForeground(new java.awt.Color(255, 255, 255));
+        add6.setText("Ver Arbol de Capas por Imágen");
+        add6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(carga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(CImagenes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -300,9 +332,20 @@ public class Usuario extends javax.swing.JFrame {
                                     .addComponent(Label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
                             .addComponent(Label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(reportes, 0, 356, Short.MAX_VALUE)
-                            .addComponent(add5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                            .addComponent(valbum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(add6, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(430, 430, 430)
+                                .addComponent(reportes, 0, 356, Short.MAX_VALUE)))))
+                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(25, 25, 25)
@@ -313,7 +356,7 @@ public class Usuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -328,39 +371,42 @@ public class Usuario extends javax.swing.JFrame {
                         .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ccap, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Label2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(capa, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Label4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(CImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Label5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(reportes, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                        .addComponent(valbum, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Label6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Label8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(add6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reportes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(169, 169, 169)
                     .addComponent(Label7)
-                    .addContainerGap(495, Short.MAX_VALUE)))
+                    .addContainerGap(522, Short.MAX_VALUE)))
         );
 
         try{
@@ -507,8 +553,37 @@ public class Usuario extends javax.swing.JFrame {
             String na =  (String) reportes.getSelectedItem();
             switch (na){
                 case "Imágenes con más capas":
-                    DefaultTableModel model = new DefaultTableModel(new String[] { "Imagenes con más capas" },0);
+                    DefaultTableModel model = new DefaultTableModel(new String[] { "Imagenes con más capas", "Capas" },0);
                     tabla.setModel(model);
+                    
+                    //top 5 imagenes con mas capas
+                    String nodos = aux.contenido.imagenes.amplitud();
+                    nodos = nodos.substring(0, nodos.length()-1);
+                    String[] l = nodos.split(",");
+                    ArrayList<NodoAVL> ord = new ArrayList<>();
+                    for(int i = 0; i < l.length; i++){
+                        NodoAVL bus =aux.contenido.imagenes.search(Integer.valueOf(l[i]));
+                        ord.add(bus);
+                    }
+                    ord.sort(new Comparator<NodoAVL>() {
+                    @Override
+                    public int compare(NodoAVL o1, NodoAVL o2) {
+                        return Integer.compare(o1.content.capas.getSize(), o2.content.capas.getSize());
+                    }
+                });
+                    Collections.reverse(ord);
+                    int iterador = 5;
+                    if(ord.size() > 5){
+                        iterador = 5;
+                    }else{
+                        iterador = ord.size();
+                    }
+                    
+                    for(int i = 0; i < iterador; i++){
+                        NodoAVL temp = ord.get(i);
+                        model.addRow(new Object[]{temp.content.id, temp.content.capas.getSize()});
+                    }
+                    
                     break;
                     
                 case "Capas que son hojas":
@@ -635,6 +710,95 @@ public class Usuario extends javax.swing.JFrame {
         data = n.getArbol();
     }//GEN-LAST:event_imagenActionPerformed
 
+    private void add6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add6ActionPerformed
+        // TODO add your handling code here:
+        //Serializar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        CImagenes n = new CImagenes(this, true);
+        n.setVisible(true);
+        n.user = user;
+    }//GEN-LAST:event_add6ActionPerformed
+
+    private void valbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valbumActionPerformed
+        // TODO add your handling code here:
+        //Serializar
+        try{    
+            //Crear data    
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
+            ObjectOutputStream out=new ObjectOutputStream(f); 
+            out.writeObject(data);    
+            out.flush();        
+            out.close();    
+        }catch(Exception e){
+                    
+        }
+        Album n = new Album(this, true);
+        n.setVisible(true);
+        n.user = user;
+    }//GEN-LAST:event_valbumActionPerformed
+
+    private void cargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaActionPerformed
+        // TODO add your handling code here:
+        if(aux.contenido.imagenes.raiz != null){
+            aux.contenido.album = new ListaDCircularL();   //Reiniciar Arbol
+            JFileChooser filechooser = new JFileChooser();
+            FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
+            filechooser.addChoosableFileFilter(exp);
+            filechooser.setFileFilter(exp);
+            if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+                try{
+                    File json = filechooser.getSelectedFile().getAbsoluteFile();
+                    //Separar Nombres
+                    List<String> nombre = JsonPath.parse(json).read("$.*.nombre_album");
+
+                    //Separar Capas
+                    List<Map> pix = JsonPath.parse(json).read("$.*.imgs");  
+                    
+                    //Crear Albumes
+                    for (int i =0; i < nombre.size();i++){
+                        //Lectura de los diccionarios
+                        String tempm = nombre.get(i);
+
+                        //Creacion de Arbol de Capas
+                        JSONArray temp = (JSONArray) pix.get(i);
+                        Object [] pixa = temp.toArray();
+                        ListaSimple t = new ListaSimple();
+                        for(int j = 0; j < pixa.length; j++ ){
+                            NodoAVL nodo  = aux.contenido.imagenes.search((int) pixa[j]);
+                            
+                            if(nodo != null){
+                                t.add(nodo.content, Integer.toString((int)pixa[j]));
+                            }else{
+                                System.out.println("Nodo Vacio");
+                            }
+                        }
+
+                        //Creacion de Imagen
+                        aux.contenido.album.add(t, tempm, null);
+                    }
+                    
+                    
+                    JOptionPane.showMessageDialog(this, "Registro Exitoso.");
+                    
+                }catch(Exception e){
+                   JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+                   e.printStackTrace();
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No hay Capas cargadas en memoria.");
+        }
+    }//GEN-LAST:event_cargaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -683,9 +847,10 @@ public class Usuario extends javax.swing.JFrame {
     private javax.swing.JLabel Label5;
     private javax.swing.JLabel Label6;
     private javax.swing.JLabel Label7;
+    private javax.swing.JLabel Label8;
     private javax.swing.JLabel Label9;
     private javax.swing.JButton add2;
-    private javax.swing.JButton add5;
+    private javax.swing.JButton add6;
     private javax.swing.JButton capa;
     private javax.swing.JButton carga;
     private javax.swing.JButton ccap;
@@ -698,5 +863,6 @@ public class Usuario extends javax.swing.JFrame {
     private javax.swing.JButton salir;
     private javax.swing.JTable tabla;
     public javax.swing.JLabel usuario;
+    private javax.swing.JButton valbum;
     // End of variables declaration//GEN-END:variables
 }

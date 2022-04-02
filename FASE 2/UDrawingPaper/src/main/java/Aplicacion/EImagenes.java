@@ -5,9 +5,11 @@
 package Aplicacion;
 
 import Estructuras.ArbolB;
+import Estructuras.ListaSimple;
 import Estructuras.NodoABB;
 import Estructuras.NodoAVL;
 import Estructuras.NodoB;
+import Estructuras.NodoListaDobleCircular;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -216,6 +218,14 @@ public class EImagenes extends javax.swing.JDialog {
                 int b = Integer.valueOf(na);
                 if(aux.contenido.imagenes.search(b) != null){
                     aux.contenido.imagenes.delete(b);
+                    //Borrar de album 
+                    NodoListaDobleCircular rec = aux.contenido.album.head;
+                    
+                    for(int i = 0; i < aux.contenido.album.no; i++){
+                        ListaSimple temp = (ListaSimple) rec.structure;
+                        temp.borrar(na);
+                        rec = rec.next;
+                    }
                     aux.contenido.imagenes.dibujar("src/main/java/Imagenes/AVL.txt", "src/main/java/Imagenes/AVL.png");
                     //Actualiza Modelo
                     ArrayList<String> x = new ArrayList();

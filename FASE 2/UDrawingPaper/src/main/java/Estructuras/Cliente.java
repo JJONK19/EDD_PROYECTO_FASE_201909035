@@ -83,11 +83,13 @@ public class Cliente implements Serializable {
     }
     
     public String getAlbum(){
-        return "";
+        String t = Integer.toString(album.no);
+        t += " Albumes: " + album.album();
+        return t;
     }
     
     public String getImagen(){
-        return "";
+        return Integer.toString(imagenes.getTamaño());
     }
     
     public String getCapas(){

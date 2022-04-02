@@ -86,6 +86,8 @@ public class ListaB implements Serializable {
                         NodoB aux = first;
                         while(aux != null){
                             if(a.contenido.comparar(aux.contenido.dpi) == -1 ){
+                                //punteros
+                                
                                 //Punteros
                                 a.siguiente = aux;
                                 a.anterior = aux.anterior;
@@ -97,6 +99,7 @@ public class ListaB implements Serializable {
                                 aux.anterior = a;
                                 size++;
                                 ban = true;
+                                break;
                             }else{
                                 aux = aux.siguiente;
                             }

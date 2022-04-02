@@ -13,10 +13,10 @@ import java.util.UUID;
 public class NodoListaDobleCircular implements Serializable{
     String ID;          //ID del nodo. Tiene uso en el gráfico.
     Object content;     //Contenido del Nodo
-    NodoListaDobleCircular next;      //Apuntador al siguiente nodo de la lista
+    public NodoListaDobleCircular next;      //Apuntador al siguiente nodo de la lista
     NodoListaDobleCircular prev;      //Apuntador al anterior nodo de la lista
     String name;        //Nombre que va a aparecer en el grafo
-    Object structure;   //Contiene una estructura auxiliar en caso de ser una lista de-
+    public Object structure;   //Contiene una estructura auxiliar en caso de ser una lista de-
     
     public NodoListaDobleCircular(Object _structure, String _name, Object _content){
         this.ID = "\""+UUID.randomUUID().toString() + "\"";

@@ -76,6 +76,42 @@ public class ListaSimple implements Serializable {
             }
         }
     }
+    
+    public int search(String name){
+        NodoListaSimple aux = this.head;
+        int tamaño = 0;
+        int ban = 0;
+        
+        while(ban == 0){
+            if(aux.name.equals(name)){
+                ban = 1;
+            }else{
+                if(aux.next == null){
+                    ban = 2;
+                }else{
+                    aux = aux.next;
+                    tamaño++;
+                }
+            }
+        }
+        
+        switch(ban){
+            case 1:
+                return tamaño;
+               
+            case 2:
+                return -1;
+        }
+        
+        return tamaño;
+    }
+    
+    public void borrar(String name){
+        int pos = search(name);
+        if(pos != -1){
+            remove(pos);
+        }
+    }
     //Metodos de Graficación
     //--------------------------------------------------------------------------
     
