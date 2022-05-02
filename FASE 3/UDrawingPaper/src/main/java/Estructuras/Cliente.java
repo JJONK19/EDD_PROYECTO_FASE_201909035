@@ -12,11 +12,11 @@ import java.math.BigInteger;
  * @author JJONK19
  */
 public class Cliente implements Serializable {
-    String dpi;
-    String nombre;
-    String user;
-    String correo;
-    String password;
+    String dpi; 
+    String nombre; 
+    String user; 
+    String correo;  
+    String password; 
     String tel;
     String dir;
     String municipio;
@@ -33,48 +33,12 @@ public class Cliente implements Serializable {
         municipio = Municipio;
     }
     
-    //Compara si el dpi es mayor 
-    // 1 = mayor
-    // 0 = igual
-    // -1 = menor
-    public int comparar(String dpi2){
-        int salida = -1;
-        for(int i = 0; i < dpi.length(); i++){
-            int c1 = Character.getNumericValue(dpi.charAt(i));
-            int c2 = Character.getNumericValue(dpi2.charAt(i));
-            if(i == (dpi.length()-1)){
-                if(c1 != c2){
-                    if(c1 > c2){
-                        salida = 1;
-                        break;
-                    }else{
-                        if(c1 < c2){
-                            salida = -1;
-                            break;
-                        }
-                    }
-                }else{
-                    salida = 0;
-                    break;
-                }
-            }else{
-                if(c1 != c2){
-                    if(c1 > c2){
-                        salida = 1;
-                        break;
-                    }else{
-                        salida = -1;
-                        break;
-                    }
-                }
-            }
-            
-        }
-        return salida;
-    }
-    
     public String getName(){
         return nombre;
+    }
+    
+    public String getUser(){
+        return user;
     }
     
     public String getDPI(){

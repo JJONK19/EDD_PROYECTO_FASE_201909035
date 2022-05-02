@@ -5,8 +5,9 @@
 package Aplicacion;
 
 import static Aplicacion.Registro.data;
-import Estructuras.ArbolB;
-import Estructuras.NodoB;
+import Estructuras.Cliente;
+import Estructuras.ListaSimple;
+import Estructuras.NodoListaSimple;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -237,14 +238,24 @@ public class Login extends javax.swing.JFrame {
                 if(user.length() <13){
                     JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    if(data.raiz == null){
+                    if(data.head == null){
                         JOptionPane.showMessageDialog(this, "Usuario o contraseña equivocada.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                     }else{
-                        NodoB bus = data.buscar(user, data.raiz);
+                        NodoListaSimple bus = data.head;
+                        while(bus != null){
+                            Cliente temp = (Cliente) bus.content;
+                            if(user.equals(temp.getUser())){
+                                break;
+                            }
+                            bus = bus.next;
+                        }
+                        
                         if(bus == null){
                             JOptionPane.showMessageDialog(this, "El usuario no existe.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                         }else{
-                            String contra = bus.contenido.getPass();
+                            Cliente temp = (Cliente) bus.content;
+                            String contra = temp.getPass();
+                            //Desencriptar la contraseña
                             if(contra.equals(pass)){
                                 Usuario n = new Usuario();
                                 n.usuario.setText(user);
@@ -271,7 +282,7 @@ public class Login extends javax.swing.JFrame {
             //Crear data    
             FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
             ObjectOutputStream out=new ObjectOutputStream(f); 
-            data = new ArbolB();
+            data = new ListaSimple();
             out.writeObject(data);    
             out.flush();        
             out.close();    
@@ -285,14 +296,14 @@ public class Login extends javax.swing.JFrame {
         try {
             FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
             ObjectInputStream escribir = new ObjectInputStream(abrir);
-            data =  (ArbolB) escribir.readObject();
+            data =  (ListaSimple) escribir.readObject();
             escribir.close();
             abrir.close();
         } catch (IOException i) {
-           data = new ArbolB();
+           data = new ListaSimple();
             
         } catch (ClassNotFoundException c) {
-            data = new ArbolB();
+            data = new ListaSimple();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -332,7 +343,7 @@ public class Login extends javax.swing.JFrame {
         });
     }
     
-    public static ArbolB data = new ArbolB();
+    public static ListaSimple data = new ListaSimple();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JButton Iniciar;
