@@ -1,9 +1,0 @@
-digraph G
-{
-node [ shape=circle ];
-"5afa10e2-e0cf-41ee-a69e-2702161fbbee"[shape = circle label=1]
-"6a5ff82f-27a9-4d80-8815-c7f56247db9b"[shape = circle label=0]
-"e357c68e-e064-4f68-a405-f2a970480f5c"[shape = circle label=4]
-"5afa10e2-e0cf-41ee-a69e-2702161fbbee"->"6a5ff82f-27a9-4d80-8815-c7f56247db9b"[label = "I"]
-"5afa10e2-e0cf-41ee-a69e-2702161fbbee"->"e357c68e-e064-4f68-a405-f2a970480f5c"[label = "D"]
-}

@@ -94,34 +94,7 @@ public class Prueba {
         }
         */
         
-        //Prueba de lista simple
-        ListaDCircularL a = new ListaDCircularL();
-        ListaSimple a1 = new ListaSimple();
-        a1.add(1, "1");
-        a1.add(1, "2");
-        a1.add(1, "3");
         
-        ListaSimple a2 = new ListaSimple();
-        a2.add(1, "1");
-        a2.add(1, "2");
-        a2.add(1, "3");
-        a2.add(1, "4");
-        
-        ListaSimple a3 = new ListaSimple();
-        a3.add(1, "1");
-        a3.add(1, "2");
-        a3.add(1, "3");
-        a3.add(1, "5");
-        
-        a.add(a1, "Album 1", null);
-        a.add(a2, "Album 2", null);
-        a.add(a3, "Album 3", null);
-        
-        ListaSimple p = (ListaSimple) a.head.structure;
-        p.borrar("1");
-        //a1.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\Ls.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\Ls.png");
-        
-        a.dibujar("C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\LC.txt", "C:\\Users\\lapto\\Documents\\Ingenieria\\Estructuras\\Ejemplos\\LC.png");
         
 }
     

@@ -541,10 +541,12 @@ public class Usuario extends javax.swing.JFrame {
         }catch(Exception e){
                     
         }
+        /*
         VCapas n = new VCapas(this, true);
         n.setVisible(true);
         n.user = user;
         data = n.getArbol();
+        */
     }//GEN-LAST:event_capaActionPerformed
 
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
@@ -704,10 +706,12 @@ public class Usuario extends javax.swing.JFrame {
         }catch(Exception e){
                     
         }
+        /*
         VImagenes n = new VImagenes(this, true);
         n.setVisible(true);
         n.user = user;
         data = n.getArbol();
+        */
     }//GEN-LAST:event_imagenActionPerformed
 
     private void add6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add6ActionPerformed
@@ -723,9 +727,11 @@ public class Usuario extends javax.swing.JFrame {
         }catch(Exception e){
                     
         }
+        /*
         CImagenes n = new CImagenes(this, true);
         n.setVisible(true);
         n.user = user;
+        */
     }//GEN-LAST:event_add6ActionPerformed
 
     private void valbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valbumActionPerformed
@@ -741,9 +747,11 @@ public class Usuario extends javax.swing.JFrame {
         }catch(Exception e){
                     
         }
+        /*
         Album n = new Album(this, true);
         n.setVisible(true);
         n.user = user;
+        */
     }//GEN-LAST:event_valbumActionPerformed
 
     private void cargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaActionPerformed

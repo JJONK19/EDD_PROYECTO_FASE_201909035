@@ -14,20 +14,19 @@ import java.math.BigInteger;
 public class Cliente implements Serializable {
     String dpi;
     String nombre;
+    String user;
+    String correo;
     String password;
-    public ArbolAVL imagenes;
-    public ArbolABB capas;
-    public ListaDCircularL album;
+    String tel;
+    String dir;
+    String municipio;
     
  
-    public Cliente(String Dpi, String Nombre, String Pass){
+    public Cliente(String Dpi, String Nombre, String User, String Correo, String Pass, String Tel, String Dir, String Municipio){
         dpi = Dpi;
         nombre = Nombre;
         password = Pass;
-        imagenes = new ArbolAVL();
-        capas = new ArbolABB();
-        album = new ListaDCircularL();
-        
+       
     }
     
     //Compara si el dpi es mayor 
