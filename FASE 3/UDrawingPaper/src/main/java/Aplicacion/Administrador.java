@@ -5,8 +5,8 @@
 package Aplicacion;
 
 import static Aplicacion.Registro.data;
-import Estructuras.ArbolB;
 import Estructuras.Cliente;
+import Estructuras.ListaSimple;
 import com.jayway.jsonpath.JsonPath;
 import java.awt.Cursor;
 import java.awt.image.BufferedImage;
@@ -50,11 +50,8 @@ public class Administrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        arbol = new javax.swing.JLabel();
         modificar = new javax.swing.JButton();
         Label1 = new javax.swing.JLabel("<HTML><U>Manejo de Clientes</U></HTML>");
-        generar = new javax.swing.JButton();
         add = new javax.swing.JButton();
         buscar = new javax.swing.JButton();
         Label3 = new javax.swing.JLabel("<HTML><U>Listado de Clientes</U></HTML>");
@@ -83,8 +80,6 @@ public class Administrador extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(253, 251, 251));
 
-        jScrollPane1.setViewportView(arbol);
-
         modificar.setBackground(new java.awt.Color(211, 56, 96));
         modificar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         modificar.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,16 +97,6 @@ public class Administrador extends javax.swing.JFrame {
         Label1.setText(null);
         */
         Label1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
-        generar.setBackground(new java.awt.Color(211, 56, 96));
-        generar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        generar.setForeground(new java.awt.Color(255, 255, 255));
-        generar.setText("Generar Arbol de Clientes");
-        generar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generarActionPerformed(evt);
-            }
-        });
 
         add.setBackground(new java.awt.Color(211, 56, 96));
         add.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
@@ -222,16 +207,10 @@ public class Administrador extends javax.swing.JFrame {
                         .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(generar, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -260,22 +239,17 @@ public class Administrador extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Label2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Lista, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
+                .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Label2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(generar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Label3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Lista, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -308,14 +282,14 @@ public class Administrador extends javax.swing.JFrame {
         try {
             FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
             ObjectInputStream escribir = new ObjectInputStream(abrir);
-            data =  (ArbolB) escribir.readObject();
+            data =  (ListaSimple) escribir.readObject();
             escribir.close();
             abrir.close();
         } catch (IOException i) {
-           data = new ArbolB();
+           data = new ListaSimple();
             
         } catch (ClassNotFoundException c) {
-            data = new ArbolB();
+            data = new ListaSimple();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -358,36 +332,6 @@ public class Administrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_regresarActionPerformed
     
-    //Graficar el arbol
-    private void generarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarActionPerformed
-        // TODO add your handling code here:
-        int ban = 0;
-        if(data.raiz != null){
-            data.dibujar("src/main/java/Imagenes/AB.txt", "src/main/java/Imagenes/AB.png");
-            ban = 1;
-        }else{
-            JOptionPane.showMessageDialog(this, "El arbol está vacío.");   
-        }
-        
-        if(ban == 1){
-            File a = new File ("src/main/java/Imagenes/AB.png");
-            if(a.exists()){
-                try {
-                    BufferedImage img = ImageIO.read(a.getAbsoluteFile());
-                    arbol.setSize(img.getWidth(), img.getHeight());
-                    arbol.setIcon(new ImageIcon(img)); 
-                }catch (IOException ex) {
-                        
-                }
-            }else{
-                arbol.setIcon(null);
-                 
-            }
-        }
-        
-        
-    }//GEN-LAST:event_generarActionPerformed
-
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
         //Serealizar
@@ -403,7 +347,7 @@ public class Administrador extends javax.swing.JFrame {
         }
         AddCliente n = new AddCliente(this, true);
         n.setVisible(true);
-        data = n.getArbol();
+        //data = n.getArbol();
         
     }//GEN-LAST:event_addActionPerformed
 
@@ -439,7 +383,7 @@ public class Administrador extends javax.swing.JFrame {
         }
         ModCliente n = new ModCliente(this, true);
         n.setVisible(true);
-        data = n.getArbol();
+        //data = n.getArbol();
     }//GEN-LAST:event_modificarActionPerformed
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
@@ -447,13 +391,14 @@ public class Administrador extends javax.swing.JFrame {
         //Vasado en https://stackoverflow.com/questions/22371720/how-to-add-row-dynamically-in-jtable
         DefaultTableModel model = new DefaultTableModel(new String[] { "ID", "Nombre", "Total Imagenes"},0);
         tabla.setModel(model);
-        
+        /*
         //Recorrido de Niveles
         if(data.raiz == null){
             JOptionPane.showMessageDialog(this, "No hay clientes en existencia.");   
         }else{
             data.niveles(model);
         }
+        */
         
     }//GEN-LAST:event_actualizarActionPerformed
 
@@ -478,6 +423,7 @@ public class Administrador extends javax.swing.JFrame {
                     String pass = (String) temp.get("password");
                                 
                     //Creacion del objeto cliente
+                    /*
                     if(data.raiz == null){
                         Cliente nuevo = new Cliente(dpi, nombre, pass);
                         data.addN(nuevo);
@@ -487,6 +433,7 @@ public class Administrador extends javax.swing.JFrame {
                             data.addN(nuevo);
                             
                         }                    }
+                    */
                 }
                 JOptionPane.showMessageDialog(this, "Registro Exitoso.");
             }catch(Exception e){
@@ -529,7 +476,7 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
     }
-    static ArbolB data = new ArbolB();
+    static ListaSimple data = new ListaSimple();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Jpanel;
     private javax.swing.JLabel Label1;
@@ -538,14 +485,11 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JScrollPane Lista;
     private javax.swing.JButton actualizar;
     private javax.swing.JButton add;
-    private javax.swing.JLabel arbol;
     private javax.swing.JButton buscar;
     private javax.swing.JButton carga;
-    private javax.swing.JButton generar;
     private javax.swing.JLabel icono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificar;
     private javax.swing.JButton regresar;
     private javax.swing.JTable tabla;
