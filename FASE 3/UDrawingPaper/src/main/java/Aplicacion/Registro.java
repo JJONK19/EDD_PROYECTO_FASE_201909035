@@ -8,6 +8,7 @@ import static Aplicacion.Login.data;
 import Estructuras.Cliente;
 import Estructuras.ListaSimple;
 import Estructuras.NodoListaSimple;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -334,7 +335,7 @@ public class Registro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "DPI no cumple con el formato (13 carácteres).", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }else{
                 if(data.isEmpty()){
-                    String contra = pass;
+                    String contra = BCrypt.withDefaults().hashToString(8, pass.toCharArray());
                     Cliente nuevo = new Cliente(dpi, nombre, user, correo, contra, tel, dir, municipio);
                     data.add(nuevo, user);
                     //Reiniciar las entradas
@@ -348,7 +349,7 @@ public class Registro extends javax.swing.JFrame {
                     Contraseña.setText("");
                     JOptionPane.showMessageDialog(this, "Registro Exitoso.");
                 }else{
-                    //Buscar Cliente
+                    //Buscar Cliente 
                     NodoListaSimple bus = data.head;
                     while(bus != null){
                         Cliente temp = (Cliente) bus.content;
@@ -359,7 +360,7 @@ public class Registro extends javax.swing.JFrame {
                     }
                         
                     if(bus == null){
-                        String contra = pass;
+                        String contra = BCrypt.withDefaults().hashToString(8, pass.toCharArray());
                         Cliente nuevo = new Cliente(dpi, nombre, user, correo, contra, tel, dir, municipio);
                         data.add(nuevo, user);
                         DPI.setText("");

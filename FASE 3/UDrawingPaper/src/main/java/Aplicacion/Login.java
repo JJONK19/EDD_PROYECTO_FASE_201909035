@@ -8,6 +8,7 @@ import static Aplicacion.Registro.data;
 import Estructuras.Cliente;
 import Estructuras.ListaSimple;
 import Estructuras.NodoListaSimple;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -235,7 +236,7 @@ public class Login extends javax.swing.JFrame {
                 n.setVisible(true);
                 this.dispose();
             }else{
-                if(user.length() <13){
+                if(false){
                     JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                 }else{
                     if(data.head == null){
@@ -255,13 +256,17 @@ public class Login extends javax.swing.JFrame {
                         }else{
                             Cliente temp = (Cliente) bus.content;
                             String contra = temp.getPass();
+                            BCrypt.Result result = BCrypt.verifyer().verify(pass.toCharArray(), contra);
                             //Desencriptar la contraseña
-                            if(contra.equals(pass)){
+                            if(result.verified){
+                                /*
                                 Usuario n = new Usuario();
                                 n.usuario.setText(user);
                                 n.user = user;
                                 n.setVisible(true);
                                 this.dispose();
+                                */
+                                System.out.println("Verificado");
                             }else{
                                 JOptionPane.showMessageDialog(this, "Contraseña equivocada.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                             }
@@ -300,9 +305,11 @@ public class Login extends javax.swing.JFrame {
             escribir.close();
             abrir.close();
         } catch (IOException i) {
+           i.printStackTrace();
            data = new ListaSimple();
             
         } catch (ClassNotFoundException c) {
+            c.printStackTrace();
             data = new ListaSimple();
         }
     }//GEN-LAST:event_formWindowOpened
