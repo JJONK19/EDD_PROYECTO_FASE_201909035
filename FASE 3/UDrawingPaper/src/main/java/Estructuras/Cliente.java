@@ -25,8 +25,12 @@ public class Cliente implements Serializable {
     public Cliente(String Dpi, String Nombre, String User, String Correo, String Pass, String Tel, String Dir, String Municipio){
         dpi = Dpi;
         nombre = Nombre;
+        user = User;
+        correo = Correo;
         password = Pass;
-       
+        tel = Tel;
+        dir = Dir;
+        municipio = Municipio;
     }
     
     //Compara si el dpi es mayor 
@@ -79,20 +83,6 @@ public class Cliente implements Serializable {
     
     public String getPass(){
         return password;
-    }
-    
-    public String getAlbum(){
-        String t = Integer.toString(album.no);
-        t += " Albumes: " + album.album();
-        return t;
-    }
-    
-    public String getImagen(){
-        return Integer.toString(imagenes.getTamaño());
-    }
-    
-    public String getCapas(){
-        return Integer.toString(capas.getSize());
     }
     
     public void setName(String a){
