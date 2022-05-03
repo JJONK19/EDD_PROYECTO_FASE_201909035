@@ -9,5 +9,15 @@ package Estructuras;
  * @author JJONK19
  */
 public class Ruta {
+    int id ;
+    int peso;
     
+    public Ruta(int Id, int Peso){
+        id = Id;
+        peso = Peso;
+    }
+    
+    public int getID(){
+        return id;
+    }
 }

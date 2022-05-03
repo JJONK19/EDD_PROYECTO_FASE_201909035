@@ -10,6 +10,7 @@ import Estructuras.Cliente;
 import Estructuras.ListaSimple;
 import Estructuras.Lugar;
 import Estructuras.NodoListaSimple;
+import Estructuras.Ruta;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.jayway.jsonpath.JsonPath;
 import java.awt.Cursor;
@@ -679,6 +680,61 @@ public class Administrador extends javax.swing.JFrame {
 
     private void cargaRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaRActionPerformed
         // TODO add your handling code here:
+        JFileChooser filechooser = new JFileChooser();
+        FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
+        filechooser.addChoosableFileFilter(exp);
+        filechooser.setFileFilter(exp);
+        if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            try{
+                File json = filechooser.getSelectedFile().getAbsoluteFile();
+                List<Map> lugare = JsonPath.parse(json).read("$.Grafo.*"); //Al leer, guarda las coincnidencias como un diccionario y esos los guarda en la lista
+
+                for (int i =0; i<lugare.size();i++){
+
+                    //Lectura de los diccionarios
+                    Map temp = lugare.get(i);
+                    String municipio = Integer.toString((int)temp.get("final"));
+                    int inicio = (int)temp.get("inicio");
+                    int fin = (int)temp.get("final");
+                    int peso = (int)temp.get("peso");
+                                        
+                    if(lugares.isEmpty()){
+                        JOptionPane.showMessageDialog(this, "No hay lugares cargados en memoria.");
+                    }else{
+                        //Buscar Cliente 
+                        NodoListaSimple bus = lugares.head;
+                        while(bus != null){
+                            Lugar t = (Lugar) bus.content;
+                            if(inicio == t.getID()){
+                                break;
+                            }
+                            bus = bus.next;
+                        }
+                        
+                        if(bus != null){
+                            ListaSimple lt = bus.structure;
+                            bus = lt.head;
+                            while(bus != null){
+                                Ruta t = (Ruta) bus.content;
+                                if(fin == t.getID()){
+                                    break;
+                                }
+                                bus = bus.next;
+                            }
+                            if(bus == null){
+                                Ruta nuevo = new Ruta(fin, peso);
+                                bus.structure.add(nuevo, municipio);
+                            }
+                        }                  
+                    }
+                        
+                    }
+                    JOptionPane.showMessageDialog(this, "Registro Exitoso.");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+                    e.printStackTrace();
+                }
+            }
     }//GEN-LAST:event_cargaRActionPerformed
 
     private void estructurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estructurasActionPerformed

@@ -16,7 +16,7 @@ public class NodoListaSimple implements Serializable{
     public Object content;     //Contenido del Nodo
     public NodoListaSimple next;      //Apuntador al siguiente nodo de la lista
     String name;        //Nombre que va a aparecer en el grafo
-    ListaSimple structure = new ListaSimple();   //Contiene una estructura auxiliar en caso de ser una lista de-
+    public ListaSimple structure = new ListaSimple();   //Contiene una estructura auxiliar en caso de ser una lista de-
     
     public NodoListaSimple(Object _content, String _name){
         this.ID = "\""+UUID.randomUUID().toString() + "\"";
