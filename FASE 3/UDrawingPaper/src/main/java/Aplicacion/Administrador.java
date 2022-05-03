@@ -5,8 +5,10 @@
 package Aplicacion;
 
 import static Aplicacion.Registro.data;
+import static Aplicacion.Usuario.user;
 import Estructuras.Cliente;
 import Estructuras.ListaSimple;
+import Estructuras.Lugar;
 import Estructuras.NodoListaSimple;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.jayway.jsonpath.JsonPath;
@@ -460,6 +462,13 @@ public class Administrador extends javax.swing.JFrame {
             data =  (ListaSimple) escribir.readObject();
             escribir.close();
             abrir.close();
+            
+             //Lugares
+            FileInputStream abrirr = new FileInputStream("src/main/java/lugares.ser");
+            ObjectInputStream escribirr = new ObjectInputStream(abrirr);
+            lugares =  (ListaSimple) escribirr.readObject();
+            escribirr.close();
+            abrirr.close();
         } catch (IOException i) {
            data = new ListaSimple();
             
@@ -478,6 +487,13 @@ public class Administrador extends javax.swing.JFrame {
             out.writeObject(data);    
             out.flush();        
             out.close();    
+            
+            //Lugares    
+            FileOutputStream ff=new FileOutputStream("src/main/java/lugares.ser");    
+            ObjectOutputStream outt=new ObjectOutputStream(ff); 
+            out.writeObject(lugares);    
+            out.flush();        
+            out.close(); 
         }catch(Exception e){
                     
         }
@@ -607,6 +623,58 @@ public class Administrador extends javax.swing.JFrame {
 
     private void cargaLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaLActionPerformed
         // TODO add your handling code here:
+        JFileChooser filechooser = new JFileChooser();
+        FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
+        filechooser.addChoosableFileFilter(exp);
+        filechooser.setFileFilter(exp);
+        if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            try{
+                File json = filechooser.getSelectedFile().getAbsoluteFile();
+                List<Map> lugare = JsonPath.parse(json).read("$.Lugares.*"); //Al leer, guarda las coincnidencias como un diccionario y esos los guarda en la lista
+
+                for (int i =0; i<lugare.size();i++){
+
+                    //Lectura de los diccionarios
+                    Map temp = lugare.get(i);
+                    String municipio = Integer.toString((int)temp.get("id"));
+                    int id = (int)temp.get("id");
+                    String departamento = (String)temp.get("departamento");
+                    String nombre = (String)temp.get("nombre");
+                    String ts = (String) temp.get("sn_sucursal");
+                    boolean sucursal;
+                    if(ts.equals("mo")){
+                        sucursal = false;
+                    }else{
+                        sucursal = true;
+                    }
+                    
+                    if(lugares.isEmpty()){
+                        Lugar nuevo = new Lugar(id, departamento, nombre, sucursal);
+                        lugares.add(nuevo, municipio);
+                    }else{
+                        //Buscar Cliente 
+                        NodoListaSimple bus = lugares.head;
+                        while(bus != null){
+                            Lugar t = (Lugar) bus.content;
+                            if(id == t.getID()){
+                                break;
+                            }
+                            bus = bus.next;
+                        }
+                        
+                        if(bus == null){
+                            Lugar nuevo = new Lugar(id, departamento, nombre, sucursal);
+                            lugares.add(nuevo, municipio);
+                        }                  
+                    }
+                        
+                    }
+                    JOptionPane.showMessageDialog(this, "Registro Exitoso.");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+                    e.printStackTrace();
+                }
+            }
     }//GEN-LAST:event_cargaLActionPerformed
 
     private void cargaRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaRActionPerformed
@@ -681,6 +749,7 @@ public class Administrador extends javax.swing.JFrame {
         });
     }
     static ListaSimple data = new ListaSimple();
+    static ListaSimple lugares = new ListaSimple();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;

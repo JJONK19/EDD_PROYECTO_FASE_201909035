@@ -290,7 +290,15 @@ public class Login extends javax.swing.JFrame {
             data = new ListaSimple();
             out.writeObject(data);    
             out.flush();        
-            out.close();    
+            out.close();  
+            
+            //Lugares    
+            FileOutputStream ff=new FileOutputStream("src/main/java/lugares.ser");    
+            ObjectOutputStream outt=new ObjectOutputStream(ff); 
+            lugares = new ListaSimple();
+            out.writeObject(lugares);    
+            out.flush();        
+            out.close(); 
         }catch(Exception e){
                 
         }    
@@ -299,18 +307,27 @@ public class Login extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         try {
+            //Clientes
             FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
             ObjectInputStream escribir = new ObjectInputStream(abrir);
             data =  (ListaSimple) escribir.readObject();
             escribir.close();
             abrir.close();
+            
+            //Lugares
+            FileInputStream abrirr = new FileInputStream("src/main/java/lugares.ser");
+            ObjectInputStream escribirr = new ObjectInputStream(abrirr);
+            lugares =  (ListaSimple) escribirr.readObject();
+            escribirr.close();
+            abrirr.close();
         } catch (IOException i) {
            i.printStackTrace();
            data = new ListaSimple();
+           lugares = new ListaSimple();
             
         } catch (ClassNotFoundException c) {
             c.printStackTrace();
-            data = new ListaSimple();
+            lugares = new ListaSimple();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -351,6 +368,7 @@ public class Login extends javax.swing.JFrame {
     }
     
     public static ListaSimple data = new ListaSimple();
+    public static ListaSimple lugares = new ListaSimple();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JButton Iniciar;
