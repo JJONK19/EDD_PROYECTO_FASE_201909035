@@ -100,21 +100,23 @@
                               <Component id="cargaL" alignment="1" max="32767" attributes="0"/>
                               <Component id="Label4" alignment="0" max="32767" attributes="0"/>
                               <Component id="cargaM" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cargaR" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="Label1" max="32767" attributes="0"/>
-                                      <Component id="add" max="32767" attributes="0"/>
-                                      <Component id="modificar" max="32767" attributes="0"/>
-                                      <Component id="buscar" alignment="0" pref="510" max="32767" attributes="0"/>
-                                      <Component id="Label2" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="carga" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="Label1" max="32767" attributes="0"/>
+                                          <Component id="add" max="32767" attributes="0"/>
+                                          <Component id="modificar" max="32767" attributes="0"/>
+                                          <Component id="buscar" alignment="0" pref="510" max="32767" attributes="0"/>
+                                          <Component id="Label2" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="carga" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="estructuras" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="Label3" alignment="1" min="-2" pref="510" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="cargaR" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="estructuras" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Label3" alignment="1" min="-2" pref="510" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

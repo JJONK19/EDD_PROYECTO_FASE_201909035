@@ -7,6 +7,8 @@ package Aplicacion;
 import static Aplicacion.Registro.data;
 import Estructuras.Cliente;
 import Estructuras.ListaSimple;
+import Estructuras.NodoListaSimple;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.jayway.jsonpath.JsonPath;
 import java.awt.Cursor;
 import java.awt.image.BufferedImage;
@@ -505,25 +507,42 @@ public class Administrador extends javax.swing.JFrame {
                     //Lectura de los diccionarios
                     Map temp = clientes.get(i);
                     String dpi = (String)temp.get("dpi");
-                    String nombre = (String) temp.get("nombre_cliente");
-                    String pass = (String) temp.get("password");
+                    String nombre = (String) temp.get("nombre_completo");
+                    String user = (String) temp.get("nombre_usuario");
+                    String correo = (String)temp.get("correo");
+                    String pass = (String) temp.get("contrasenia");
+                    String tel = (String) temp.get("telefono");
+                    String direccion = (String)temp.get("direccion");
+                    String municipio = Integer.toString((int)temp.get("id_municipio"));
 
-                    //Creacion del objeto cliente
-                    /*
-                    if(data.raiz == null){
-                        Cliente nuevo = new Cliente(dpi, nombre, pass);
-                        data.addN(nuevo);
+                   
+                    if(data.isEmpty()){
+                        String contra = BCrypt.withDefaults().hashToString(8, pass.toCharArray());
+                        Cliente nuevo = new Cliente(dpi, nombre, user, correo, contra, tel, direccion, municipio);
+                        data.add(nuevo, user);
                     }else{
-                        if(data.buscar(dpi, data.raiz) == null){
-                            Cliente nuevo = new Cliente(dpi, nombre, pass);
-                            data.addN(nuevo);
-
-                        }                    }
-                        */
+                        //Buscar Cliente 
+                        NodoListaSimple bus = data.head;
+                        while(bus != null){
+                            Cliente t = (Cliente) bus.content;
+                            if(user.equals(t.getUser()) && dpi.equals(t.getDPI())){
+                                break;
+                            }
+                            bus = bus.next;
+                        }
+                        
+                        if(bus == null){
+                            String contra = BCrypt.withDefaults().hashToString(8, pass.toCharArray());
+                            Cliente nuevo = new Cliente(dpi, nombre, user, correo, contra, tel, direccion, municipio);
+                            data.add(nuevo, user);
+                        }                  
+                    }
+                        
                     }
                     JOptionPane.showMessageDialog(this, "Registro Exitoso.");
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+                    e.printStackTrace();
                 }
             }
     }//GEN-LAST:event_cargaActionPerformed
@@ -596,6 +615,18 @@ public class Administrador extends javax.swing.JFrame {
 
     private void estructurasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estructurasActionPerformed
         // TODO add your handling code here:
+        try{
+            //Crear data
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");
+            ObjectOutputStream out=new ObjectOutputStream(f);
+            out.writeObject(data);
+            out.flush();
+            out.close();
+        }catch(Exception e){
+
+        }
+        Estructuras n = new Estructuras(this, true);
+        n.setVisible(true);
     }//GEN-LAST:event_estructurasActionPerformed
 
     private void blockchainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockchainActionPerformed
