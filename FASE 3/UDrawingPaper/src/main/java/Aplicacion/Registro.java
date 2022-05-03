@@ -353,7 +353,7 @@ public class Registro extends javax.swing.JFrame {
                     NodoListaSimple bus = data.head;
                     while(bus != null){
                         Cliente temp = (Cliente) bus.content;
-                        if(user.equals(temp.getUser())){
+                        if(user.equals(temp.getUser()) && dpi.equals(temp.getDPI())){
                             break;
                         }
                         bus = bus.next;

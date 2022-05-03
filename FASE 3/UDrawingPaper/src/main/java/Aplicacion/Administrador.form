@@ -59,21 +59,66 @@
                           <Component id="regresar" min="-2" pref="167" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="icono" min="-2" pref="78" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="398" max="-2" attributes="0"/>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="Label1" max="32767" attributes="0"/>
-                              <Component id="add" max="32767" attributes="0"/>
-                              <Component id="modificar" max="32767" attributes="0"/>
-                              <Component id="actualizar" alignment="1" pref="510" max="32767" attributes="0"/>
-                              <Component id="Label3" alignment="1" max="32767" attributes="0"/>
-                              <Component id="Lista" alignment="1" max="32767" attributes="0"/>
-                              <Component id="buscar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Label2" alignment="1" max="32767" attributes="0"/>
-                              <Component id="carga" alignment="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="icono" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" pref="398" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="blockchain" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Label5" alignment="1" min="-2" pref="510" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="comprimir" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Label6" alignment="1" min="-2" pref="510" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="descomprimir" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Label7" alignment="1" min="-2" pref="510" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="reportes" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Label8" alignment="1" min="-2" pref="510" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cargaL" alignment="1" max="32767" attributes="0"/>
+                              <Component id="Label4" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cargaM" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="Label1" max="32767" attributes="0"/>
+                                      <Component id="add" max="32767" attributes="0"/>
+                                      <Component id="modificar" max="32767" attributes="0"/>
+                                      <Component id="buscar" alignment="0" pref="510" max="32767" attributes="0"/>
+                                      <Component id="Label2" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="carga" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="cargaR" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="estructuras" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Label3" alignment="1" min="-2" pref="510" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -85,34 +130,76 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="Label1" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="Label1" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="add" min="-2" pref="46" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="modificar" min="-2" pref="46" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel1" min="-2" pref="60" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="icono" min="-2" pref="147" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="add" min="-2" pref="46" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="modificar" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="carga" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="Label2" min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel1" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="Label5" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="blockchain" min="-2" pref="46" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="buscar" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="Label4" min="-2" pref="39" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="Label6" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="comprimir" min="-2" pref="46" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cargaM" min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cargaL" min="-2" pref="46" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="icono" min="-2" pref="147" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="Label7" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="descomprimir" min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="carga" min="-2" pref="46" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="Label2" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="cargaR" min="-2" pref="46" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Label3" min="-2" pref="39" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="Label8" min="-2" pref="39" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="reportes" min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="buscar" min="-2" pref="46" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Label3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="Lista" min="-2" pref="245" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="actualizar" min="-2" pref="46" max="-2" attributes="0"/>
-                  <EmptySpace pref="8" max="32767" attributes="0"/>
+                  <Component id="estructuras" min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
                   <Component id="regresar" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -193,28 +280,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="Label3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Font(&quot;Candara Light&quot;, 2, 18)" type="code"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Color(211, 56, 96)" type="code"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="/*">
-              <Connection code="javax.swing.SwingConstants.CENTER" type="code"/>
-            </Property>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
-              <Connection code="null" type="code"/>
-            </Property>
-            <Property name="horizontalTextPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="javax.swing.SwingConstants.LEADING" type="code"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Listado de Clientes&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JButton" name="carga">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -251,70 +316,8 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Reportes&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Busqueda&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
           </AuxValues>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="Lista">
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="Jpanel">
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tabla">
-                  <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="1">
-                        <Column editable="false" title="ID" type="java.lang.String"/>
-                        <Column editable="false" title="Nombre" type="java.lang.String"/>
-                        <Column editable="false" title="Total Imagenes" type="java.lang.String"/>
-                      </Table>
-                    </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JButton" name="actualizar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="60" green="38" red="d3" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Candara Light" size="16" style="2"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Actualizar Lista de Clientes"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="icono">
           <AuxValues>
@@ -349,6 +352,274 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regresarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Label4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Candara Light&quot;, 2, 18)" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(211, 56, 96)" type="code"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="/*">
+              <Connection code="javax.swing.SwingConstants.CENTER" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
+              <Connection code="null" type="code"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.SwingConstants.LEADING" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Repartidores, Mensajeros y Rutas&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="cargaM">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cargar Mensajeros"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cargaMActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="cargaL">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cargar Lugares"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cargaLActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="cargaR">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cargar Rutas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cargaRActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="estructuras">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ver Estructuras"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="estructurasActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Label3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Candara Light&quot;, 2, 18)" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(211, 56, 96)" type="code"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="/*">
+              <Connection code="javax.swing.SwingConstants.CENTER" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
+              <Connection code="null" type="code"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.SwingConstants.LEADING" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Estructuras&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="blockchain">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ir a BlockChain"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blockchainActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Label5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Candara Light&quot;, 2, 18)" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(211, 56, 96)" type="code"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="/*">
+              <Connection code="javax.swing.SwingConstants.CENTER" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
+              <Connection code="null" type="code"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.SwingConstants.LEADING" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;BlockChain&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="comprimir">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Comprimir Archivos"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comprimirActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Label6">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Candara Light&quot;, 2, 18)" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(211, 56, 96)" type="code"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="/*">
+              <Connection code="javax.swing.SwingConstants.CENTER" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
+              <Connection code="null" type="code"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.SwingConstants.LEADING" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Compresi&#xf3;n&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Label7">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Candara Light&quot;, 2, 18)" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(211, 56, 96)" type="code"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="/*">
+              <Connection code="javax.swing.SwingConstants.CENTER" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
+              <Connection code="null" type="code"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.SwingConstants.LEADING" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Descompresi&#xf3;n&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="descomprimir">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Descomprimir Archivos"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descomprimirActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="reportes">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="60" green="38" red="d3" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Candara Light" size="16" style="2"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Ver Reportes"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reportesActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Label8">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Font(&quot;Candara Light&quot;, 2, 18)" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(211, 56, 96)" type="code"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="/*">
+              <Connection code="javax.swing.SwingConstants.CENTER" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="*/">
+              <Connection code="null" type="code"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.SwingConstants.LEADING" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;HTML&gt;&lt;U&gt;Reportes&lt;/U&gt;&lt;/HTML&gt;&quot;)"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
