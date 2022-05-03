@@ -579,7 +579,7 @@ public class Administrador extends javax.swing.JFrame {
         }
         ModCliente n = new ModCliente(this, true);
         n.setVisible(true);
-        //data = n.getArbol();
+        data = n.getArbol();
     }//GEN-LAST:event_modificarActionPerformed
 
     private void cargaMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaMActionPerformed

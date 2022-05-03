@@ -49,12 +49,44 @@ public class Cliente implements Serializable {
         return password;
     }
     
+    public String getCorreo(){
+        return correo;
+    }
+    
+    public String getTelefono(){
+        return tel;
+    }
+    
+    public String getDir(){
+        return dir;
+    }
+    
+    public String getMunicipio(){
+        return municipio;
+    }
+    
     public void setName(String a){
         nombre = a;
     }
     
     public void setPass(String a){
         password = a;
+    }
+    
+    public void setCorreo(String a){
+        correo = a;
+    }
+    
+    public void setTelefono(String a){
+        tel = a;
+    }
+    
+    public void setDir(String a){
+        dir = a;
+    }
+    
+    public void setMunicipio(String a){
+        municipio = a;
     }
     
 }

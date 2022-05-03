@@ -4,8 +4,9 @@
  */
 package Aplicacion;
 
-import Estructuras.ArbolB;
-import Estructuras.NodoB;
+import Estructuras.Cliente;
+import Estructuras.ListaSimple;
+import Estructuras.NodoListaSimple;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -77,12 +78,14 @@ public class BusCliente extends javax.swing.JDialog {
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"ID", null},
+                {"DPI", null},
+                {"User", null},
                 {"Nombre", null},
-                {"Contraseña", null},
-                {"No. Albumes - Imagenes", null},
-                {"Total Imagenes", null},
-                {"Total Capas", null}
+                {"Correo", null},
+                {"Telefono", null},
+                {"Direccion", null},
+                {"Municipio", null},
+                {"Contraseña", null}
             },
             new String [] {
                 "Campo", "Contenido"
@@ -196,14 +199,14 @@ public class BusCliente extends javax.swing.JDialog {
         try {
             FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
             ObjectInputStream escribir = new ObjectInputStream(abrir);
-            data =  (ArbolB) escribir.readObject();
+            data =  (ListaSimple) escribir.readObject();
             escribir.close();
             abrir.close();
         } catch (IOException i) {
-           data = new ArbolB();
+           data = new ListaSimple();
             
         } catch (ClassNotFoundException c) {
-            data = new ArbolB();
+            data = new ListaSimple();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -214,7 +217,7 @@ public class BusCliente extends javax.swing.JDialog {
         if(user.length() == 0){
             JOptionPane.showMessageDialog(this, "Llene todos los campos para continuar.");
         }else{
-                if(user.length() <13){
+                if(false){
                     JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                     DefaultTableModel m = (DefaultTableModel)tabla.getModel();
                     m.setValueAt("", 0, 1);
@@ -223,8 +226,11 @@ public class BusCliente extends javax.swing.JDialog {
                     m.setValueAt("", 3, 1);
                     m.setValueAt("", 4, 1);
                     m.setValueAt("", 5, 1);
+                    m.setValueAt("", 6, 1);
+                    m.setValueAt("", 7, 1);
+                   
                 }else{
-                    if(data.raiz == null){
+                    if(data.isEmpty()){
                         JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                         DefaultTableModel m = (DefaultTableModel)tabla.getModel();
                         m.setValueAt("", 0, 1);
@@ -233,8 +239,18 @@ public class BusCliente extends javax.swing.JDialog {
                         m.setValueAt("", 3, 1);
                         m.setValueAt("", 4, 1);
                         m.setValueAt("", 5, 1);
+                        m.setValueAt("", 6, 1);
+                        m.setValueAt("", 7, 1);
+                        
                     }else{
-                        NodoB bus = data.buscar(user, data.raiz);
+                        NodoListaSimple bus = data.head;
+                        while(bus != null){
+                            Cliente temp = (Cliente) bus.content;
+                            if(user.equals(temp.getUser())){
+                               break;
+                            }
+                            bus = bus.next;
+                        }
                         if(bus == null){
                             JOptionPane.showMessageDialog(this, "El usuario no existe.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                             DefaultTableModel m = (DefaultTableModel)tabla.getModel();
@@ -244,14 +260,20 @@ public class BusCliente extends javax.swing.JDialog {
                             m.setValueAt("", 3, 1);
                             m.setValueAt("", 4, 1);
                             m.setValueAt("", 5, 1);
+                            m.setValueAt("", 6, 1);
+                            m.setValueAt("", 7, 1);
+                           
                         }else{
                             DefaultTableModel m = (DefaultTableModel)tabla.getModel();
-                            m.setValueAt(bus.contenido.getDPI(), 0, 1);
-                            m.setValueAt(bus.contenido.getName(), 1, 1);
-                            m.setValueAt(bus.contenido.getPass(), 2, 1);
-                            m.setValueAt(bus.contenido.getAlbum(), 3, 1);
-                            m.setValueAt(bus.contenido.getImagen(), 4, 1);
-                            m.setValueAt(bus.contenido.getCapas(), 5, 1);
+                            Cliente temp = (Cliente) bus.content;
+                            m.setValueAt(temp.getDPI(), 0, 1);
+                            m.setValueAt(temp.getUser(), 1, 1);
+                            m.setValueAt(temp.getName(), 2, 1);
+                            m.setValueAt(temp.getCorreo(), 3, 1);
+                            m.setValueAt(temp.getTelefono(), 4, 1);
+                            m.setValueAt(temp.getDir(), 5, 1);
+                            m.setValueAt(temp.getMunicipio(), 6, 1);
+                            m.setValueAt(temp.getPass(), 7, 1);
                         }
                     }
                 }
@@ -304,7 +326,7 @@ public class BusCliente extends javax.swing.JDialog {
         });
     }
 
-    ArbolB data = new ArbolB();
+    ListaSimple data = new ListaSimple();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Iniciar;
     private javax.swing.JScrollPane Jpanel;

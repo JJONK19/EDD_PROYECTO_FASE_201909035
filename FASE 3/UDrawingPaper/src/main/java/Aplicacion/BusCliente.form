@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -147,14 +147,16 @@
             <Component class="javax.swing.JTable" name="tabla">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="2" rowCount="6">
+                  <Table columnCount="2" rowCount="8">
                     <Column editable="true" title="Campo" type="java.lang.String">
-                      <Data value="ID"/>
+                      <Data value="DPI"/>
+                      <Data value="User"/>
                       <Data value="Nombre"/>
+                      <Data value="Correo"/>
+                      <Data value="Telefono"/>
+                      <Data value="Direccion"/>
+                      <Data value="Municipio"/>
                       <Data value="Contrase&#xf1;a"/>
-                      <Data value="No. Albumes - Imagenes"/>
-                      <Data value="Total Imagenes"/>
-                      <Data value="Total Capas"/>
                     </Column>
                     <Column editable="true" title="Contenido" type="java.lang.String"/>
                   </Table>

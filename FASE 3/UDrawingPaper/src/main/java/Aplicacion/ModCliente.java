@@ -4,8 +4,10 @@
  */
 package Aplicacion;
 
-import Estructuras.ArbolB;
-import Estructuras.NodoB;
+import Estructuras.Cliente;
+import Estructuras.ListaSimple;
+import Estructuras.NodoListaSimple;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -53,6 +55,14 @@ public class ModCliente extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
         cpass = new javax.swing.JPasswordField();
+        Correo = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        Tel = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        Direccion = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        Municipio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -111,6 +121,34 @@ public class ModCliente extends javax.swing.JDialog {
         cpass.setBackground(new java.awt.Color(253, 251, 251));
         cpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        Correo.setBackground(new java.awt.Color(253, 251, 251));
+        Correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel10.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Correo");
+
+        jLabel11.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Telefono");
+
+        Tel.setBackground(new java.awt.Color(253, 251, 251));
+        Tel.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel12.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Dirección");
+
+        Direccion.setBackground(new java.awt.Color(253, 251, 251));
+        Direccion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel13.setFont(new java.awt.Font("Candara Light", 0, 12)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("Municipio");
+
+        Municipio.setBackground(new java.awt.Color(253, 251, 251));
+        Municipio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,33 +157,55 @@ public class ModCliente extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pass)
+                        .addGap(56, 56, 56))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(guardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(usuario))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Municipio, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpass))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(usuario))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pass)))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cpass)))
+                        .addContainerGap(56, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,25 +221,36 @@ public class ModCliente extends javax.swing.JDialog {
                     .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Correo)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Tel)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Direccion)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Municipio)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(88, 88, 88))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cpass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         try{
@@ -209,6 +280,42 @@ public class ModCliente extends javax.swing.JDialog {
         });
         pass.setText("");
         pass.setText("");
+        usuario.setText("");
+
+        //Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield
+        usuario.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (usuario.getText().length() >= 13 ) // limit textfield to 3 characters
+                e.consume();
+            }
+        });
+        usuario.setText("");
+
+        //Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield
+        usuario.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (usuario.getText().length() >= 13 ) // limit textfield to 3 characters
+                e.consume();
+            }
+        });
+        usuario.setText("");
+
+        //Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield
+        usuario.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (usuario.getText().length() >= 13 ) // limit textfield to 3 characters
+                e.consume();
+            }
+        });
+        usuario.setText("");
+
+        //Adaptado de https://stackoverflow.com/questions/3519151/how-to-limit-the-number-of-characters-in-jtextfield
+        usuario.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                if (usuario.getText().length() >= 13 ) // limit textfield to 3 characters
+                e.consume();
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,6 +333,10 @@ public class ModCliente extends javax.swing.JDialog {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         // TODO add your handling code here:
+        String correo = Correo.getText();
+        String tel = Tel.getText();
+        String dir = Direccion.getText();
+        String municipio = Municipio.getText();
         String user = usuario.getText();
         String name = nombre.getText();
         String contra = String.valueOf(pass.getPassword());
@@ -236,43 +347,80 @@ public class ModCliente extends javax.swing.JDialog {
             nombre.setText("");
             pass.setText("");
             cpass.setText("");
+            Correo.setText("");
+            Tel.setText("");
+            Direccion.setText("");
+            Municipio.setText("");
             JOptionPane.showMessageDialog(this, "Llene todos los campos para continuar.");
         }else{
-            if(user.length() <13){
+            if(false){
                 usuario.setText("");
                 nombre.setText("");
                 pass.setText("");
                 cpass.setText("");
+                Correo.setText("");
+                Tel.setText("");
+                Direccion.setText("");
+                Municipio.setText("");
                 JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }else{
-                if(data.raiz == null){
+                if(data.isEmpty()){
                     usuario.setText("");
                     nombre.setText("");
                     pass.setText("");
                     cpass.setText("");
+                    Correo.setText("");
+                    Tel.setText("");
+                    Direccion.setText("");
+                    Municipio.setText("");
                     JOptionPane.showMessageDialog(this, "Usuario inexistente.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    bus = data.buscar(user, data.raiz);
+                    NodoListaSimple bus = data.head;
+                    while(bus != null){
+                        Cliente temp = (Cliente) bus.content;
+                        if(user.equals(temp.getUser())){
+                           break;
+                        }
+                        bus = bus.next;
+                    }
                     if(bus == null){
                         usuario.setText("");
                         nombre.setText("");
                         pass.setText("");
                         cpass.setText("");
+                        Correo.setText("");
+                        Tel.setText("");
+                        Direccion.setText("");
+                        Municipio.setText("");  
                         JOptionPane.showMessageDialog(this, "El usuario no existe.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                     }else{
                         if(contra.equals(contrac)){
-                            bus.contenido.setPass(contra);
-                            bus.contenido.setName(name);
+                            Cliente temp = (Cliente) bus.content;
+                            String c = BCrypt.withDefaults().hashToString(8, contra.toCharArray());
+                            temp.setPass(c);
+                            temp.setName(name);
+                            temp.setCorreo(correo);
+                            temp.setTelefono(tel);
+                            temp.setDir(dir);
+                            temp.setMunicipio(municipio);
                             usuario.setText("");
                             nombre.setText("");
                             pass.setText("");
                             cpass.setText("");
+                            Correo.setText("");
+                            Tel.setText("");
+                            Direccion.setText("");
+                            Municipio.setText("");
                             JOptionPane.showMessageDialog(this, "Campos actualizados correctamente.");
                         }else{
                             usuario.setText("");
                             nombre.setText("");
                             pass.setText("");
                             cpass.setText("");
+                            Correo.setText("");
+                            Tel.setText("");
+                            Direccion.setText("");
+                            Municipio.setText("");
                             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                             
                         }
@@ -303,14 +451,14 @@ public class ModCliente extends javax.swing.JDialog {
         try {
             FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
             ObjectInputStream escribir = new ObjectInputStream(abrir);
-            data =  (ArbolB) escribir.readObject();
+            data =  (ListaSimple) escribir.readObject();
             escribir.close();
             abrir.close();
         } catch (IOException i) {
-           data = new ArbolB();
+           data = new ListaSimple();
             
         } catch (ClassNotFoundException c) {
-            data = new ArbolB();
+            data = new ListaSimple();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -356,18 +504,26 @@ public class ModCliente extends javax.swing.JDialog {
         });
     }
     
-    public ArbolB getArbol(){
+    public ListaSimple getArbol(){
         return data;
     }
     
-    ArbolB data = new ArbolB();
-    NodoB bus = null;       //Contendeor del nodo a modificar
+    ListaSimple data = new ListaSimple();
+    NodoListaSimple bus = null;       //Contendeor del nodo a modificar
     int ban = 0;            //Indica si se tiene en memoria un nodo
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Correo;
+    private javax.swing.JTextField Direccion;
+    private javax.swing.JTextField Municipio;
+    private javax.swing.JTextField Tel;
     private javax.swing.JPasswordField cpass;
     private javax.swing.JButton guardar;
     private javax.swing.JLabel icono;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
