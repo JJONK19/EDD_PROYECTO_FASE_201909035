@@ -225,11 +225,6 @@ public class ListaSimple implements Serializable{
         NodoListaSimple temp = this.head;
         for(int i = 0; i < this.no; i++){
            x += temp.ID + "[shape = circle label=\""+ temp.name + "\"]\n";
-           
-           ListaSimple t = (ListaSimple)temp.structure;
-           if(t.head != null){
-                x += t.head.declareC();
-           }
            temp = temp.next;
         }
         return x;
@@ -239,20 +234,17 @@ public class ListaSimple implements Serializable{
     public String connectG(){
         String x = "";
         NodoListaSimple temp = this.head;
-        for(int i = 0; i < this.no; i++){
-          if(temp == null){
-               ListaSimple t = (ListaSimple)temp.structure;
-                NodoListaSimple tem = t.head;
-                if(t.head != null){
-                     for(int j = 0; j <  t.no; j++){
-                         Ruta a = (Ruta) tem.content;
-                         x += temp.ID + "->" + tem.ID + "[minlen=3 dir = none label=" + a.peso + "];";
-                         temp = temp.next;
-                     }
-                }
-                temp = temp.next;
+        while(temp != null){
+            ListaSimple t = (ListaSimple)temp.structure;
+            NodoListaSimple tem = t.head;
+            while(tem != null){
+                Ruta a = (Ruta) tem.content;
+                x += temp.ID + "->" + a.ID + "[minlen=3 dir = none label=" + a.peso + "];\n";
+                tem = tem.next;
             }
+            temp = temp.next;
         }
+        
         return x;
     }
     

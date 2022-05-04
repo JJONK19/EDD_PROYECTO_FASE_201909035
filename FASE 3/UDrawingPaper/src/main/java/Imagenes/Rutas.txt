@@ -1,13 +1,8 @@
 digraph G
 {
-	"1d0a2ffc-9f12-4117-a7fb-c2bb7b17bf81"[shape = circle label="17"]
-"3ab81f62-42b9-49c3-a170-da614d4f0d9b"[shape = circle label=13]
-"83c145a7-411b-4ead-868f-a232597ec43d"[shape = box label=16]
-"0feeef01-a81a-4984-b2dd-8419e4dccd3f"[shape = circle label="16"]
-"a2047ace-f0d1-474a-b731-3d0396643f8e"[shape = circle label="14"]
-"df67d00b-b944-428d-98c6-b571ddfd83d6"[shape = circle label=13]
-"5864f4e5-b7b5-4228-a537-056f29948cbf"[shape = box label=16]
-"8f1af63e-ac79-492a-8d2c-280b47453ce5"[shape = circle label="8"]
-"c4a1160b-4b61-4c96-9183-fc8aa8320255"[shape = circle label=13]
-"6c5bf9da-24b5-480d-8962-0431e1cb62c4"[shape = circle label="13"]
-}
+	"d9856777-ef59-4840-8360-0ef6a4767912"[shape = circle label="17"]
+"da14e815-d5dc-49b4-b007-606783a2882d"[shape = circle label="16"]
+"70429e77-7707-4551-b223-4f1f991304ed"[shape = circle label="14"]
+"57a9f5bb-4539-42f0-837f-1bd0ee13d49e"[shape = circle label="8"]
+"65f7b6f5-0c72-4375-b9ff-9e2efdff8d5e"[shape = circle label="13"]
+"d9856777-ef59-4840-8360-0ef6a4767912"->"65f7b6f5-0c72-4375-b9ff-9e2efdff8d5e"[minlen=3 dir = none label=5];"d9856777-ef59-4840-8360-0ef6a4767912"->"da14e815-d5dc-49b4-b007-606783a2882d"[minlen=3 dir = none label=3];"70429e77-7707-4551-b223-4f1f991304ed"->"65f7b6f5-0c72-4375-b9ff-9e2efdff8d5e"[minlen=3 dir = none label=3];"70429e77-7707-4551-b223-4f1f991304ed"->"da14e815-d5dc-49b4-b007-606783a2882d"[minlen=3 dir = none label=1];"57a9f5bb-4539-42f0-837f-1bd0ee13d49e"->"65f7b6f5-0c72-4375-b9ff-9e2efdff8d5e"[minlen=3 dir = none label=5];}

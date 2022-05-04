@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author JJONK19
  */
 public class NodoListaSimple implements Serializable{
-    String ID;          //ID del nodo. Tiene uso en el gráfico.
+    public String ID;          //ID del nodo. Tiene uso en el gráfico.
     public Object content;     //Contenido del Nodo
     public NodoListaSimple next;      //Apuntador al siguiente nodo de la lista
     String name;        //Nombre que va a aparecer en el grafo

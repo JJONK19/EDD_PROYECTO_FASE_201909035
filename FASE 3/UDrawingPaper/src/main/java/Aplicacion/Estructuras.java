@@ -71,7 +71,7 @@ public class Estructuras extends javax.swing.JDialog {
         mostrar.setBackground(new java.awt.Color(53, 108, 114));
         mostrar.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         mostrar.setForeground(new java.awt.Color(255, 255, 255));
-        mostrar.setText("Mostrar Esstructura");
+        mostrar.setText("Mostrar Estructura");
         mostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mostrarActionPerformed(evt);
@@ -197,7 +197,7 @@ public class Estructuras extends javax.swing.JDialog {
                 break;
                 
             case "Rutas":
-                if(!data.isEmpty()){
+                if(!lugares.isEmpty()){
                     File a = new File ("src/main/java/Imagenes/Rutas.png");
                     if(a.exists()){
                         try {

@@ -471,8 +471,6 @@ public class Administrador extends javax.swing.JFrame {
             escribir.close();
             abrir.close();
             
-            System.out.println(data.no);
-            System.out.println(lugares.no);
         } catch (IOException i) {
            data = new ListaSimple();
            lugares = new ListaSimple();
@@ -719,7 +717,16 @@ public class Administrador extends javax.swing.JFrame {
                             bus = bus.next;
                         }
                         
-                        if(bus != null){
+                        NodoListaSimple salida = lugares.head;
+                        while(salida != null){
+                            Lugar t = (Lugar) salida.content;
+                            if(fin == t.getID()){
+                                break;
+                            }
+                            salida = salida.next;
+                        }
+                         
+                        if(bus != null && salida != null){
                             ListaSimple lt = bus.structure;
                             bus = lt.head;
                             while(bus != null){
@@ -730,7 +737,7 @@ public class Administrador extends javax.swing.JFrame {
                                 bus = bus.next;
                             }
                             if(bus == null){
-                                Ruta nuevo = new Ruta(fin, peso);
+                                Ruta nuevo = new Ruta(fin, peso, salida.ID);
                                 lt.add(nuevo, municipio);
                             }
                         }                  
@@ -765,8 +772,6 @@ public class Administrador extends javax.swing.JFrame {
 
         }
         
-        System.out.println(data.no);
-        System.out.println(lugares.no);
         Estructuras n = new Estructuras(this, true);
         n.setVisible(true);
     }//GEN-LAST:event_estructurasActionPerformed

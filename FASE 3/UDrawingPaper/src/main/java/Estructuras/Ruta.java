@@ -13,10 +13,12 @@ import java.io.Serializable;
 public class Ruta implements Serializable {
     int id ;
     int peso;
+    public String ID; //UUID Graphviz
     
-    public Ruta(int Id, int Peso){
+    public Ruta(int Id, int Peso, String _ID){
         id = Id;
         peso = Peso;
+        ID = _ID;
     }
     
     public int getID(){
