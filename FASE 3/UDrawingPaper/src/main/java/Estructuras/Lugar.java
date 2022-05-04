@@ -4,11 +4,13 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JJONK19
  */
-public class Lugar {
+public class Lugar implements Serializable {
     int id ;
     String departamento;
     String nombre;

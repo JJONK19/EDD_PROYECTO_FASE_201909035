@@ -293,8 +293,8 @@ public class Login extends javax.swing.JFrame {
             out.close();  
             
             //Lugares    
-            FileOutputStream ff=new FileOutputStream("src/main/java/lugares.ser");    
-            ObjectOutputStream outt=new ObjectOutputStream(ff); 
+            f=new FileOutputStream("src/main/java/lugares.ser");    
+            out=new ObjectOutputStream(f); 
             lugares = new ListaSimple();
             out.writeObject(lugares);    
             out.flush();        
@@ -321,12 +321,12 @@ public class Login extends javax.swing.JFrame {
             escribirr.close();
             abrirr.close();
         } catch (IOException i) {
-           i.printStackTrace();
+          
            data = new ListaSimple();
            lugares = new ListaSimple();
             
         } catch (ClassNotFoundException c) {
-            c.printStackTrace();
+            data = new ListaSimple();
             lugares = new ListaSimple();
         }
     }//GEN-LAST:event_formWindowOpened

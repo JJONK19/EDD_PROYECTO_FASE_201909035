@@ -5,6 +5,7 @@
 package Aplicacion;
 
 import static Aplicacion.Administrador.data;
+import static Aplicacion.Administrador.lugares;
 import Estructuras.ListaSimple;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -156,7 +157,7 @@ public class Estructuras extends javax.swing.JDialog {
                 
             case "Clientes":
                 if(!data.isEmpty()){
-                    File a = new File ("src/main/java/Imagenes/Lista.png");
+                    File a = new File ("src/main/java/Imagenes/Clientes.png");
                     if(a.exists()){
                         try {
                             BufferedImage img = ImageIO.read(a.getAbsoluteFile());
@@ -177,9 +178,41 @@ public class Estructuras extends javax.swing.JDialog {
                 break;
                 
             case "Lista Adyacencia":
+                if(!lugares.isEmpty()){
+                    File a = new File ("src/main/java/Imagenes/Adyacente.png");
+                    if(a.exists()){
+                        try {
+                            BufferedImage img = ImageIO.read(a.getAbsoluteFile());
+                            Image tmp = img.getScaledInstance(img.getWidth(),img.getHeight(), Image.SCALE_SMOOTH);
+                            ar.setSize(img.getWidth(),img.getHeight());
+                            ar.setIcon(new ImageIcon(tmp));
+                        }catch (Exception ex) {
+
+                        }
+                    }else{
+                        ar.setIcon(null);
+
+                    }
+                }
                 break;
                 
             case "Rutas":
+                if(!data.isEmpty()){
+                    File a = new File ("src/main/java/Imagenes/Rutas.png");
+                    if(a.exists()){
+                        try {
+                            BufferedImage img = ImageIO.read(a.getAbsoluteFile());
+                            Image tmp = img.getScaledInstance(img.getWidth(),img.getHeight(), Image.SCALE_SMOOTH);
+                            ar.setSize(img.getWidth(),img.getHeight());
+                            ar.setIcon(new ImageIcon(tmp));
+                        }catch (Exception ex) {
+
+                        }
+                    }else{
+                        ar.setIcon(null);
+
+                    }
+                }
                 break;
         }
         
@@ -194,16 +227,22 @@ public class Estructuras extends javax.swing.JDialog {
                 
             case "Clientes":
                 if(!data.isEmpty()){
-                    data.dibujar("src/main/java/Imagenes/Lista.txt", "src/main/java/Imagenes/Lista.png");
+                    data.dibujar("src/main/java/Imagenes/Clientes.txt", "src/main/java/Imagenes/Clientes.png");
                 }
                 
             case "Mensajeros":
                 break;
                 
             case "Lista Adyacencia":
+                if(!lugares.isEmpty()){
+                    lugares.dibujarA("src/main/java/Imagenes/Adyacente.txt", "src/main/java/Imagenes/Adyacente.png");
+                }
                 break;
                 
             case "Rutas":
+                if(!lugares.isEmpty()){
+                    lugares.dibujarG("src/main/java/Imagenes/Rutas.txt", "src/main/java/Imagenes/Rutas.png");
+                }
                 break;
         }
     }//GEN-LAST:event_listaActionPerformed
@@ -216,11 +255,24 @@ public class Estructuras extends javax.swing.JDialog {
             data =  (ListaSimple) escribir.readObject();
             escribir.close();
             abrir.close();
+            
+             //Lugares
+            abrir = new FileInputStream("src/main/java/lugares.ser");
+            escribir = new ObjectInputStream(abrir);
+            lugares =  (ListaSimple) escribir.readObject();
+            escribir.close();
+            abrir.close();
+            
+            
         } catch (IOException i) {
            data = new ListaSimple();
+           lugares = new ListaSimple();
+           i.printStackTrace();
             
         } catch (ClassNotFoundException c) {
             data = new ListaSimple();
+            lugares = new ListaSimple();
+            c.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -233,7 +285,14 @@ public class Estructuras extends javax.swing.JDialog {
             ObjectOutputStream out=new ObjectOutputStream(f); 
             out.writeObject(data);    
             out.flush();        
-            out.close();    
+            out.close();   
+            
+            //Lugares    
+            f=new FileOutputStream("src/main/java/lugares.ser");    
+            out=new ObjectOutputStream(f); 
+            out.writeObject(lugares);    
+            out.flush();        
+            out.close(); 
         }catch(Exception e){
                     
         }
@@ -282,6 +341,7 @@ public class Estructuras extends javax.swing.JDialog {
     }
     
     static ListaSimple data = new ListaSimple();
+    public static ListaSimple lugares = new ListaSimple();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ar;
     private javax.swing.JLabel icono;

@@ -4,11 +4,13 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author JJONK19
  */
-public class Ruta {
+public class Ruta implements Serializable {
     int id ;
     int peso;
     

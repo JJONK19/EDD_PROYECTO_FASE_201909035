@@ -465,16 +465,23 @@ public class Administrador extends javax.swing.JFrame {
             abrir.close();
             
              //Lugares
-            FileInputStream abrirr = new FileInputStream("src/main/java/lugares.ser");
-            ObjectInputStream escribirr = new ObjectInputStream(abrirr);
-            lugares =  (ListaSimple) escribirr.readObject();
-            escribirr.close();
-            abrirr.close();
+            abrir = new FileInputStream("src/main/java/lugares.ser");
+            escribir = new ObjectInputStream(abrir);
+            lugares =  (ListaSimple) escribir.readObject();
+            escribir.close();
+            abrir.close();
+            
+            System.out.println(data.no);
+            System.out.println(lugares.no);
         } catch (IOException i) {
            data = new ListaSimple();
+           lugares = new ListaSimple();
+           i.printStackTrace();
             
         } catch (ClassNotFoundException c) {
             data = new ListaSimple();
+            lugares = new ListaSimple();
+            c.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -490,8 +497,8 @@ public class Administrador extends javax.swing.JFrame {
             out.close();    
             
             //Lugares    
-            FileOutputStream ff=new FileOutputStream("src/main/java/lugares.ser");    
-            ObjectOutputStream outt=new ObjectOutputStream(ff); 
+            f=new FileOutputStream("src/main/java/lugares.ser");    
+            out=new ObjectOutputStream(f); 
             out.writeObject(lugares);    
             out.flush();        
             out.close(); 
@@ -673,7 +680,7 @@ public class Administrador extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Registro Exitoso.");
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
-                    e.printStackTrace();
+                    
                 }
             }
     }//GEN-LAST:event_cargaLActionPerformed
@@ -700,6 +707,7 @@ public class Administrador extends javax.swing.JFrame {
                                         
                     if(lugares.isEmpty()){
                         JOptionPane.showMessageDialog(this, "No hay lugares cargados en memoria.");
+                        break;
                     }else{
                         //Buscar Cliente 
                         NodoListaSimple bus = lugares.head;
@@ -723,7 +731,7 @@ public class Administrador extends javax.swing.JFrame {
                             }
                             if(bus == null){
                                 Ruta nuevo = new Ruta(fin, peso);
-                                bus.structure.add(nuevo, municipio);
+                                lt.add(nuevo, municipio);
                             }
                         }                  
                     }
@@ -746,9 +754,19 @@ public class Administrador extends javax.swing.JFrame {
             out.writeObject(data);
             out.flush();
             out.close();
+            
+            //Lugares    
+            f=new FileOutputStream("src/main/java/lugares.ser");    
+            out=new ObjectOutputStream(f); 
+            out.writeObject(lugares);    
+            out.flush();        
+            out.close(); 
         }catch(Exception e){
 
         }
+        
+        System.out.println(data.no);
+        System.out.println(lugares.no);
         Estructuras n = new Estructuras(this, true);
         n.setVisible(true);
     }//GEN-LAST:event_estructurasActionPerformed

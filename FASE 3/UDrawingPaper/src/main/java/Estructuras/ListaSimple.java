@@ -78,7 +78,7 @@ public class ListaSimple implements Serializable{
     }
     //Metodos de Graficación
     //--------------------------------------------------------------------------
-    
+    //Lista Simple
     //Unifica el texto que va en el grafo
     public String getcodigo(){
         String t = "digraph G\n" +"{\n";
@@ -126,5 +126,181 @@ public class ListaSimple implements Serializable{
         }catch(Exception e){
             e.printStackTrace();
         }
-    }   
+    }
+    
+    //--------------------------------------------------------------------------
+    //Lista Adyacente
+    //Unifica el texto que va en el grafo
+    public String declareA(){
+        String x = "";
+        NodoListaSimple temp = this.head;
+        for(int i = 0; i < this.no; i++){
+           x += temp.ID + "[shape = box label=\""+ temp.name + "\"]\n";
+           
+           ListaSimple t = (ListaSimple)temp.structure;
+           if(t.head != null){
+                x += t.head.declare();
+           }
+           temp = temp.next;
+        }
+        return x;
+    }
+    
+    //Crea las conexiones entre los nodos que van a ir en el archivo del grafo
+    public String connectA(){
+        String x = "";
+        NodoListaSimple temp = this.head;
+        String R = "rank = same;";
+        for(int i = 0; i < this.no; i++){
+           if(temp.next != null){
+               x += temp.ID + "->" + temp.next.ID + ";\n";
+
+           }
+           R += temp.ID + ";";
+           ListaSimple t = (ListaSimple)temp.structure;
+           String o = temp.ID.replace("\"", "");
+           if(t.head != null){
+                x += "subgraph cluster_" + o.replace("-", "") + "{" + t.head.connect() + "}";
+                x += temp.ID + "->" + t.head.ID + "[minlen=3];";
+           }
+           temp = temp.next;
+        }
+        x += " {" + R + " }\n";
+        return x;
+    }
+    
+    public String getcodigoA(){
+        String t = "digraph G\n" +"{\n";
+        if (head !=null){
+            t += "\t" + declareA()+ connectA();
+        }
+        t += "}";
+        return t;
+    }
+    
+    //Crea y escribe el archivo que lleva el codifo del grafo generado
+    public void escribirA(String ruta, String contenido){
+        FileWriter fichero = null;
+        PrintWriter p = null;
+        
+        try{
+            fichero  = new FileWriter(ruta);
+            p = new PrintWriter(fichero);
+            p.write(contenido);
+            p.close();
+            fichero.close();
+        
+        }catch(Exception e){
+            System.out.print(e.getMessage());
+            
+        }finally{
+            if (p!= null){
+                p.close();
+            }
+        }
+        
+    }
+    
+    //Se encarga de dibujar el grafo. Ruta es el nombre del archivo *.txt y gname es el nombre
+    //del grafo en formato *.png
+    
+    public void dibujarA(String ruta, String gname){
+        try{
+            escribir(ruta, getcodigoA());
+            ProcessBuilder a;
+            a = new ProcessBuilder("dot", "-Tpng", "-o", gname, ruta);
+            a.redirectErrorStream(true);
+            a.start();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    //--------------------------------------------------------------------------
+    //Grafo
+    //Unifica el texto que va en el grafo
+    public String declareG(){
+        String x = "";
+        NodoListaSimple temp = this.head;
+        for(int i = 0; i < this.no; i++){
+           x += temp.ID + "[shape = circle label=\""+ temp.name + "\"]\n";
+           
+           ListaSimple t = (ListaSimple)temp.structure;
+           if(t.head != null){
+                x += t.head.declareC();
+           }
+           temp = temp.next;
+        }
+        return x;
+    }
+    
+    //Crea las conexiones entre los nodos que van a ir en el archivo del grafo
+    public String connectG(){
+        String x = "";
+        NodoListaSimple temp = this.head;
+        for(int i = 0; i < this.no; i++){
+          if(temp == null){
+               ListaSimple t = (ListaSimple)temp.structure;
+                NodoListaSimple tem = t.head;
+                if(t.head != null){
+                     for(int j = 0; j <  t.no; j++){
+                         Ruta a = (Ruta) tem.content;
+                         x += temp.ID + "->" + tem.ID + "[minlen=3 dir = none label=" + a.peso + "];";
+                         temp = temp.next;
+                     }
+                }
+                temp = temp.next;
+            }
+        }
+        return x;
+    }
+    
+    public String getcodigoG(){
+        String t = "digraph G\n" +"{\n";
+        if (head !=null){
+            t += "\t" + declareG()+ connectG();
+        }
+        t += "}";
+        return t;
+    }
+    
+    //Crea y escribe el archivo que lleva el codifo del grafo generado
+    public void escribirG(String ruta, String contenido){
+        FileWriter fichero = null;
+        PrintWriter p = null;
+        
+        try{
+            fichero  = new FileWriter(ruta);
+            p = new PrintWriter(fichero);
+            p.write(contenido);
+            p.close();
+            fichero.close();
+        
+        }catch(Exception e){
+            System.out.print(e.getMessage());
+            
+        }finally{
+            if (p!= null){
+                p.close();
+            }
+        }
+        
+    }
+    
+    //Se encarga de dibujar el grafo. Ruta es el nombre del archivo *.txt y gname es el nombre
+    //del grafo en formato *.png
+    
+    public void dibujarG(String ruta, String gname){
+        try{
+            escribir(ruta, getcodigoG());
+            ProcessBuilder a;
+            a = new ProcessBuilder("dot", "-Tpng", "-o", gname, ruta);
+            a.redirectErrorStream(true);
+            a.start();
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

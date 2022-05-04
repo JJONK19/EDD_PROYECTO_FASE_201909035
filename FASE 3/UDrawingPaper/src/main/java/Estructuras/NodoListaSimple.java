@@ -50,6 +50,21 @@ public class NodoListaSimple implements Serializable{
         }
     }
     
+    //Sirve para crear la declaracion de los nodos que van a ir en el archivo del grafico
+    public String declareC(){
+        if(this.next == null){
+            String a = ID + "[shape = circle label="+ name + "]\n";
+            return a;
+        }else{
+            String x = "";
+            if(next != null){
+                x = ID + "[shape = circle label="+ name + "]\n"+ next.declare();
+            
+            }
+            return x;
+        }
+    }
+    
     //Crea las conexiones entre los nodos que van a ir en el archivo del grafo
     public String connect(){
         if(this.next == null){
