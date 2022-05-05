@@ -1,13 +1,20 @@
 digraph G
 {
-	"9e329215-96b2-42e5-ae7b-6697d7024c20"[shape = circle label="17"]
-"78ae4e59-e631-4176-8aef-c2c09b1fae68"[shape = circle label="16"]
-"ec49f5a5-240a-4488-ada0-faebfe9599d4"[shape = circle label="14"]
-"a182d56b-b892-4fc8-b7f3-3374430adce4"[shape = circle label="8"]
-"49094042-9ea4-43c0-a147-995ecb5845e1"[shape = circle label="13"]
-"9e329215-96b2-42e5-ae7b-6697d7024c20"->"49094042-9ea4-43c0-a147-995ecb5845e1"[minlen=3 dir = none label=5];
-"9e329215-96b2-42e5-ae7b-6697d7024c20"->"78ae4e59-e631-4176-8aef-c2c09b1fae68"[minlen=3 dir = none label=3];
-"ec49f5a5-240a-4488-ada0-faebfe9599d4"->"49094042-9ea4-43c0-a147-995ecb5845e1"[minlen=3 dir = none label=3];
-"ec49f5a5-240a-4488-ada0-faebfe9599d4"->"78ae4e59-e631-4176-8aef-c2c09b1fae68"[minlen=3 dir = none label=1];
-"a182d56b-b892-4fc8-b7f3-3374430adce4"->"49094042-9ea4-43c0-a147-995ecb5845e1"[minlen=3 dir = none label=5];
+	"0a316bc3-c364-4202-904e-9d8815f350be"[shape = circle label="1"]
+"f9be6500-cc2c-4654-a8ab-99cb03d5e9ef"[shape = circle label="2"]
+"dcf6e377-5139-4102-9e9d-0b809f2ee55c"[shape = circle label="3"]
+"81febd6e-1763-40f1-be09-606aa0280416"[shape = circle label="4"]
+"6100d997-bfa2-4562-8e64-712cc0dfd96c"[shape = circle label="5"]
+"a907cd66-e80c-4cfb-9f49-3432c211f616"[shape = circle label="6"]
+"e8248346-a41e-448a-94f7-8e08ad1c92ca"[shape = circle label="7"]
+"75fab4c8-9bec-41ce-827a-e07dcd83bea7"[shape = circle label="8"]
+"e062f5c4-f8db-4885-89f6-f5d85173067f"[shape = circle label="9"]
+"80e5e69a-080c-491d-8206-56903676998f"[shape = circle label="10"]
+"e4f0df53-7eb1-4a7c-b567-d98cc2ad9915"[shape = circle label="11"]
+"0a316bc3-c364-4202-904e-9d8815f350be"->"f9be6500-cc2c-4654-a8ab-99cb03d5e9ef"[minlen=3 dir = none label=20];
+"0a316bc3-c364-4202-904e-9d8815f350be"->"81febd6e-1763-40f1-be09-606aa0280416"[minlen=3 dir = none label=50];
+"0a316bc3-c364-4202-904e-9d8815f350be"->"6100d997-bfa2-4562-8e64-712cc0dfd96c"[minlen=3 dir = none label=45];
+"f9be6500-cc2c-4654-a8ab-99cb03d5e9ef"->"dcf6e377-5139-4102-9e9d-0b809f2ee55c"[minlen=3 dir = none label=15];
+"81febd6e-1763-40f1-be09-606aa0280416"->"dcf6e377-5139-4102-9e9d-0b809f2ee55c"[minlen=3 dir = none label=24];
+"81febd6e-1763-40f1-be09-606aa0280416"->"6100d997-bfa2-4562-8e64-712cc0dfd96c"[minlen=3 dir = none label=23];
 }
