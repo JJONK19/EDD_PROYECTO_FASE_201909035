@@ -287,7 +287,7 @@ public class ListaSimple implements Serializable{
         try{
             escribir(ruta, getcodigoG());
             ProcessBuilder a;
-            a = new ProcessBuilder("dot", "-Tpng", "-o", gname, ruta);
+            a = new ProcessBuilder("neato", "-Tpng", "-o", gname, ruta);
             a.redirectErrorStream(true);
             a.start();
             

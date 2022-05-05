@@ -275,6 +275,7 @@ public class AddCliente extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "DPI no cumple con el formato (13 carácteres).", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }else{
                 if(data.isEmpty()){
+                    //Fuente: https://libraries.io/maven/at.favre.lib:bcrypt
                     String contra = BCrypt.withDefaults().hashToString(8, pass.toCharArray());
                     Cliente nuevo = new Cliente(dpi, nombre, user, correo, contra, tel, dir, municipio);
                     data.add(nuevo, user);
@@ -300,6 +301,7 @@ public class AddCliente extends javax.swing.JDialog {
                     }
                         
                     if(bus == null){
+                        //Fuente: https://libraries.io/maven/at.favre.lib:bcrypt
                         String contra = BCrypt.withDefaults().hashToString(8, pass.toCharArray());
                         Cliente nuevo = new Cliente(dpi, nombre, user, correo, contra, tel, dir, municipio);
                         data.add(nuevo, user);

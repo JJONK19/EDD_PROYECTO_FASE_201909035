@@ -257,7 +257,7 @@ public class Login extends javax.swing.JFrame {
                             Cliente temp = (Cliente) bus.content;
                             String contra = temp.getPass();
                             BCrypt.Result result = BCrypt.verifyer().verify(pass.toCharArray(), contra);
-                            //Desencriptar la contraseña
+                            //Desencriptar la contraseña Fuente: https://libraries.io/maven/at.favre.lib:bcrypt
                             if(result.verified){
                                 /*
                                 Usuario n = new Usuario();

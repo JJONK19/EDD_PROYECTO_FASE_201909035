@@ -360,6 +360,7 @@ public class Registro extends javax.swing.JFrame {
                     }
                         
                     if(bus == null){
+                        //Fuente: https://libraries.io/maven/at.favre.lib:bcrypt
                         String contra = BCrypt.withDefaults().hashToString(8, pass.toCharArray());
                         Cliente nuevo = new Cliente(dpi, nombre, user, correo, contra, tel, dir, municipio);
                         data.add(nuevo, user);
