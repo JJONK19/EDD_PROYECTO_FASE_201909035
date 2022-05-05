@@ -7,6 +7,7 @@ package Aplicacion;
 import static Aplicacion.Administrador.data;
 import static Aplicacion.Administrador.lugares;
 import Estructuras.ListaSimple;
+import Estructuras.TablaHash;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -175,6 +176,22 @@ public class Estructuras extends javax.swing.JDialog {
                 break;
                 
             case "Mensajeros":
+                if(!mensajero.isEmpty()){
+                    File a = new File ("src/main/java/Imagenes/Hash.png");
+                    if(a.exists()){
+                        try {
+                            BufferedImage img = ImageIO.read(a.getAbsoluteFile());
+                            Image tmp = img.getScaledInstance(img.getWidth(),img.getHeight(), Image.SCALE_SMOOTH);
+                            ar.setSize(img.getWidth(),img.getHeight());
+                            ar.setIcon(new ImageIcon(tmp));
+                        }catch (Exception ex) {
+
+                        }
+                    }else{
+                        ar.setIcon(null);
+
+                    }
+                }
                 break;
                 
             case "Lista Adyacencia":
@@ -231,6 +248,9 @@ public class Estructuras extends javax.swing.JDialog {
                 }
                 
             case "Mensajeros":
+                if(!mensajero.isEmpty()){
+                    mensajero.dibujar("src/main/java/Imagenes/Hash.txt", "src/main/java/Imagenes/Hash.png");
+                }
                 break;
                 
             case "Lista Adyacencia":
@@ -263,15 +283,25 @@ public class Estructuras extends javax.swing.JDialog {
             escribir.close();
             abrir.close();
             
+            //Lugares
+            abrir = new FileInputStream("src/main/java/mensajero.ser");
+            escribir = new ObjectInputStream(abrir);
+            mensajero =  (TablaHash) escribir.readObject();
+            escribir.close();
+            abrir.close();
+            
             
         } catch (IOException i) {
            data = new ListaSimple();
            lugares = new ListaSimple();
+           mensajero = new TablaHash();
+           
            i.printStackTrace();
             
         } catch (ClassNotFoundException c) {
             data = new ListaSimple();
             lugares = new ListaSimple();
+            mensajero = new TablaHash();
             c.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
@@ -291,6 +321,13 @@ public class Estructuras extends javax.swing.JDialog {
             f=new FileOutputStream("src/main/java/lugares.ser");    
             out=new ObjectOutputStream(f); 
             out.writeObject(lugares);    
+            out.flush();        
+            out.close(); 
+            
+            //Lugares    
+            f=new FileOutputStream("src/main/java/mensajero.ser");    
+            out=new ObjectOutputStream(f); 
+            out.writeObject(mensajero);    
             out.flush();        
             out.close(); 
         }catch(Exception e){
@@ -342,6 +379,7 @@ public class Estructuras extends javax.swing.JDialog {
     
     static ListaSimple data = new ListaSimple();
     public static ListaSimple lugares = new ListaSimple();
+    public static TablaHash mensajero = new TablaHash();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ar;
     private javax.swing.JLabel icono;

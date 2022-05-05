@@ -31,31 +31,32 @@ public class TablaHash implements Serializable {
         //Añadir al bucket
         int posicion = hash(a.dpi);
         //Revisar si el indice no se sale de la tabla
-        if(posicion > (tamaño -1)){
-           boolean ban = true;
+        if(posicion >= (bucket.length)){
+                boolean ban = true;
                 int i = 1;
                 //Iterar la creacion de un nuevo hash hasta que entre
                 while(ban){
                     posicion = colision(a.dpi, i);
-                    if(posicion > (tamaño - 1)){
+                    if(posicion >= (bucket.length)){
                         ban = false;
-                        System.out.println(a.dpi + " genera un hash superior al tamaño");
+                        System.out.println(a.dpi + " genera un hash superior al tamaño " + posicion + " NTamaño:" + tamaño);
                     }else{
                         NodoHash check = bucket[posicion];
                         if(check == null){
                             //Añadir a la posicion
                             bucket[posicion] = new NodoHash(a, posicion);
-                            tamaño++;
+                            uso++;
                              ban = false;
                         }
+                    }
+                    i++;
                 }
-            }
         }else{
             NodoHash check = bucket[posicion];
             if(check == null){
                 //Añadir a la posicion
                 bucket[posicion] = new NodoHash(a, posicion);
-                tamaño++;
+                uso++;
             }else{
                 //Revisar si no viene repetido. 
                 //Si es diferente se tiene que resolbver la colision.
@@ -65,30 +66,85 @@ public class TablaHash implements Serializable {
                     //Iterar la creacion de un nuevo hash hasta que entre o salga porque el tamaño es grande
                     while(ban){
                         posicion = colision(a.dpi, i);
-                        if(posicion > (tamaño - 1)){
+                        if(posicion >= bucket.length){
                             ban = false;
-                            System.out.println(a.dpi + " genera un hash superior al tamaño");
+                            System.out.println(a.dpi + " genera un hash superior al tamaño - " + posicion +" NTamaño:" + tamaño);
                         }else{
                             check = bucket[posicion];
                             if(check == null){
                                 //Añadir a la posicion
                                 bucket[posicion] = new NodoHash(a, posicion);
-                                tamaño++;
+                                uso++;
                                 ban = false;
                             }
                         }
+                        i++;
                     }
                 }
             }
+            
         }
         
         //Verificar el tamaño para hacer rehash
         if(uso() > 0.75){
-            //Actualizar el tamaño
-            tamaño = primo(tamaño);
-            NodoHash[] bt = new NodoHash[tamaño];
+            rehash();
+        }
+    }
+    
+    //Añade un Valor a la tabla /Rehash
+    public void addR(Mensajero a){
+        //Añadir al bucket
+        int posicion = hash(a.dpi);
+        //Revisar si el indice no se sale de la tabla
+        if(posicion >= (bucket.length)){
+                boolean ban = true;
+                int i = 1;
+                //Iterar la creacion de un nuevo hash hasta que entre
+                while(ban){
+                    posicion = colision(a.dpi, i);
+                    if(posicion >= (bucket.length)){
+                        ban = false;
+                        System.out.println(a.dpi + " genera un hash superior al tamaño - " + posicion + " RTamaño:" + tamaño );
+                    }else{
+                        NodoHash check = bucket[posicion];
+                        if(check == null){
+                            //Añadir a la posicion
+                            bucket[posicion] = new NodoHash(a, posicion);
+                             ban = false;
+                        }
+                    }
+                    i++;
+                }
+        }else{
+            NodoHash check = bucket[posicion];
+            if(check == null){
+                //Añadir a la posicion
+                bucket[posicion] = new NodoHash(a, posicion);
+            }else{
+                //Revisar si no viene repetido. 
+                //Si es diferente se tiene que resolbver la colision.
+                if(a.dpi.compareTo(check.content.dpi) != 0){
+                    boolean ban = true;
+                    int i = 1;
+                    //Iterar la creacion de un nuevo hash hasta que entre o salga porque el tamaño es grande
+                    while(ban){
+                        posicion = colision(a.dpi, i);
+                        if(posicion >= bucket.length){
+                            ban = false;
+                            System.out.println(a.dpi + " genera un hash superior al tamaño - " + posicion + " RTamaño:" + tamaño);
+                        }else{
+                            check = bucket[posicion];
+                            if(check == null){
+                                //Añadir a la posicion
+                                bucket[posicion] = new NodoHash(a, posicion);
+                                ban = false;
+                            }
+                        }
+                        i++;
+                    }
+                }
+            }
             
-            //Recorrer de nuevo la lista y aplicar rehash
         }
     }
     
@@ -155,7 +211,23 @@ public class TablaHash implements Serializable {
     
     //Actualiza el tamaño de la tabla así como sus posiciones
     public void rehash(){
+        //Actualizar el tamaño
+            tamaño = primo(tamaño);
+            NodoHash[] bt = bucket;
+            bucket = new NodoHash[tamaño];
+            
+        //Recorrer de nuevo la lista y aplicar rehash 
+        for(int i = 0; i < bt.length; i++){
+            if(bt[i] != null){
+                Mensajero a = bt[i].content;
+                addR(a);
+            }
+        }
         
+    }
+    
+    public boolean isEmpty(){
+        return uso == 0;
     }
     
     //Metodos de Graficación

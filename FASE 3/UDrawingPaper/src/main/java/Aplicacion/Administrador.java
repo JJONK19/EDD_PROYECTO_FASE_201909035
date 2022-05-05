@@ -9,8 +9,10 @@ import static Aplicacion.Usuario.user;
 import Estructuras.Cliente;
 import Estructuras.ListaSimple;
 import Estructuras.Lugar;
+import Estructuras.Mensajero;
 import Estructuras.NodoListaSimple;
 import Estructuras.Ruta;
+import Estructuras.TablaHash;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.jayway.jsonpath.JsonPath;
 import java.awt.Cursor;
@@ -471,14 +473,22 @@ public class Administrador extends javax.swing.JFrame {
             escribir.close();
             abrir.close();
             
+            //Mensajero
+            abrir = new FileInputStream("src/main/java/mensajero.ser");
+            escribir = new ObjectInputStream(abrir);
+            mensajero =  (TablaHash) escribir.readObject();
+            escribir.close();
+            abrir.close();
         } catch (IOException i) {
            data = new ListaSimple();
            lugares = new ListaSimple();
+           mensajero = new TablaHash();
            i.printStackTrace();
             
         } catch (ClassNotFoundException c) {
             data = new ListaSimple();
             lugares = new ListaSimple();
+            mensajero = new TablaHash();
             c.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
@@ -499,7 +509,14 @@ public class Administrador extends javax.swing.JFrame {
             out=new ObjectOutputStream(f); 
             out.writeObject(lugares);    
             out.flush();        
-            out.close(); 
+            out.close();
+            
+            //Lugares    
+            f=new FileOutputStream("src/main/java/mensajero.ser");    
+            out=new ObjectOutputStream(f); 
+            out.writeObject(mensajero);    
+            out.flush();        
+            out.close();
         }catch(Exception e){
                     
         }
@@ -625,6 +642,37 @@ public class Administrador extends javax.swing.JFrame {
 
     private void cargaMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaMActionPerformed
         // TODO add your handling code here:
+        JFileChooser filechooser = new JFileChooser();
+        FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
+        filechooser.addChoosableFileFilter(exp);
+        filechooser.setFileFilter(exp);
+        if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            try{
+                File json = filechooser.getSelectedFile().getAbsoluteFile();
+                List<Map> mensajeros = JsonPath.parse(json).read("$.*"); //Al leer, guarda las coincnidencias como un diccionario y esos los guarda en la lista
+                
+                for (int i =0; i<mensajeros.size();i++){
+
+                    //Lectura de los diccionarios
+                    Map temp = mensajeros.get(i);
+                    String dpi = (String)temp.get("dpi");
+                    String nombre = (String) temp.get("nombres");
+                    String apellido = (String) temp.get("apellidos");
+                    String licencia = (String)temp.get("tipo_licencia");
+                    String genero = (String) temp.get("genero");
+                    String dir = (String) temp.get("direccion");
+                    String tel = (String)temp.get("telefono");
+                    
+                    Mensajero nuevo = new Mensajero(dpi, nombre, apellido, licencia, genero, dir, tel);
+                    mensajero.add(nuevo);
+                        
+                }
+                    JOptionPane.showMessageDialog(this, "Registro Exitoso.");
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
+                    e.printStackTrace();
+                }
+            }
     }//GEN-LAST:event_cargaMActionPerformed
 
     private void cargaLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaLActionPerformed
@@ -768,6 +816,13 @@ public class Administrador extends javax.swing.JFrame {
             out.writeObject(lugares);    
             out.flush();        
             out.close(); 
+            
+            //Lugares    
+            f=new FileOutputStream("src/main/java/mensajero.ser");    
+            out=new ObjectOutputStream(f); 
+            out.writeObject(mensajero);    
+            out.flush();        
+            out.close(); 
         }catch(Exception e){
 
         }
@@ -829,6 +884,7 @@ public class Administrador extends javax.swing.JFrame {
     }
     static ListaSimple data = new ListaSimple();
     static ListaSimple lugares = new ListaSimple();
+    static TablaHash mensajero = new TablaHash();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;

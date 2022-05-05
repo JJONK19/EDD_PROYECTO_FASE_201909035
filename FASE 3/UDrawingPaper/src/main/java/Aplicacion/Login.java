@@ -8,6 +8,7 @@ import static Aplicacion.Registro.data;
 import Estructuras.Cliente;
 import Estructuras.ListaSimple;
 import Estructuras.NodoListaSimple;
+import Estructuras.TablaHash;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -298,7 +299,15 @@ public class Login extends javax.swing.JFrame {
             lugares = new ListaSimple();
             out.writeObject(lugares);    
             out.flush();        
-            out.close(); 
+            out.close();
+            
+            //Mensajeros
+            f=new FileOutputStream("src/main/java/mensajero.ser");    
+            out=new ObjectOutputStream(f); 
+            mensajero = new TablaHash();
+            out.writeObject(mensajero);    
+            out.flush();        
+            out.close();
         }catch(Exception e){
                 
         }    
@@ -320,14 +329,23 @@ public class Login extends javax.swing.JFrame {
             lugares =  (ListaSimple) escribirr.readObject();
             escribirr.close();
             abrirr.close();
+            
+            //Lugares
+            abrirr = new FileInputStream("src/main/java/mensajero.ser");
+            escribirr = new ObjectInputStream(abrirr);
+            mensajero =  (TablaHash) escribirr.readObject();
+            escribirr.close();
+            abrirr.close();
         } catch (IOException i) {
           
            data = new ListaSimple();
            lugares = new ListaSimple();
+           mensajero = new TablaHash();
             
         } catch (ClassNotFoundException c) {
             data = new ListaSimple();
             lugares = new ListaSimple();
+            mensajero = new TablaHash();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -369,6 +387,7 @@ public class Login extends javax.swing.JFrame {
     
     public static ListaSimple data = new ListaSimple();
     public static ListaSimple lugares = new ListaSimple();
+    public static TablaHash mensajero = new TablaHash();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JButton Iniciar;
