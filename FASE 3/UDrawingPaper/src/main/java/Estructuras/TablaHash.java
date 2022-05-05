@@ -146,6 +146,7 @@ public class TablaHash implements Serializable {
             }
             
         }
+        
     }
     
     //Retorna un Valor de la tabla
@@ -154,8 +155,8 @@ public class TablaHash implements Serializable {
     }
     
     //Retorna el porcentaje de uso en la tabla
-    public int uso(){
-        return uso/tamaño;
+    public double uso(){
+        return (double)uso/tamaño;
     }
     
     //Retorna el indice de la tabla
@@ -212,7 +213,9 @@ public class TablaHash implements Serializable {
     //Actualiza el tamaño de la tabla así como sus posiciones
     public void rehash(){
         //Actualizar el tamaño
-            tamaño = primo(tamaño);
+            while(uso() >= 0.75){
+                tamaño = primo(tamaño);
+            }
             NodoHash[] bt = bucket;
             bucket = new NodoHash[tamaño];
             
@@ -227,6 +230,7 @@ public class TablaHash implements Serializable {
     }
     
     public boolean isEmpty(){
+       System.out.println(uso());
         return uso == 0;
     }
     

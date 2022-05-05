@@ -260,14 +260,12 @@ public class Login extends javax.swing.JFrame {
                             BCrypt.Result result = BCrypt.verifyer().verify(pass.toCharArray(), contra);
                             //Desencriptar la contraseña Fuente: https://libraries.io/maven/at.favre.lib:bcrypt
                             if(result.verified){
-                                /*
+                                
                                 Usuario n = new Usuario();
-                                n.usuario.setText(user);
                                 n.user = user;
                                 n.setVisible(true);
                                 this.dispose();
-                                */
-                                System.out.println("Verificado");
+                                
                             }else{
                                 JOptionPane.showMessageDialog(this, "Contraseña equivocada.", "Mensaje", JOptionPane.ERROR_MESSAGE);
                             }

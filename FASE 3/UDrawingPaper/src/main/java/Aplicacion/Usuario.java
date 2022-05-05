@@ -6,18 +6,11 @@ package Aplicacion;
 
 
 import static Aplicacion.Administrador.data;
-import Estructuras.ArbolABB;
-import Estructuras.ArbolAVL;
-import Estructuras.ArbolB;
-import Estructuras.Capa;
+
 import Estructuras.Cliente;
-import Estructuras.Imagen;
-import Estructuras.ListaDCircularL;
+
 import Estructuras.ListaSimple;
-import Estructuras.Matriz;
-import Estructuras.NodoABB;
-import Estructuras.NodoAVL;
-import Estructuras.NodoB;
+
 import com.jayway.jsonpath.JsonPath;
 import java.io.File;
 import java.io.FileInputStream;
@@ -69,27 +62,10 @@ public class Usuario extends javax.swing.JFrame {
         add2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         salir = new javax.swing.JButton();
-        CImagenes = new javax.swing.JButton();
-        Label4 = new javax.swing.JLabel("<HTML><U>Imagenes</U></HTML>");
-        Label1 = new javax.swing.JLabel("<HTML><U>Carga de Archivos</U></HTML>");
-        imagen = new javax.swing.JButton();
-        capa = new javax.swing.JButton();
-        Label2 = new javax.swing.JLabel("<HTML><U>Capas</U></HTML>");
-        carga = new javax.swing.JButton();
+        Label1 = new javax.swing.JLabel("<HTML><U>Generar Orden</U></HTML>");
         jLabel1 = new javax.swing.JLabel();
-        Label5 = new javax.swing.JLabel("<HTML><U>Álbumes</U></HTML>");
         ccap = new javax.swing.JButton();
         icono = new javax.swing.JLabel();
-        Label6 = new javax.swing.JLabel("<HTML><U>Reportes</U></HTML>");
-        reportes = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
-        valbum = new javax.swing.JButton();
-        usuario = new javax.swing.JLabel();
-        Label7 = new javax.swing.JLabel("<HTML><U>Carga de Archivos</U></HTML>");
-        Label9 = new javax.swing.JLabel("<HTML><U>Usuario</U></HTML>");
-        Label8 = new javax.swing.JLabel("<HTML><U>Imagen - Arbol de Capas</U></HTML>");
-        add6 = new javax.swing.JButton();
 
         Label3.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label3.setForeground(new java.awt.Color(238, 58, 95));
@@ -127,24 +103,6 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
-        CImagenes.setBackground(new java.awt.Color(53, 108, 114));
-        CImagenes.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        CImagenes.setForeground(new java.awt.Color(255, 255, 255));
-        CImagenes.setText("Imágenes");
-        CImagenes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CImagenesActionPerformed(evt);
-            }
-        });
-
-        Label4.setFont(new java.awt.Font("Candara Light", 2, 18));
-        Label4.setForeground(new java.awt.Color(238, 58, 95));
-        Label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        /*
-        Label4.setText(null);
-        */
-        Label4.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
         Label1.setFont(new java.awt.Font("Candara Light", 2, 18));
         Label1.setForeground(new java.awt.Color(238, 58, 95));
         Label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -153,150 +111,18 @@ public class Usuario extends javax.swing.JFrame {
         */
         Label1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
-        imagen.setBackground(new java.awt.Color(53, 108, 114));
-        imagen.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        imagen.setForeground(new java.awt.Color(255, 255, 255));
-        imagen.setText("Ver Imágenes");
-        imagen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imagenActionPerformed(evt);
-            }
-        });
-
-        capa.setBackground(new java.awt.Color(53, 108, 114));
-        capa.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        capa.setForeground(new java.awt.Color(255, 255, 255));
-        capa.setText("Ver Capas");
-        capa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                capaActionPerformed(evt);
-            }
-        });
-
-        Label2.setFont(new java.awt.Font("Candara Light", 2, 18));
-        Label2.setForeground(new java.awt.Color(238, 58, 95));
-        Label2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        /*
-        Label2.setText(null);
-        */
-        Label2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
-        carga.setBackground(new java.awt.Color(53, 108, 114));
-        carga.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        carga.setForeground(new java.awt.Color(255, 255, 255));
-        carga.setText("Álbumes");
-        carga.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargaActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Candara Light", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Menú Principal");
 
-        Label5.setFont(new java.awt.Font("Candara Light", 2, 18));
-        Label5.setForeground(new java.awt.Color(238, 58, 95));
-        Label5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        /*
-        Label5.setText(null);
-        */
-        Label5.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
         ccap.setBackground(new java.awt.Color(53, 108, 114));
         ccap.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
         ccap.setForeground(new java.awt.Color(255, 255, 255));
-        ccap.setText("Capas");
+        ccap.setText("Generar Orden");
         ccap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ccapActionPerformed(evt);
-            }
-        });
-
-        Label6.setFont(new java.awt.Font("Candara Light", 2, 18));
-        Label6.setForeground(new java.awt.Color(238, 58, 95));
-        Label6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        /*
-        Label6.setText(null);
-        */
-        Label6.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
-        reportes.setBackground(new java.awt.Color(53, 108, 114));
-        reportes.setFont(new java.awt.Font("Candara Light", 0, 16)); // NOI18N
-        reportes.setForeground(new java.awt.Color(0, 0, 0));
-        reportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Imágenes con más capas", "Capas que son hojas", "Profundidad del arbol de capas", "Recorridos del arbol de capas" }));
-        reportes.setBorder(null);
-        reportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reportesActionPerformed(evt);
-            }
-        });
-
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null}
-            },
-            new String [] {
-                "Reportes"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tabla);
-
-        valbum.setBackground(new java.awt.Color(53, 108, 114));
-        valbum.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        valbum.setForeground(new java.awt.Color(255, 255, 255));
-        valbum.setText("Ver Álbumes");
-        valbum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valbumActionPerformed(evt);
-            }
-        });
-
-        usuario.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
-        usuario.setForeground(new java.awt.Color(0, 0, 0));
-        usuario.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        /*
-        usuario.setText("\"DPI\"");
-        */
-
-        Label7.setFont(new java.awt.Font("Candara Light", 2, 18));
-        Label7.setForeground(new java.awt.Color(238, 58, 95));
-        Label7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Label7.setText(null);
-        Label7.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
-        Label9.setFont(new java.awt.Font("Candara Light", 2, 16));
-        Label9.setForeground(new java.awt.Color(238, 58, 95));
-        Label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        /*
-        Label9.setText(null);
-        */
-        Label9.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
-        Label8.setFont(new java.awt.Font("Candara Light", 2, 18));
-        Label8.setForeground(new java.awt.Color(238, 58, 95));
-        Label8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        /*
-        Label8.setText(null);
-        */
-        Label8.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-
-        add6.setBackground(new java.awt.Color(53, 108, 114));
-        add6.setFont(new java.awt.Font("Candara Light", 2, 16)); // NOI18N
-        add6.setForeground(new java.awt.Color(255, 255, 255));
-        add6.setText("Ver Arbol de Capas por Imágen");
-        add6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add6ActionPerformed(evt);
             }
         });
 
@@ -308,105 +134,37 @@ public class Usuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(carga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(CImagenes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ccap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Label9, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addComponent(Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                            .addComponent(Label6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(112, 112, 112)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(capa, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
-                            .addComponent(Label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(valbum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(add6, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
+                                .addComponent(jLabel1))
+                            .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(430, 430, 430)
-                                .addComponent(reportes, 0, 356, Short.MAX_VALUE)))))
+                        .addGap(633, 633, 633)
+                        .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(17, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(Label7, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(513, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(ccap, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(icono, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Label9, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(usuario)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ccap, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CImagenes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Label2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(capa, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Label5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valbum, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(carga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Label6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Label8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(add6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(reportes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Label1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ccap, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(169, 169, 169)
-                    .addComponent(Label7)
-                    .addContainerGap(522, Short.MAX_VALUE)))
         );
 
         try{
@@ -435,13 +193,7 @@ public class Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Serealizar
         try{    
-            //Crear data    
-            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
-            ObjectOutputStream out=new ObjectOutputStream(f); 
-            data = new ArbolB();
-            out.writeObject(data);    
-            out.flush();        
-            out.close();    
+              
         }catch(Exception e){
                 
         }
@@ -454,359 +206,34 @@ public class Usuario extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         // TODO add your handling code here:
-        try {
-            FileInputStream abrir = new FileInputStream("src/main/java/data.ser");
-            ObjectInputStream escribir = new ObjectInputStream(abrir);
-            data =  (ArbolB) escribir.readObject();
-            escribir.close();
-            abrir.close();
-            
-            aux = data.buscar(user, data.raiz);
-        } catch (IOException i) {
-           data = new ArbolB();
-            
-        } catch (ClassNotFoundException c) {
-            data = new ArbolB();
-        }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        // TODO add your handling code here:
-        //Serealizar
-        try{    
-            //Crear data    
-            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
-            ObjectOutputStream out=new ObjectOutputStream(f); 
-            out.writeObject(data);    
-            out.flush();        
-            out.close();    
-        }catch(Exception e){
-                    
-        }
         
-        Login n = new Login();
-        n.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_salirActionPerformed
+    }//GEN-LAST:event_formWindowOpened
 
     //Cargar Capas
     private void ccapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccapActionPerformed
         // TODO add your handling code here:
-        aux.contenido.capas = new ArbolABB();   //Reiniciar Arbol
-        JFileChooser filechooser = new JFileChooser();
-        FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
-        filechooser.addChoosableFileFilter(exp);
-        filechooser.setFileFilter(exp);
-        if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-            try{
-                File json = filechooser.getSelectedFile().getAbsoluteFile();
-                //Separar Nombres
-                List<Integer> nombre = JsonPath.parse(json).read("$.*.id_capa");
-                
-                //Separar Lista de pixeles
-                List<Map> pix = JsonPath.parse(json).read("$.*.pixeles");
-                
-                //Crear capas
-                for (int i =0; i < nombre.size();i++){
-                    //Lectura de los diccionarios
-                    int tempm = nombre.get(i);
-                                
-                    //Creacion de lista de pixeles
-                    JSONArray temp = (JSONArray) pix.get(i);
-                    List<Map> pixa = JsonPath.parse(temp).read("$.*");
-                    
-                    //Creacion de capa
-                    Capa Nuevo = new Capa(tempm, pixa);
-                    
-                    aux.contenido.capas.add(Nuevo, aux.contenido.capas.raiz);
-                }
-                JOptionPane.showMessageDialog(this, "Registro Exitoso.");
-                
-            }catch(Exception e){
-               JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
-               e.printStackTrace();
-            }
-        }
+        
     }//GEN-LAST:event_ccapActionPerformed
 
-    private void capaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capaActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
-        try{    
-            //Crear data    
-            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
-            ObjectOutputStream out=new ObjectOutputStream(f); 
-            out.writeObject(data);    
-            out.flush();        
-            out.close();    
+        //Serealizar
+        try{
+            //Crear data
+            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");
+            ObjectOutputStream out=new ObjectOutputStream(f);
+            out.writeObject(data);
+            out.flush();
+            out.close();
         }catch(Exception e){
-                    
+
         }
-        /*
-        VCapas n = new VCapas(this, true);
+
+        Login n = new Login();
         n.setVisible(true);
-        n.user = user;
-        data = n.getArbol();
-        */
-    }//GEN-LAST:event_capaActionPerformed
-
-    private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
-        // TODO add your handling code here:
-        if(aux.contenido.capas.raiz != null){
-            String na =  (String) reportes.getSelectedItem();
-            switch (na){
-                case "Imágenes con más capas":
-                    DefaultTableModel model = new DefaultTableModel(new String[] { "Imagenes con más capas", "Capas" },0);
-                    tabla.setModel(model);
-                    
-                    //top 5 imagenes con mas capas
-                    String nodos = aux.contenido.imagenes.amplitud();
-                    nodos = nodos.substring(0, nodos.length()-1);
-                    String[] l = nodos.split(",");
-                    ArrayList<NodoAVL> ord = new ArrayList<>();
-                    for(int i = 0; i < l.length; i++){
-                        NodoAVL bus =aux.contenido.imagenes.search(Integer.valueOf(l[i]));
-                        ord.add(bus);
-                    }
-                    ord.sort(new Comparator<NodoAVL>() {
-                    @Override
-                    public int compare(NodoAVL o1, NodoAVL o2) {
-                        return Integer.compare(o1.content.capas.getSize(), o2.content.capas.getSize());
-                    }
-                });
-                    Collections.reverse(ord);
-                    int iterador = 5;
-                    if(ord.size() > 5){
-                        iterador = 5;
-                    }else{
-                        iterador = ord.size();
-                    }
-                    
-                    for(int i = 0; i < iterador; i++){
-                        NodoAVL temp = ord.get(i);
-                        model.addRow(new Object[]{temp.content.id, temp.content.capas.getSize()});
-                    }
-                    
-                    break;
-                    
-                case "Capas que son hojas":
-                    //Basado en https://stackoverflow.com/questions/22371720/how-to-add-row-dynamically-in-jtable
-                    model = new DefaultTableModel(new String[] { "Capas que son hojas"},0);
-                    tabla.setModel(model);
-
-                    //Recorrido de arbol de capas
-                    aux.contenido.capas.esHoja(model);
-                    break;
-                    
-                case "Profundidad del arbol de capas":
-                    model = new DefaultTableModel(new String[] { "Profundidad del arbol de capas" },0);
-                    tabla.setModel(model);
-                    model.addRow(new Object[]{ (aux.contenido.capas.profundidad()) });
-                    
-                    break;
-                    
-                case "Recorridos del arbol de capas":
-                    model = new DefaultTableModel(new String[] { "Recorrido" },0);
-                    tabla.setModel(model);
-                    
-                    //Preordem
-                    String pre = "";
-                    pre = aux.contenido.capas.preorder(aux.contenido.capas.raiz);
-                    
-                    
-                    //Postorden
-                    String post = "";
-                    post = aux.contenido.capas.postorder(aux.contenido.capas.raiz);
-                    
-                    //Inorden
-                    String in = "";
-                    in = aux.contenido.capas.inorder(aux.contenido.capas.raiz);
-                    
-                    model.addRow(new Object[]{ "Preorden - " + pre});
-                    model.addRow(new Object[]{ "Postorden - " + post });
-                    model.addRow(new Object[]{ "Inorden - " + in });
-                    break;
-                    
-                    
-                default:
-                    model = new DefaultTableModel(new String[] { "Reportes" },0);
-                    tabla.setModel(model);
-                    break;
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "El arbol está vacío.");
-        }
-    }//GEN-LAST:event_reportesActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirActionPerformed
     
-    //Carga de Imagenes
-    private void CImagenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CImagenesActionPerformed
-        // TODO add your handling code here:
-        if(aux.contenido.capas.raiz != null){
-            aux.contenido.imagenes = new ArbolAVL();   //Reiniciar Arbol
-            JFileChooser filechooser = new JFileChooser();
-            FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
-            filechooser.addChoosableFileFilter(exp);
-            filechooser.setFileFilter(exp);
-            if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-                try{
-                    File json = filechooser.getSelectedFile().getAbsoluteFile();
-                    //Separar Nombres
-                    List<Integer> nombre = JsonPath.parse(json).read("$.*.id");
-
-                    //Separar Capas
-                    List<Map> pix = JsonPath.parse(json).read("$.*.capas");  
-                    
-                    //Crear Imagenes
-                    for (int i =0; i < nombre.size();i++){
-                        //Lectura de los diccionarios
-                        int tempm = nombre.get(i);
-
-                        //Creacion de Arbol de Capas
-                        JSONArray temp = (JSONArray) pix.get(i);
-                        Object [] pixa = temp.toArray();
-                        ArbolABB t = new ArbolABB();
-                        for(int j = 0; j < pixa.length; j++ ){
-                            NodoABB nodo  = aux.contenido.capas.search((int) pixa[j]);
-                            
-                            if(nodo != null){
-                                t.add(nodo.content, t.raiz);
-                            }else{
-                                System.out.println("Nodo Vacio");
-                            }
-                        }
-
-                        //Creacion de Imagen
-                        Imagen Nuevo = new Imagen(tempm, t);
-                        aux.contenido.imagenes.add(Nuevo);
-                    }
-                    
-                    
-                    JOptionPane.showMessageDialog(this, "Registro Exitoso.");
-                    
-                }catch(Exception e){
-                   JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
-                   e.printStackTrace();
-                }
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "No hay Capas cargadas en memoria.");
-        }
-        
-    }//GEN-LAST:event_CImagenesActionPerformed
-
-    private void imagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imagenActionPerformed
-        // TODO add your handling code here:
-        //Serializar
-        try{    
-            //Crear data    
-            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
-            ObjectOutputStream out=new ObjectOutputStream(f); 
-            out.writeObject(data);    
-            out.flush();        
-            out.close();    
-        }catch(Exception e){
-                    
-        }
-        /*
-        VImagenes n = new VImagenes(this, true);
-        n.setVisible(true);
-        n.user = user;
-        data = n.getArbol();
-        */
-    }//GEN-LAST:event_imagenActionPerformed
-
-    private void add6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add6ActionPerformed
-        // TODO add your handling code here:
-        //Serializar
-        try{    
-            //Crear data    
-            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
-            ObjectOutputStream out=new ObjectOutputStream(f); 
-            out.writeObject(data);    
-            out.flush();        
-            out.close();    
-        }catch(Exception e){
-                    
-        }
-        /*
-        CImagenes n = new CImagenes(this, true);
-        n.setVisible(true);
-        n.user = user;
-        */
-    }//GEN-LAST:event_add6ActionPerformed
-
-    private void valbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valbumActionPerformed
-        // TODO add your handling code here:
-        //Serializar
-        try{    
-            //Crear data    
-            FileOutputStream f=new FileOutputStream("src/main/java/data.ser");    
-            ObjectOutputStream out=new ObjectOutputStream(f); 
-            out.writeObject(data);    
-            out.flush();        
-            out.close();    
-        }catch(Exception e){
-                    
-        }
-        /*
-        Album n = new Album(this, true);
-        n.setVisible(true);
-        n.user = user;
-        */
-    }//GEN-LAST:event_valbumActionPerformed
-
-    private void cargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaActionPerformed
-        // TODO add your handling code here:
-        if(aux.contenido.imagenes.raiz != null){
-            aux.contenido.album = new ListaDCircularL();   //Reiniciar Arbol
-            JFileChooser filechooser = new JFileChooser();
-            FileNameExtensionFilter exp = new FileNameExtensionFilter("Archivos JSON (*.json)", "json");
-            filechooser.addChoosableFileFilter(exp);
-            filechooser.setFileFilter(exp);
-            if(filechooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-                try{
-                    File json = filechooser.getSelectedFile().getAbsoluteFile();
-                    //Separar Nombres
-                    List<String> nombre = JsonPath.parse(json).read("$.*.nombre_album");
-
-                    //Separar Capas
-                    List<Map> pix = JsonPath.parse(json).read("$.*.imgs");  
-                    
-                    //Crear Albumes
-                    for (int i =0; i < nombre.size();i++){
-                        //Lectura de los diccionarios
-                        String tempm = nombre.get(i);
-
-                        //Creacion de Arbol de Capas
-                        JSONArray temp = (JSONArray) pix.get(i);
-                        Object [] pixa = temp.toArray();
-                        ListaSimple t = new ListaSimple();
-                        for(int j = 0; j < pixa.length; j++ ){
-                            NodoAVL nodo  = aux.contenido.imagenes.search((int) pixa[j]);
-                            
-                            if(nodo != null){
-                                t.add(nodo.content, Integer.toString((int)pixa[j]));
-                            }else{
-                                System.out.println("Nodo Vacio");
-                            }
-                        }
-
-                        //Creacion de Imagen
-                        aux.contenido.album.add(t, tempm, null);
-                    }
-                    
-                    
-                    JOptionPane.showMessageDialog(this, "Registro Exitoso.");
-                    
-                }catch(Exception e){
-                   JOptionPane.showMessageDialog(this, "Ocurrió un Error.");
-                   e.printStackTrace();
-                }
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "No hay Capas cargadas en memoria.");
-        }
-    }//GEN-LAST:event_cargaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -844,33 +271,15 @@ public class Usuario extends javax.swing.JFrame {
         
     }
     static String user = "";
-    ArbolB data = new ArbolB();
-    NodoB aux = null;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CImagenes;
     private javax.swing.JLabel Label1;
-    private javax.swing.JLabel Label2;
     private javax.swing.JLabel Label3;
-    private javax.swing.JLabel Label4;
-    private javax.swing.JLabel Label5;
-    private javax.swing.JLabel Label6;
-    private javax.swing.JLabel Label7;
-    private javax.swing.JLabel Label8;
-    private javax.swing.JLabel Label9;
     private javax.swing.JButton add2;
-    private javax.swing.JButton add6;
-    private javax.swing.JButton capa;
-    private javax.swing.JButton carga;
     private javax.swing.JButton ccap;
     private javax.swing.JLabel icono;
-    private javax.swing.JButton imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> reportes;
     private javax.swing.JButton salir;
-    private javax.swing.JTable tabla;
-    public javax.swing.JLabel usuario;
-    private javax.swing.JButton valbum;
     // End of variables declaration//GEN-END:variables
 }
